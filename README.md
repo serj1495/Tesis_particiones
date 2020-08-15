@@ -1,1 +1,1 @@
-# Tesis_particiones
+# Tesis CINVESTAV Sergio
