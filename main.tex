@@ -1,0 +1,133 @@
+\documentclass[12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, mexico]{babel}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+\usepackage{setspace} %setstrech
+\usepackage{breqn} %equation break
+%\usepackage{algorithmic}
+\usepackage[linesnumbered,ruled,spanish,onelanguage,vlined]{algorithm2e} 
+
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usetikzlibrary{arrows,shapes,matrix,
+                decorations.pathmorphing,
+                shapes.geometric,calc}
+
+% Tikz style
+\tikzstyle{edge}=[>=stealth, line width=0.8pt]
+\tikzstyle{vertex}=[circle, fill=white, draw,
+                    minimum size=5pt,
+                    inner sep=0pt, outer sep=0pt]
+\tikzstyle{cotreenode}=[circle, fill=white, draw,
+                    minimum size=5pt,
+                    inner sep=2pt, outer sep=0pt]
+                
+\tikzstyle{cotreedescription}=[ellipse, fill=white, draw,
+                    minimum size=5pt,
+                    inner sep=2pt, outer sep=0pt]
+                    
+\tikzstyle{minivertex}=[circle, fill=white, draw,
+                    minimum size=3pt,
+                    inner sep=0pt, outer sep=0pt]
+                    
+\usepackage{subcaption}
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{tabularx,ragged2e}
+\newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{url}
+\usepackage{hyperref}
+\renewcommand{\UrlFont}{\ttfamily\small}
+\usetikzlibrary{arrows.meta,
+                calc, chains,
+                positioning,
+                shapes.multipart}
+
+\usepackage{algpseudocode}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{hyphenat}
+
+%\hyphenation{geo-mé-tri-cas}
+\graphicspath{ {images/} }
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corolario}[theorem]
+\newtheorem{lemma}[theorem]{Lema}
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+\newenvironment{dedication}
+  {
+   \thispagestyle{empty}% no header and footer
+   \vspace*{\stretch{1}}% some space at the top
+   \itshape             % the text is in italics
+   \raggedleft          % flush to the right margin
+  }
+  {\par % end the paragraph
+   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   \clearpage           % finish off the page
+  }
+
+
+%% Es para poner los márgenes en una impresión
+%% a ambas caras de la hoja
+
+
+
+\begin{document}
+
+%\frontmatter
+\include{caratula}
+
+
+
+%\setcounter{chapter}{0}
+%\setcounter{page}{0}
+%\setcounter{secnumdepth}{4}
+%\pagenumbering{arabic}
+
+\chapter*{Abstract}
+\input{chapters/0000abstract.tex}
+\chapter*{Resumen}
+\input{chapters/0100abstract_spa.tex}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+%\mainmatter
+\chapter{Introducción}
+\input{chapters/0200introduccion.tex}
+\chapter{Antecedentes}
+\input{chapters/0300antecedentes.tex}
+\chapter{Estado del arte}
+\input{chapters/0400estado.tex}\label{cap3}
+\chapter{Resultados}\label{cap4}
+\input{chapters/0500resultados.tex}
+\chapter{Conclusiones y trabajo futuro}
+\input{chapters/0600conclusiones.tex}
+
+\chapter*{Apéndices}
+%\appendix
+
+\bibliographystyle{unsrt}
+\bibliography{biblio.bib}
+
+\end{document} 

@@ -1,0 +1,33 @@
+\iffalse
+
+Podemos obtener todos los coárboles binarios correspondientes a un coárbol haciendo uso del Algoritmo \ref{alg_coa_bin02}. Este algoritmo recibe como entrada la raíz del coárbol, $r$, y devuelve un conjunto de nodos, $S$, cada uno de cuyos elementos es la raíz de un coárbol binario. Los nodos internos son procesados creando un nuevo coárbol binario para cada posible partición del conjunto de hijos de dicho nodo. Al procesar las hojas, simplemente se crea un nuevo nodo que será una hoja en los árboles binarios. 
+
+
+\begin{algorithm}[h]
+\caption{CrearÁrbolesBinarios}
+\label{alg_coa_bin02}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$r$ la raíz de un coárbol}
+\KwOut{$S = \{r'_1, r'_2, \dots, r'_n\}$ con $r_i$ la raíz de un coárbol binario}
+
+$r' \gets \text{nuevo nodo de árbol binario}$\;
+
+\If{$r\ \emph{es un nodo interno} $}{
+    $r'.etiqueta = r.etiqueta$\;
+    $s \gets r'$\;
+    $i \gets 0\;
+    \While{$i < r.children.size - 2$}{
+        $s.primerHijo = \text{CrearArbolBinario}(r.hijos[i])$\;
+        $s.segundoHijo \gets \text{nuevo nodo de árbol binario}$\;
+        $s \gets s.segundoHijo$\;
+        $s.etiqueta = r.etiqueta$\;
+        $i = i+1$\;
+    }
+    $s.primerHijo = \text{CrearArbolBinario}(r.hijos[i])$\;
+    $s.segundoHijo = \text{CrearArbolBinario}(r.hijos[i+1])$\;
+}
+\Return $r'$\;
+    
+\end{algorithm}
+
+\fi

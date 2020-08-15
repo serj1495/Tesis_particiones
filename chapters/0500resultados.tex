@@ -1,0 +1,55 @@
+
+
+\section{Términos y algoritmos generales}
+    El presente capítulo tiene como objetivo exponer un conjunto de conceptos y algoritmos cuya utilidad, aunque acotada a las cográficas, no se limita a la clase de cográficas cuyo conjunto de vértices acepta una partición en dos gráficas multipartitas completas.
+    \subsection{Coárbol binario}
+        \input{chapters/0501CoarbolBinario.tex}
+    \subsection{Algoritmo para generar un coárbol binario}
+        \input{chapters/0502AlgoBin01.tex}
+    \subsection{Algoritmo para generar todos los coárboles binarios}
+        \input{chapters/0503AlgoBin02.tex}
+    \subsection{Subcoárbol}
+        \input{chapters/0504Subcoarbol.tex}
+    \subsection{Algoritmo para encontrar una subgráfica en un coárbol} \label{sec_AlgoSub}
+        \input{chapters/0505AlgoSub.tex}
+    
+    
+\section{La clase $M_2$}
+
+    En el presente capítulo se desarrolla el tema principal de la tesis, del cual se desprenden el resto de los resultados. 
+    
+    \begin{definition}
+        La \textbf{\emph{clase $M_2$}} es la clase de cográficas cuyo conjunto de vértices acepta una partición en dos partes tal que cada parte induce una gráfica multipartita completa. %Es decir que $M_2 = \{G \mid G $ es una cográfica y existe una partición de $ V = (A,B) $ tal que $ G(A) $ y $ G(B) $  son gráficas multipartitas completas$\}$.
+    \end{definition}
+    
+    Claramente, $M_2$ es una clase hereditaria, pues si tomamos una gráfica de esta clase y sustraemos uno de sus vértices, de cualquiera de sus dos partes, dicha parte seguirá siendo una gráfica multipartita completa. Al ser una clase hereditaria, $M_2$ puede ser caracterizada por un conjunto de obstrucciones mínimas. También se puede decidir si una cográfica pertenece a ésta en tiempo lineal \cite{unknown}.
+    
+    \subsection{Obstrucciones mínimas}
+        \input{chapters/0506ObstruccionesM2.tex}
+        
+    \subsection{Reconocimiento de la clase $M_2$}
+        \input{chapters/0507Algo_Decision.tex}
+    
+    \subsection{Algoritmo certificador}
+        \input{chapters/0508Algo_Certificador.tex}
+
+\section{Subclases de $M_2$}
+    
+    \subsection{Clases $(\alpha, \beta)-M_2$}
+    
+    \subsection{Conjunto de parejas mínimas}
+    
+    \subsection{Reconocimiento de las clases $(\alpha, \beta)-M_2$}
+    
+    \subsection{Algoritmo para generar obstrucciones mínimas}
+
+\section{Particiones en más de dos partes}
+    \subection{Las Clases $M_i$}
+
+    \subsection{Obstrucciones mínimas de la clase $M_3$}
+        \input{chapters/0514ObstruccionesM3.tex}
+        
+    \subsection{Familia $O$ de obstrucciones}
+    
+    \subsection{Familia $P$ de obstrucciones}
+    

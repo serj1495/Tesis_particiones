@@ -1,0 +1,923 @@
+Si bien, el Algoritmo \ref{alg_decision} es capaz de identificar a las cográficas que pertenece a la clase $M_2$, no es posible determinar a partir de éste cuáles son las dos partes en las que se puede dividir una gráfica de la clase. La presente sección muestra un algoritmo (Algoritmo \ref{alg_cert_m2}) que, dada una cográfica representada por su coárbol, devuelve una coloración de las hojas de este último. Si la gráfica pertenece a $M_2$, las hojas tendrán dos colores, $verde$ y $azul$, cada uno de los cuales corresponde a una parte de la partición en dos gráficas multipartitas completas. En el caso contrario, las hojas correspondientes a los vértices que forman una obstrucción mínima tendrán un color que indique de qué obstrucción mínima se trata ($amarillo$ para $H$, $anaranjado$ para $I$ y $rojo$ para $J$). El Algoritmo \ref{alg_cert_m2} hace uso de los Algoritmos \ref{alg_cert_caso1} y \ref{alg_cert_caso2}, que funcionan de la misma manera para casos específicos del problema. La correctitud de estos algoritmo se sigue de la demostración del Teorema \ref{teo_obsts_m2}
+
+\subsubsection{Algoritmo para reconocer gráficas bipartitas completas conexas}
+
+El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos subsecuentes. Éste recibe la raíz de un coárbol, $g$, y devuelve $verdadero$ si la gráfica representada por dicho coárbol es una gráfica bipartita completa conexa, coloreando los vértices de una parte de color $azul$ y los de la otra parte de $verde$. En el caso contrario, se colorean con $amarillo$  tres hojas cuyo ancestro común más profundo sea un nodo con etiqueta 1. Es decir que se colorean los vértices que inducen un $K_3$ en la gráfica. El bloque de la línea 9 a la 28 se ejecuta sólo si $g$ tiene exactamente dos hijos. En las líneas 10 a 18 se busca un $K_3$ en el primer hijo de $g$ y en las líneas 19 a 27 se busca en el segundo hijo. La Figura \ref{fig_bipartitas} muestra el resultado de la ejecución de este algoritmo para algunos coárboles.
+
+\begin{algorithm}[!htbp]
+\caption{Es\_bipartita_completa}
+\label{alg_bpc}
+
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz de un coárbol, $G$}
+\KwOut{Verdadero si la gráfica representada por $G$ es bipartita completa. Falso en el caso contrario. Las hojas de $árbol(g)$ se colorean.}
+
+\If{g \text{es una hoja}}{
+    $g.color \gets azul$\;
+    $\Return\ verdadero$\;
+}
+\ElseIf{$g.etiqueta = 0$}{
+    $\Return\ falso$\;
+}
+\ElseIf{$g.hijos.tamaño > 2$}{
+    Marcar con amarillo: una hoja en cada uno de tres hijos diferentes de $g$\;
+    $\Return\ falso$\;
+}
+\Else(\tcp*[h]{Hay exactamente dos hijos}){
+    \If{g.hijos\emph{[0]} \text{es una hoja}}{
+        $g.hijos[0].color \gets azul$\;
+    }
+    \Else{
+        \For{gchild \textbf{\emph{en}} g.hijos\emph{[0]}.hijos}{
+            \If{gchild \text{es una hoja}}{
+                $gchild.color \gets azul$\;
+            }
+            \Else{
+                Marcar con amarillo: dos hojas que tengan como ancestro común más profundo a $gchild$ y una hoja descendiente de $g.hijos[1]$\;
+                $\Return\ falso$\;
+            }
+        }
+    }
+    \If{g.hijos\emph{[1]} \text{es una hoja}}{
+        $g.hijos[1].color \gets verde$\;
+    }
+    \Else{
+        \For{gchild \textbf{\emph{en}} g.hijos\emph{[1]}.hijos}{
+            \If{gchild \text{es una hoja}}{
+                $gchild.color \gets verde$\;
+            }
+            \Else{
+                Marcar con amarillo: dos hojas que tengan como ancestro común más profundo a $gchild$ y una hoja descendiente de $g.hijos[0]$\;
+                $\Return\ falso$\;
+            }
+        }
+    }
+}
+    
+$\Return\ verdadero$\;
+
+\end{algorithm}
+
+\begin{figure}[!htbp]
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode] (1) at (1,3) {1};
+\node [style=vertex, fill=blue] (2) at (0.5,2) {};
+\node [style=vertex, fill=green] (3) at (1.5,2) {};
+\foreach \i/\j in {1/2,1/3}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+
+\begin{scope}[xshift=2cm,scale=1]
+\node [style=cotreenode] (1) at (1,3) {1};
+\node [style=vertex, fill=blue] (2) at (0.5,2) {};
+\node [style=cotreenode] (3) at (1.5,2) {0};
+\node [style=vertex, fill=green] (4) at (1,1) {};
+\node [style=vertex, fill=green] (5) at (1.5,1) {};
+\node [style=vertex, fill=green] (6) at (2,1) {};
+\foreach \i/\j in {1/2,1/3,3/4,3/5,3/6}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+
+\begin{scope}[xshift=4.75cm,scale=1]
+\node [style=cotreenode] (1) at (1,3) {1};
+\node [style=cotreenode] (2) at (0.5,2) {0};
+\node [style=cotreenode] (3) at (1.5,2) {0};
+\node [style=vertex, fill=blue] (4) at (0.25,1) {};
+\node [style=vertex, fill=blue] (5) at (0.5,1) {};
+\node [style=vertex, fill=blue] (6) at (0.75,1) {};
+\node [style=vertex, fill=green] (7) at (1.25,1) {};
+\node [style=vertex, fill=green] (8) at (1.5,1) {};
+\node [style=vertex, fill=green] (9) at (1.75,1) {};
+
+\foreach \i/\j in {1/2,1/3,2/4,2/5,2/6,3/7,3/8,3/9}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+
+\begin{scope}[xshift=7cm,scale=1]
+\node [style=cotreenode] (1) at (1,3) {1};
+\node [style=vertex, fill=yellow] (2) at (0.5,2) {};
+\node [style=vertex, fill=yellow] (3) at (1,2) {};
+\node [style=vertex, fill=yellow] (4) at (1.5,2) {};
+\foreach \i/\j in {1/2,1/3,1/4}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+
+\begin{scope}[xshift=9.25cm,scale=1]
+\node [style=cotreenode] (1) at (1,3) {1};
+\node [style=cotreenode] (2) at (0.5,2) {0};
+\node [style=cotreenode] (3) at (1.5,2) {0};
+\node [style=vertex, fill=yellow] (4) at (0.25,1) {};
+\node [style=vertex, fill=blue] (6) at (0.75,1) {};
+\node [style=vertex, fill=green] (7) at (1.25,1) {};
+\node [style=cotreenode] (9) at (1.75,1) {1};
+\node [style=vertex, fill=yellow] (10) at (1.5,0) {};
+\node [style=vertex, fill=yellow] (11) at (2,0) {};
+
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/9,9/10,9/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\caption{Ejemplos del resultado de la ejecución del Algoritmo \ref{alg_bpc}.}
+\label{fig_bipartita}
+\end{figure}
+
+
+
+\subsubsection{Caso 1}
+
+El algoritmo \ref{alg_cert_caso1} corresponde al $Caso\ 1$ de la demostración del Teorema \ref{teo_obsts_m2}. Éste recibe como entrada la raíz de un coárbol que representa una cográfica inconexa que tiene al menos dos componentes conexas no triviales. En el bloque de las líneas 1 a 12 se aborda el caso en el que la gráfica tiene exactamente dos componentes conexas y se busca un $Paw$ que pueda formar la obstrucción $I$. En el bloque de las líneas 13 a 17 se aborda el caso en el que hay al menos 3 componente conexas y se busca un $K_3$ en cada componente para formar la obstrucción $H$. Si no se encuentra ninguna de las obstrucciones mínimas, se devuelve $verdadero$ y cada una de las hojas del coárbol tendrán color $azul$ o $verde$. Las Figuras \ref{fig_certificador_caso1_01} y \ref{fig_certificador_caso1_02} muestran la ejecución del algoritmo para gráficas sin ninguna de las obstrucciones. La Figura \ref{fig_certificador_caso1_03} muestra el resultado de la ejecución para tres gráficas, cada una de las cuales contiene una obstrucción.
+
+\begin{algorithm}[!htbp]
+\small
+\caption{M2\_Caso\_1}
+\label{alg_cert_caso1}
+
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz de un coárbol con etiqueta 0 y al menos dos hijos que no son hojas}
+\KwOut{Verdadero si $G$ peretenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $árbol(g)$ se colorean.}
+
+\If{g.hijos.tamaño = 2}{
+    \For{gchild \textbf{\emph{en}} g.hijos\emph{[0]}}{
+        \If{gchild \text{es una hoja}}{
+            $gchild.color \gets azul$\;
+        }
+        \Else{
+            \For{ggchild \textbf{\emph{en}} gchild.hijos}{
+                \If{ggchild \text{es una hoja}}{
+                    $gchild.color \gets azul$\;
+                }
+                \Else(\tcp*[h]{Se marca la obstrucción $I$}){ 
+                    Marcar con anaranjado: una hoja en $ggchild.hijos[0]$, una hoja en $ggchild.hijos[1]$, una hoja en un hermano de $ggchild$, una hoja en un hermano de $gchild$ y dos hojas cuyo ancestro común más profundo sea el hermano de $g.hijos[0]$\;
+                    
+                    $\Return\ falso$\;
+                }
+            }
+        }
+    }
+    Repetir el procedimiento de las líneas 2 a 11 para $g.hijos[1]$, pero marcando con color $verde$ en vez de $azul$\;
+}
+\Else{
+    \For{child \textbf{\emph{en}} g.hijos}{
+        \If{\emph{Es\_bipartita\_completa(}$child$\emph{)} = falso}{
+             Marcar con amarillo: dos hojas cuyo ancestro común más profundo sea un hermano de $child$ que no sea una hoja y una hoja en un hermano diferente\;
+                        $\Return\ falso$\;
+        }
+    }
+}
+
+
+$\Return\ verdadero$\;
+
+\end{algorithm}
+
+
+\begin{figure}[!htbp]
+\centering
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode] (3) at (2.5,3) {1};
+\node [style=vertex] (4) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\node [style=vertex] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=4cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode, fill=lightgray] (2) at (0.5,3) {1};
+\node [style=cotreenode] (3) at (2.5,3) {1};
+\node [style=vertex] (4) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\node [style=vertex] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=8cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode, fill=lightgray] (2) at (0.5,3) {1};
+\node [style=cotreenode] (3) at (2.5,3) {1};
+\node [style=vertex, fill=lightgray] (4) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\node [style=vertex] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode, fill=lightgray] (2) at (0.5,3) {1};
+\node [style=cotreenode] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=lightgray] (6) at (1,2) {};
+\node [style=vertex] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=4cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=8cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=lightgray] (7) at (2,2) {};
+\node [style=cotreenode] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=green] (7) at (2,2) {};
+\node [style=cotreenode, fill=lightgray] (8) at (3,2) {0};
+\node [style=vertex] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=4cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=green] (7) at (2,2) {};
+\node [style=cotreenode, fill=lightgray] (8) at (3,2) {0};
+\node [style=vertex, fill=lightgray] (9) at (2.5,1) {};
+\node [style=vertex] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=8cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=green] (7) at (2,2) {};
+\node [style=cotreenode, fill=lightgray] (8) at (3,2) {0};
+\node [style=vertex, fill=green] (9) at (2.5,1) {};
+\node [style=vertex, fill=lightgray] (10) at (3,1) {};
+\node [style=vertex] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=green] (7) at (2,2) {};
+\node [style=cotreenode, fill=lightgray] (8) at (3,2) {0};
+\node [style=vertex, fill=green] (9) at (2.5,1) {};
+\node [style=vertex, fill=green] (10) at (3,1) {};
+\node [style=vertex, fill=lightgray] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=4cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode, fill=lightgray] (3) at (2.5,3) {1};
+\node [style=vertex, fill=blue] (4) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=green] (7) at (2,2) {};
+\node [style=cotreenode, fill=lightgray] (8) at (3,2) {0};
+\node [style=vertex, fill=green] (9) at (2.5,1) {};
+\node [style=vertex, fill=green] (10) at (3,1) {};
+\node [style=vertex, fill=green] (11) at (3.5,1) {};
+\foreach \i/\j in {1/2,1/3,2/4,2/6,3/7,3/8,8/9,8/10,8/11}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\caption{Ejemplo de la ejecución del Algoritmo \ref{alg_cert_caso1}. Se muestran en color gris los nodos del árbol que están siendo procesados. Los colores de las hojas corresponden a los colores que asigna el algoritmo.}
+\label{fig_certificador_caso1_01}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex] (3) at (2,3) {};
+\node [style=cotreenode] (4) at (3.5,3) {1};
+\node [style=vertex] (5) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\node [style=cotreenode] (7) at (2.75,2) {0};
+\node [style=cotreenode] (8) at (4.25,2) {0};
+\node [style=vertex] (9) at (2.25,1) {};
+\node [style=vertex] (10) at (2.75,1) {};
+\node [style=vertex] (11) at (3.25,1) {};
+\node [style=vertex] (12) at (3.75,1) {};
+\node [style=vertex] (13) at (4.25,1) {};
+\node [style=vertex] (14) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,7/9,7/10,7/11,8/12,8/13,8/14}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,4) {0};
+\node [style=cotreenode, fill=lightgray] (2) at (0.5,3) {1};
+\node [style=vertex] (3) at (2,3) {};
+\node [style=cotreenode] (4) at (3.5,3) {1};
+\node [style=vertex] (5) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\node [style=cotreenode] (7) at (2.75,2) {0};
+\node [style=cotreenode] (8) at (4.25,2) {0};
+\node [style=vertex] (9) at (2.25,1) {};
+\node [style=vertex] (10) at (2.75,1) {};
+\node [style=vertex] (11) at (3.25,1) {};
+\node [style=vertex] (12) at (3.75,1) {};
+\node [style=vertex] (13) at (4.25,1) {};
+\node [style=vertex] (14) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,7/9,7/10,7/11,8/12,8/13,8/14}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex, fill=lightgray] (3) at (2,3) {};
+\node [style=cotreenode] (4) at (3.5,3) {1};
+\node [style=vertex, fill=blue] (5) at (0,2) {};
+\node [style=vertex, fill=green] (6) at (1,2) {};
+\node [style=cotreenode] (7) at (2.75,2) {0};
+\node [style=cotreenode] (8) at (4.25,2) {0};
+\node [style=vertex] (9) at (2.25,1) {};
+\node [style=vertex] (10) at (2.75,1) {};
+\node [style=vertex] (11) at (3.25,1) {};
+\node [style=vertex] (12) at (3.75,1) {};
+\node [style=vertex] (13) at (4.25,1) {};
+\node [style=vertex] (14) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,7/9,7/10,7/11,8/12,8/13,8/14}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex, fill=blue] (3) at (2,3) {};
+\node [style=cotreenode, fill=lightgray] (4) at (3.5,3) {1};
+\node [style=vertex, fill=blue] (5) at (0,2) {};
+\node [style=vertex, fill=green] (6) at (1,2) {};
+\node [style=cotreenode] (7) at (2.75,2) {0};
+\node [style=cotreenode] (8) at (4.25,2) {0};
+\node [style=vertex] (9) at (2.25,1) {};
+\node [style=vertex] (10) at (2.75,1) {};
+\node [style=vertex] (11) at (3.25,1) {};
+\node [style=vertex] (12) at (3.75,1) {};
+\node [style=vertex] (13) at (4.25,1) {};
+\node [style=vertex] (14) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,7/9,7/10,7/11,8/12,8/13,8/14}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex, fill=blue] (3) at (2,3) {};
+\node [style=cotreenode, fill=lightgray] (4) at (3.5,3) {1};
+\node [style=vertex, fill=blue] (5) at (0,2) {};
+\node [style=vertex, fill=green] (6) at (1,2) {};
+\node [style=cotreenode] (7) at (2.75,2) {0};
+\node [style=cotreenode] (8) at (4.25,2) {0};
+\node [style=vertex, fill=blue] (9) at (2.25,1) {};
+\node [style=vertex, fill=blue] (10) at (2.75,1) {};
+\node [style=vertex, fill=blue] (11) at (3.25,1) {};
+\node [style=vertex, fill=green] (12) at (3.75,1) {};
+\node [style=vertex, fill=green] (13) at (4.25,1) {};
+\node [style=vertex, fill=green] (14) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,7/9,7/10,7/11,8/12,8/13,8/14}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\caption{Ejemplo de la ejecución del Algoritmo \ref{alg_cert_caso1}. Se muestran en color gris los nodos del árbol que están siendo procesados. Los colores de las hojas corresponden a los colores que asigna el algoritmo.}
+\label{fig_certificador_caso1_02}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=cotreenode] (4) at (2.5,3) {1};
+\node [style=vertex, fill=orange] (5) at (0,2) {};
+\node [style=vertex, fill=blue] (6) at (1,2) {};
+\node [style=vertex, fill=orange] (7) at (1.75,2) {};
+\node [style=cotreenode] (8) at (3.25,2) {0};
+\node [style=vertex, fill=orange] (12) at (2.75,1) {};
+\node [style=cotreenode] (14) at (3.75,1) {1};
+\node [style=vertex, fill=orange] (15) at (3.5,0) {};
+\node [style=vertex, fill=orange] (16) at (4,0) {};
+\foreach \i/\j in {1/2,1/4,2/5,2/6,4/7,4/8,8/12,8/14,14/15,14/16}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=4.5cm,scale=1]
+\node [style=cotreenode] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex, fill=yellow] (3) at (1.5,3) {};
+\node [style=cotreenode] (4) at (2.5,3) {1};
+\node [style=vertex, fill=yellow] (5) at (0,2) {};
+\node [style=vertex, fill=yellow] (6) at (1,2) {};
+\node [style=vertex, fill=yellow] (7) at (2,2) {};
+\node [style=vertex, fill=yellow] (8) at (2.5,2) {};
+\node [style=vertex, fill=yellow] (9) at (3,2) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,4/9}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=8.5cm,scale=1]
+\node [style=cotreenode] (1) at (1.5,4) {0};
+\node [style=cotreenode] (2) at (0.5,3) {1};
+\node [style=vertex, fill=yellow] (3) at (1.5,3) {};
+\node [style=cotreenode] (4) at (2.5,3) {1};
+\node [style=vertex, fill=yellow] (5) at (0,2) {};
+\node [style=vertex, fill=yellow] (6) at (1,2) {};
+\node [style=vertex, fill=yellow] (7) at (1.75,2) {};
+\node [style=cotreenode] (8) at (3.25,2) {0};
+\node [style=vertex, fill=green] (12) at (2.75,1) {};
+\node [style=cotreenode] (14) at (3.75,1) {1};
+\node [style=vertex, fill=yellow] (15) at (3.5,0) {};
+\node [style=vertex, fill=yellow] (16) at (4,0) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,8/12,8/14,14/15,14/16}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+
+\caption{Ejemplos del resultado de la ejecución del Algoritmo \ref{alg_cert_caso1} en los que se encuentra una obstrucción.}
+\label{fig_certificador_caso1_03}
+\end{figure}
+
+\subsubsection{Caso 2}
+
+El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración del Teorema \ref{teo_obsts_m2}. Éste recibe como entrada la raíz, $g$, de un coárbol que representa una cográfica inconexa que tiene exactamente una componente conexa no trivial y al menos una trivial. En el bloque de las líneas 6 a 28 se procesa el hijo de $g$ que no es una hoja. En las líneas 7 a 19 se procesan los nietos de $g$ y se registra si alguno tiene un hijo que no sea una hoja (es decir que dicho nieto de $g$ corresponde a una gráfica no multipartita completa) en la variable $aux\_gchild$. La cantidad de hijos diferentes de una hoja de éste se registra en $ggchildren\_no\_hojas$. Si hay más de un nieto que tenga hijos que no son hojas, se marca la obstrucción $J$ (Línea 18). Una vez procesados los nietos de $g$, se decide cómo será procesado el nieto de $g$ que no corresponde a una gráfica multipartita completa. Si tal hijo no existe, la partición ya se habrá hecho (Líneas 20 y 21), esto corresponde a una parte del caso base del $Caso\_2$ de la demostración del Teorema \ref{teo_obsts_m2}. Si dicho nieto tiene un solo hijo que no es una hoja, se procesa recursivamente (Líneas 22 y 23), esto corresponde al paso inductivo del $Caso\_2$ de la demostración ya mencionada. Y finalmente, si tiene más de un hijo que no es una hoja, se busca que todos estos hijos sean bipartitas, esta es la otra parte del caso base del $Caso\_2$ de la demostración. La Figura \ref{fig_certificador_caso2_01} muestra un ejemplo de la ejecución del algoritmo para un coárbol cuya cográfica no contiene a ninguna de las obstrucciones mínimas de $M_2$. La Figura \ref{fig_certificador_caso2_02} muestra el resultado de la ejecución para coárboles que contienen una obstrucción.
+
+
+
+
+\begin{algorithm}[!htbp]
+\SetInd{1pt}{10pt}
+\footnotesize
+\caption{M2\_Caso\_2}
+\label{alg_cert_caso2}
+
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz de un coárbol con etiqueta 0 que tiene exactamente un hijo que no es una hoja y al menos uno que es una hoja}
+\KwOut{Verdadero si $G$ peretenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $G$ se colorean.}
+
+
+    $aux\_gchild \gets null$\;
+    $ggchildren\_no\_hojas \gets 0$\;
+    
+    \For{child \textbf{\emph{en}} $g.hijos$}{
+        \If{child \text{es una hoja}}{
+            $child.color \gets azul$\;
+        }
+        \Else(\tcp*[h]{Sólo se ejecuta una vez}){
+            \For{gchild \textbf{\emph{en}} $child.hijos$}{
+                \If{gchild \text{es una hoja}}{
+                    $gchild.color \gets verde$\;
+                }
+                \Else{
+                    \For{ggchild \textbf{\emph{en}} $gchild.hijos$}{
+                        \If{ggchild \text{es una hoja}}{
+                            $ggchild.color \gets verde$\;
+                        }
+                        \ElseIf{$aux\_gchild = null \emph{\textbf{ o }} aux\_gchild = gchild$}{
+                            $aux\_gchild \gets gchild$\;
+                            $ggchildren\_no\_hojas \gets ggchildren\_no\_hojas + 1$\;
+                        }
+                        \Else{
+                            Marcar con rojo: Un hijo de $g$ que sea una hoja, dos hojas cuyo ancestro común más profundo sea $ggchild$, una hoja en un hermano de $ggchild$, dos hojas cuyo ancestro común más profundo sea un hijo de $aux\_gchild$ que no es una hoja y una hoja en un hijo de $aux\_gchild$ diferente del anterior\;
+                            $\Return\ falso$\;
+                        }
+                    }
+                }
+            }
+            
+            \If{ggchildren\_no\_hojas = 0}{
+                $\Return\ verdadero$\;
+            }
+            \ElseIf{ggchildren\_no\_hojas = 1}{
+                $\Return$ M2\_Caso\_2($aux\_gchild$)\; 
+            }
+            \Else{
+                \For{ggchild \textbf{\emph{en}} aux\_gchild}{
+                    \If{\emph{Es\_bipartita_completa(}$ggchild$\emph{)} = falso}{
+                        Marcar con amarillo: dos hojas cuyo ancestro común más profundo sea un hermano de $ggchild$ que no sea una hoja y un hijo de $g$ que sea una hoja\;
+                        $\Return\ falso$\;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    $\Return\ verdadero$\;
+
+
+\end{algorithm}
+
+\begin{figure}[!htbp]
+\centering
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex] (2) at (0.5,4) {};
+\node [style=vertex] (3) at (1.5,4) {};
+\node [style=vertex] (4) at (2.5,4) {};
+\node [style=cotreenode] (5) at (3.5,4) {1};
+\node [style=vertex] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode] (8) at (3.5,3) {0};
+\node [style=vertex] (9) at (1.75,2) {};
+\node [style=vertex] (10) at (2.25,2) {};
+\node [style=vertex] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=5cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode] (8) at (3.5,3) {0};
+\node [style=vertex] (9) at (1.75,2) {};
+\node [style=vertex] (10) at (2.25,2) {};
+\node [style=vertex] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=10cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode, fill=lightgray] (7) at (2,3) {0};
+\node [style=cotreenode] (8) at (3.5,3) {0};
+\node [style=vertex] (9) at (1.75,2) {};
+\node [style=vertex] (10) at (2.25,2) {};
+\node [style=vertex] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=5cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode, fill=lightgray] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=10cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode, fill=lightgray] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode, fill=lightgray] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex] (14) at (3.25,1) {};
+\node [style=vertex] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=5cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode, fill=lightgray] (13) at (4.5,2) {1};
+\node [style=vertex, fill=blue] (14) at (3.25,1) {};
+\node [style=vertex, fill=green] (15) at (3.75,1) {};
+\node [style=vertex] (16) at (4.25,1) {};
+\node [style=vertex] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=10cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (3.5,5) {0};
+\node [style=vertex, fill=blue] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode, fill=lightgray] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode, fill=lightgray] (13) at (4.5,2) {1};
+\node [style=vertex, fill=blue] (14) at (3.25,1) {};
+\node [style=vertex, fill=green] (15) at (3.75,1) {};
+\node [style=vertex, fill=blue] (16) at (4.25,1) {};
+\node [style=vertex, fill=green] (17) at (4.75,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+\caption{Ejemplo de la ejecución del Algoritmo \ref{alg_cert_caso2}. Se muestran en color gris los nodos del árbol que están siendo procesados. El procesamiento de las hojas hermanas se realiza en una sola imagen. Los colores de las hojas corresponden a los colores que asigna el algoritmo.}
+\label{fig_certificador_caso2_01}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+\centering
+
+\begin{subfigure}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode] (1) at (3.5,5) {0};
+\node [style=vertex, fill=yellow] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=cotreenode] (7) at (2,3) {0};
+\node [style=cotreenode] (8) at (3.5,3) {0};
+\node [style=vertex, fill=green] (9) at (1.75,2) {};
+\node [style=vertex, fill=green] (10) at (2.25,2) {};
+\node [style=vertex, fill=green] (11) at (2.75,2) {};
+\node [style=cotreenode] (12) at (3.5,2) {1};
+\node [style=cotreenode] (13) at (4.5,2) {1};
+\node [style=vertex, fill=yellow] (14) at (3.25,1) {};
+\node [style=vertex, fill=yellow] (15) at (3.75,1) {};
+\node [style=vertex, fill=yellow] (16) at (4.25,1) {};
+\node [style=vertex, fill=yellow] (17) at (4.75,1) {};
+\node [style=vertex, fill=yellow] (18) at (4.5,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,7/9,7/10,8/11,8/12,8/13,12/14,12/15,13/16,13/17,13/18}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=5cm,scale=1]
+\node [style=cotreenode] (1) at (3.5,5) {0};
+\node [style=vertex, fill=red] (2) at (0.5,4) {};
+\node [style=vertex, fill=blue] (3) at (1.5,4) {};
+\node [style=vertex, fill=blue] (4) at (2.5,4) {};
+\node [style=cotreenode] (5) at (3.5,4) {1};
+\node [style=vertex, fill=green] (6) at (0.5,3) {};
+\node [style=vertex, fill=green] (7) at (1.5,3) {};
+\node [style=cotreenode] (8) at (2.5,3) {0};
+\node [style=cotreenode] (9) at (4.5,3) {0};
+\node [style=cotreenode] (10) at (2,2) {1};
+\node [style=vertex, fill=red] (11) at (3,2) {};
+\node [style=cotreenode] (12) at (4,2) {1};
+\node [style=vertex, fill=red] (13) at (5,2) {};
+\node [style=vertex, fill=red] (14) at (1.5,1) {};
+\node [style=vertex, fill=red] (15) at (2.5,1) {};
+\node [style=vertex, fill=red] (16) at (3.5,1) {};
+\node [style=vertex, fill=red] (17) at (4.5,1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7,5/8,5/9,8/10,8/11,9/12,9/13,10/14,10/15,12/16,12/17}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+\caption{Ejemplo del resultado de la ejecución del Algoritmo \ref{alg_cert_caso2} para coárboles que incluyen una obstrucción.}
+\label{fig_certificador_caso2_02}
+\end{figure}
+
+
+\subsubsection{Algoritmo certificador}
+
+Finalmente, el Algoritmo \ref{alg_cert_m2} utiliza los algoritmos anteriores para colorear las hojas del coárbol recibido como entrada, $g$. En el caso de que la gráfica sea conexa (líneas 4 a 8), simplemente se llama el algoritmo para cada una de los hijos de $g$. Esto no significa que sea un algoritmo recursivo, dado que, para las gráficas inconexas y las hojas, el algoritmo no vuelve a ser llamado. En el caso de que la gráfica sea inconexa, se ejecuta el bloque de las líneas 10 a 21. En las líneas 10 a 15 se cuenta el número de componentes conexas de la gráfica representada (es decir que se cuentan los hijos de $g$ que no son hojas). Y por último se toma la decisión de qué caso debe llamarse.
+
+
+\begin{algorithm}[!htbp]
+\caption{M2\_Certificador}
+\label{alg_cert_m2}
+
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz de un coárbol, $G$}
+\KwOut{Verdadero si la gráfica representada por $G$ pertenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $G$ se colorean.}
+
+    \If{$g$ \text{es una hoja}}{
+        $g.color \get azul$\;
+        $\Return\ verdadero$\;
+    }
+    \ElseIf{$g.etiqueta = 1$}{
+        \For{child \textbf{\emph{en}} $g.hijos$}{
+            \If{\emph{M2\_Certificador(}child\emph{)} = falso}{
+                $\Return\ falso$\;
+            }
+            $\Return\ verdadero$\;
+        }
+    }
+    \Else{
+        $componentes\_no\_triviales \gets 0$\;
+        \For{child \textbf{\emph{en}} $g.hijos$}{
+            \If{$child$ \text{es una hoja}}{
+                $child.color \get azul$\;
+            }
+            \Else{
+                $componentes\_no\_triviales \gets componentes\_no\_triviales + 1$\;
+            }
+        }
+        \If{componentes\_no\_triviales = 0}{
+            $\Return\ verdadero$\;
+        }
+        \ElseIf{componentes\_no\_triviales = 1}{
+            $\Return$ M2\_Caso\_2($g$)\;
+        }
+        \Else{
+            $\Return$ M2\_Caso\_1($g$)\;
+        }
+    }
+
+
+$\Return\ verdadero$\;
+
+\end{algorithm}

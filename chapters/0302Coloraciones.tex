@@ -1,0 +1,22 @@
+A continuación se presentan las definiciones que sirven de base al concepto de particiones matriciales que son una generalización de las coloraciones. Las definiciones básicas del tema de coloraciones se toman de \cite{Bondy}. Mientras que las definiciones de particiones matriciales se toman de \cite{Hell04}.
+
+\subsection{Coloraciones}
+
+Una \textbf{\emph{$k$-coloración}} $\mathcal{C}$ es una asignación de $k$ colores, $1,2,\dots,k$, a los vértices de $G$. La coloración $\mathcal{C}$ es correcta si no existen dos vértices adyacentes que tengan el mismo color. Así, una $k$-coloración correcta de una gráfica $G$ es una partición $(V_1, V_2, \dots, V_k)$ de $V$ en $k$ (posiblemente vacíos) conjuntos independientes. Decimos que $G$ es \textbf{\emph{$k$-coloreable}} si $G$ tiene una $k$-coloración correcta. Por simplicidad nos referiremos a una $k$-coloración correcta simpemente como una \textbf{\emph{$k$-coloración}}.
+
+El número cromático, $\Chi(G)$, de una gráfica $G$ es el mínimo $k$ para el cual $G$ es $k$-coloreable. Si $\Chi(G) = k$, decimos que $G$ es \textbf{\emph{$k$-cromático}}.
+
+
+\subsection{Particiones matriciales}
+
+Sea $M$ una matriz fija de $m \times m$ con entradas $M_{i,j}\in \{0,1,*\}$. Una \textbf{\emph{$M$-partición}} de una gráfica $G$ es una partición de los vértices de $G$ en $m$ partes, indexadas por las filas (y columnas) de la matriz $M$, tal que para distintos vértices $x$ y $y$ de la gráfica $G$, posicionadas en partes $i$ y $j$ (posiblemente con $i = j$), respectivamente, tenemos lo siguiente:
+
+\begin{itemize}
+    \item Si $M(i,j) = 0$, entonces $xy$ no es una arista de $G$.
+    \item Si $M(i,j) = 1$, entonces $xy$ es una arista de $G$.
+    \item (Si $M(i,j) = *$, entonces $xy$ puede o no ser una arista de $G$).
+\end{itemize}
+
+Las particiones matriciales no solo generalizan las coloraciones y los homomorfismos, sino que también unifican muchos problemas de particiones en el estudio de las gráficas perfectas. 
+
+El problemas central de esta investigación, el de encontrar una partición de una gráfica en dos partes cada una de las cuales induce una subgráfica multipartita completa, es una instancia del problema de encontrar una partición matricial en una gráfica. 

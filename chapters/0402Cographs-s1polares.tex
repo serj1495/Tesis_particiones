@@ -1,0 +1,81 @@
+En este artículo de Contreras-Mendoza \cite{Fernando} se proporciona el conjunto de obstrucciones mínimas de las cográficas $(\infty, 1)$-polares. Este conjunto es utilizado para describir cómo se puede obtener el conjunto de obstrucciones mínimas de cualquiera de las clases de cográficas $(s,1)$-polares dado un entero $s \geq 2$. En nuestra investigación encontramos un resultado similar a éste para las gráficas que aceptan una partición en un conjunto independiente y una gráfica multipartita completa. 
+
+\begin{theorem}
+    Sea $G$ una cográfica. Entonces $G$ es $(\infty,1)$-polar si y sólo si no contiene ninguna de las gráficas de la Figura \ref{obsts_cografics_esenciales_1spolares} como subgráfica inducida. Este conjunto es llamado el conjunto de obstrucciones esenciales.
+\end{theorem}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=vertex] (1) at (0,0) {};
+\node [style=vertex] (2) at (1,0) {};
+\node [style=vertex] (3) at (0,1) {};
+\node [style=vertex] (4) at (1,1) {};
+\node [style=vertex] (5) at (0.5,2) {};
+\foreach \i/\j in {1/2,3/4}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.5,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_1$}}};
+\end{scope}
+
+\begin{scope}[xshift=2cm,scale=1]
+\node [style=vertex] (1) at (0,0) {};
+\node [style=vertex] (2) at (1,0) {};
+\node [style=vertex] (3) at (0,1) {};
+\node [style=vertex] (4) at (1,1) {};
+\node [style=vertex] (5) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\foreach \i/\j in {1/2,1/3,2/4,3/4}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.5,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_2$}}};
+\end{scope}
+
+\begin{scope}[xshift=4cm,scale=1]
+\node [style=vertex] (1) at (0,0) {};
+\node [style=vertex] (2) at (1,0) {};
+\node [style=vertex] (3) at (0,1) {};
+\node [style=vertex] (4) at (1,1) {};
+\node [style=vertex] (5) at (0,2) {};
+\node [style=vertex] (6) at (1,2) {};
+\foreach \i/\j in {1/3,2/4,3/5,4/6}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.5,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_3$}}};
+\end{scope}
+
+\begin{scope}[xshift=6cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0,0.75) {};
+\node [style=vertex] (3) at (0.75,0.75) {};
+\node [style=vertex] (4) at (1.5,0.75) {};
+\node [style=vertex] (5) at (0.75,1.5) {};
+\node [style=vertex] (6) at (0.75,2) {};
+\foreach \i/\j in {1/2,1/3,1/4,2/3,2/5,3/4,4/5}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_4$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\caption{Obstrucciones mínimas para las gráficas polares.}
+\label{obsts_cografics_esenciales_1spolares}
+\end{figure}
+
+Haciendo uso de este conjunto de gráficas, podemos definir una lista de reglas para encontrar las obstrucciones mínimas de cualquiera de las clases de gráficas $(s,1)$-polares para algún entero $s \geq 2$.
+
+\begin{theorem}
+    Sea $G$ una cográfica y $s \geq 2$ un entero. Entonces $G$ es una obstrucción mínima de las cográficas $(s,1)$-polares si y sólo si es una de las siguientes gráficas:
+    
+    \begin{itemize}
+        \item Una de las cuatro obstrucciones esenciales.
+        \item $2K_{s+1}$.
+        \item $K_2 + (\overline{K_2}\oplus K_s)$.
+        \item $K_1 + (C_4 \oplus K_{s-1})$.
+        \item $\overline{(s+1)K_2}$.
+        \item El complemento de $G$ es inconexo con componentes $G_1, \dots, G_t$ tales que $t \leq s$, y cada $G_i$ es el complemento de una obstrucción mínima no esencial de la clase de cográficas $(s_i, 1)$-polares con $\sum^{t}_{i=1}s_i = s-t+1$.
+    \end{itemize}
+    
+\end{theorem}
+
+Esta lista de reglas 
+

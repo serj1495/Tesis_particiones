@@ -1,0 +1,152 @@
+Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo \ref{alg_coa_bin01}. En este algoritmo un nodo interno con al menos tres hijos, $r$, de un coárbol, se procesa creando un nuevo coárbol binario de la siguiente forma: La raíz del coárbol binario tiene como primer hijo al coárbol binario resultante de procesar al primer hijo de $r$ y como segundo hijo un nodo con la misma etiqueta de $r$ que a su vez tiene como primer hijo al árbol binario resultante de procesar al segundo hijo de $r$ y como segundo hijo un nuevo nodo con la misma etiqueta y así sucesivamente. Cuando sólo quedan los últimos dos hijos de $r$, estos se procesan y los árboles binarios resultantes son los hijos del último nodo creado. El árbol binario resultante es un árbol cargado a la derecha. La Figura \ref{fig_alg_coa_bin01} muestra una ejecución ilustrativa del algoritmo.
+
+\begin{algorithm}[h]
+\caption{CrearArbolBinario}
+\label{alg_coa_bin01}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$r$ la raíz del coárbol}
+\KwOut{$r'$ la raíz del coárbol binario}
+
+$r' \gets \text{nuevo nodo de árbol binario}$\;
+
+\If{$r\ \emph{es un nodo interno} $}{
+    $r'.etiqueta = r.etiqueta$\;
+    $s \gets r'$\;
+    $i \gets 0\;
+    \While{$i < r.children.size - 2$}{
+        $s.primerHijo \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+        $s.segundoHijo \gets \text{nuevo nodo de árbol binario}$\;
+        $s \gets s.segundoHijo$\;
+        $s.etiqueta \gets r.etiqueta$\;
+        $i \gets i+1$\;
+    }
+    $s.primerHijo \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+    $s.segundoHijo \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
+}
+\Return $r'$\;
+    
+\end{algorithm}
+
+\begin{figure}[h!]
+\centering
+
+\begin{subfigure}{0.7\textwidth}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=vertex] (3) at (1.5,0) {};
+\node [style=vertex] (4) at (2.5,0) {};
+\node [style=cotreenode] (5) at (3.5,0) {0};
+\node [style=vertex] (6) at (3,-1) {};
+\node [style=vertex] (7) at (4,-1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6.5cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=cotreenode] (3) at (1.5,0) {1};
+\foreach \i/\j in {1/2,1/3}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}{0.7\textwidth}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=vertex] (3) at (1.5,0) {};
+\node [style=vertex] (4) at (2.5,0) {};
+\node [style=cotreenode] (5) at (3.5,0) {0};
+\node [style=vertex] (6) at (3,-1) {};
+\node [style=vertex] (7) at (4,-1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6.5cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=cotreenode] (3) at (1.5,0) {1};
+\node [style=vertex] (4) at (1,-1) {};
+\node [style=cotreenode] (5) at (2,-1) {1};
+\foreach \i/\j in {1/2,1/3,3/4,3/5}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}{0.7\textwidth}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode, fill=lightgray] (1) at (2,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=vertex] (3) at (1.5,0) {};
+\node [style=vertex] (4) at (2.5,0) {};
+\node [style=cotreenode] (5) at (3.5,0) {0};
+\node [style=vertex] (6) at (3,-1) {};
+\node [style=vertex] (7) at (4,-1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6.5cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=cotreenode] (3) at (1.5,0) {1};
+\node [style=vertex] (4) at (1,-1) {};
+\node [style=cotreenode] (5) at (2,-1) {1};
+\node [style=vertex] (6) at (1.5,-2) {};
+\node [style=cotreenode] (7) at (2.5,-2) {0};
+\foreach \i/\j in {1/2,1/3,3/4,3/5,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}{0.7\textwidth}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode] (1) at (2,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=vertex] (3) at (1.5,0) {};
+\node [style=vertex] (4) at (2.5,0) {};
+\node [style=cotreenode, fill=lightgray] (5) at (3.5,0) {0};
+\node [style=vertex] (6) at (3,-1) {};
+\node [style=vertex] (7) at (4,-1) {};
+\foreach \i/\j in {1/2,1/3,1/4,1/5,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\begin{scope}[xshift=6.5cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {1};
+\node [style=vertex] (2) at (0.5,0) {};
+\node [style=cotreenode] (3) at (1.5,0) {1};
+\node [style=vertex] (4) at (1,-1) {};
+\node [style=cotreenode] (5) at (2,-1) {1};
+\node [style=vertex] (6) at (1.5,-2) {};
+\node [style=cotreenode] (7) at (2.5,-2) {0};
+\node [style=vertex] (8) at (2,-3) {};
+\node [style=vertex] (9) at (3,-3) {};
+\foreach \i/\j in {1/2,1/3,3/4,3/5,5/6,5/7,7/8,7/9}
+  \draw [style=edge] (\i) to (\j);
+\end{scope}
+\end{tikzpicture}
+\end{subfigure}
+
+
+\caption{Ejemplo de la ejecución del Algoritmo \ref{alg_coa_bin01}. A la izquierda se muestra el coárbol original, mienrtras se marca con gris el nodo que se está procesando. A la derecha aparece el coárbol binario que se va construyendo.}\label{fig_alg_coa_bin01}
+
+
+\end{figure}
+
+
+En términos de las particiones de las componentes conexas de la gráfica, el algoritmo realiza lo siguiente. Si la etiqueta de $r$ es $0$, entonces el coárbol con raíz en $r$ representa una cográfica inconexa y se elige la partición de sus vértices en la que la primera parte es una componente conexa y la segunda parte es el resto. Sucede lo mismo si la etiqueta de $r$ es uno, pero como la cográfica representada es conexa, en su lugar se toman una componente conexa del complemento de la cográfica representada en la primera parte y el resto en la segunda. 
+
+Dado que el Algoritmo \ref{alg_coa_bin01} recorre a lo más una vez cada nodo de $r$, su tiempo de ejecución es $O(n)$ en donde $n$ es el número total de nodos del árbol con raíz $r$.

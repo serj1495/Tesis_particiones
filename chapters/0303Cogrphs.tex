@@ -1,0 +1,100 @@
+A continuación presentamos el concepto de \emph{cográfica}. Las cográficas son la clase de gráficas que estudiamos en este trabajo de tesis. Éstas fueron descubiertas independientemente por varios investigadores a principios de la década de 1970 y finalmente unificadas por Corneil en 1981\cite{Corneil}. De este artículo serán tomadas las definiciones básicas. 
+
+\subsection{Caracterización de las cográficas}
+
+Una \emph{\textbf{cográfica}} se define recursivamente de la siguiente manera:
+
+\begin{enumerate}[(i)]
+    \item Una gráfica con un solo vértice es una cográfica.
+    \item Si $G_1, G_2, \dots, G_k$ son cográficas, también lo es $G_1 + G_2 + \dots + G_k$.
+    \item Si $G$ es una cográfica, también lo es su complemento $\overline{G}$.
+\end{enumerate}
+
+De igual forma, Corneil \cite{Corneil}, presenta la siguiente lista de equivalencias para las cográficas:
+
+Sea $G$ una gráfica, las siguientes afirmaciones son equivalentes:
+
+\begin{enumerate}[(1)]
+    \item $G$ es una cográfica.
+    \item Cualquier subgráfica no trivial de $G$ tiene al menos un par de \emph{gemelos}.
+    \item Cualquier subgráfica de $G$ tiene la $CK$-propiedad.
+    \item $G$ no contiene a $P_4$ como subgráfica inducida.
+    \item El complemento de cualquier subgráfica inducida no trivial conexa de $G$ es inconexa.
+    \item $G$ es una $HD$-gráfica.
+    \item Toda subgráfica conexa de $G$ tiene diámetro menor o igual a 2.
+    \item $G$ es la gráfica de comparabilidad de un multiárbol.
+\end{enumerate}
+
+\subsection{Coárboles}
+ De la definición de las cográficas, podemos observar que éstas son todas las gráficas que se pueden obtener a partir de un solo nodo aplicando un número finito de operaciones de unión ajena y complemento. Esta serie de operaciones puede ser representada a través de un árbol único salvo isomorfismo conocido como \emph{coárbol}. En este documento utilizamos la definición de coárbol proporcionada por Corneil \cite{Corneil02}.
+ 
+ Sean $G$ una gráfica y $T$ un árbol arraigado con raíz $r$ cuyos nodos están etiquetados y cuyas hojas representan cada una un vértice de $G$, decimos que $T$ es el \emph{\textbf{coárbol}} de $G$ si cumple con las siguientes condiciones: 
+ \begin{enumerate}
+     \item Cada uno de sus nodos internos tiene la etiqueta 0 o la etiqueta 1.
+     \item Los nodos etiquetados con 0 y los etiquetados con 1 son alternantes en cualquier camino desde $r$.
+     \item Si $G$ es conexa, entonces $r$ tiene etiqueta 0. En el caso contrario, $r$ tiene etiqueta 1.
+     \item dos vértices $x,y \in V(G)$ son adyacentes si y sólo si el camino desde la hoja que representa a $x$ hasta $r$ se encuentra con el camino desde la hoja que representa a $y$ hasta $r$ en un nodo con etiqueta 1.
+ \end{enumerate}
+ 
+ %los nodos internos de $T$ están etiquetados con 0 y 1 de manera tal que los nodos etiquetados con 0 y los etiquetados con 1 son alternantes en cualquier camino desde $r$. De igual manera, $r$ tendrá etiqueta 0 si $G$ es conexa y tendrá etiqueta 1 si $G$ es inconexa. Por último, dos vértices $x,y \in V(G)$ son adyacentes si y sólo si el camino desde la hoja que representa a $x$ hasta $r$ se encuentra con el camino desde la hoja que representa a $y$ hasta $r$ en un nodo (1).
+ 
+ 
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+
+\node [style=vertex] (1) at (0,1) {};
+\node [style=vertex] (2) at (1,2) {};
+\node [style=vertex] (3) at (3,2) {};
+\node [style=vertex] (4) at (4,1) {};
+\node [style=vertex] (5) at (3,0) {};
+\node [style=vertex] (6) at (1,0) {};
+\foreach \i/\j in {1/2,1/4,1/5,1/6,2/4,2/5,2/6,3/4,3/5,3/6}
+\draw [style=edge] (\i) to (\j);
+
+\node [left of=1, xshift=0.5cm] {$a$};
+\node [above of=2, yshift=-0.5cm] {$b$};
+\node [above of=3, yshift=-0.5cm] {$c$};
+\node [right of=4, xshift=-0.5cm] {$d$};
+\node [below of=5, yshift=0.5cm] {$e$};
+\node [below of=6, yshift=0.5cm] {$f$};
+
+%\node [below of=6,xshift=1cm] {\parbox{0.3\linewidth}{\subcaption{}}};
+
+\end{scope}
+
+\begin{scope}[xshift=7cm, yshift=1cm,scale=1]
+
+\node [style=cotreenode] (1) at (1,1) {1};
+\node [style=cotreenode] (2) at (0,0) {0};
+\node [style=cotreenode] (3) at (2,0) {0};
+\node [style=cotreenode] (4) at (-0.5,-1) {1};
+\node [style=vertex] (5) at (0.5,-1) {};
+\node [style=vertex] (6) at (1.5,-1) {};
+\node [style=vertex] (7) at (2,-1) {};
+\node [style=vertex] (8) at (2.5,-1) {};
+\node [style=vertex] (9) at (-1,-2) {};
+\node [style=vertex] (10) at (0,-2) {};
+
+\foreach \i/\j in {1/2,1/3,2/4,2/5,3/6,3/7,3/8,4/9,4/10}
+\draw [style=edge] (\i) to (\j);
+
+\node [below of=9, yshift=0.5cm] {$a$};
+\node [below of=10, yshift=0.5cm] {$b$};
+\node [below of=5, yshift=0.5cm] {$c$};
+\node [below of=6, yshift=0.5cm] {$d$};
+\node [below of=7, yshift=0.5cm] {$e$};
+\node [below of=8, yshift=0.5cm] {$f$};
+
+%\node [below of=10,xshift=.5cm] {\parbox{0.3\linewidth}{\subcaption{}}};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+\setlength{\abovecaptionskip}{-10pt}
+\caption{Una cográfica y su coárbol.}\label{fig_ej_coarbol}
+\end{figure}
+
+Notemos que todos los nodos internos de un coárbol tienen al menos dos hijos. Además, si el árbol $T$ con raíz $r$ es el coárbol de una gráfica inconexa $G$, cada uno de los hijos de $r$ son las coárboles de las componentes conexas de $G$. Por otra parte, si $G$ es conexa,  los hijos de $r$ serán los coárboles de las componentes conexas de $\overline{G}$. De esta forma, todo nodo $x$ del coárbol $T$ es la raíz de un coárbol al que denotamos como $T_x$. La cográfica representada por $T_x$ es la subgráfica de $G$ inducida por los vértices representados por las hojas de $T_x$. A esta subgráfica la denotamos por $G[x]$. 
+

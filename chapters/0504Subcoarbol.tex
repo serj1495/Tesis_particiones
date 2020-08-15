@@ -1,0 +1,85 @@
+\begin{definition}
+    Sean $T$ y $U$ dos coárboles y $u_1$, $u_2$ y $u_3$ nodos de $U$, decimos que $U$ es un \emph{\textbf{subcoárbol}} de $T$ si existe una función inyectiva $f:V(U)\rightarrow V(T)$ tal que, si $u_1$ es una hoja, entonces $f(u_1)$ es una hoja también; si no, entonces $u_1.etiqueta = f(u_1).etiqueta$ y, si $u_3$ es el ancestro común más profundo de $u_1$ y $u_2$, entonces $f(u_3)$ es el ancestro común más profundo de $f(u_1)$ y $f(u_2)$. Llamamos a $f$ la \textbf{\emph{función de coasignación}} de $U$ a $T$.
+\end{definition}
+
+El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$ son coárboles con $U$ subcoárbol de $T$, entonces tenemos que los nodos de $U$ se pueden encontrar dispersos entre los nodos de $T$ a diferencia de lo que se tendría si $U$ fuera subárbol de $T$. Esto se puede apreciar en la Figura \ref{fig_subcoarbol01}. Además, esta definición funciona también para coárboles binarios.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {0};
+\node [style=cotreenode] (2) at (-0.5,0) {1};
+\node [style=cotreenode] (3) at (2.5,0) {1};
+\node [style=cotreenode] (4) at (-1.25,-1) {0};
+\node [style=cotreenode] (5) at (0.25,-1) {0};
+\node [style=cotreenode] (6) at (1.75,-1) {0};
+\node [style=cotreenode] (7) at (3.25,-1) {0};
+\node [style=vertex] (8) at (-1.5,-2) {};
+\node [style=vertex] (9) at (-1,-2) {};
+\node [style=vertex] (10) at (0,-2) {};
+\node [style=vertex] (11) at (0.5,-2) {};
+\node [style=vertex] (12) at (1.5,-2) {};
+\node [style=vertex] (13) at (2,-2) {};
+\node [style=vertex] (14) at (3,-2) {};
+\node [style=vertex] (15) at (3.5,-2) {};
+
+\node (16) at (0.25,1) {$f(a)$};
+\node (17) at (-1.6,-2.4) {$f(b)$};
+\node (18) at (3.25,0) {$f(c)$};
+\node (19) at (1.4,-2.4) {$f(d)$};
+\node (20) at (3.6,-2.4) {$f(e)$};
+
+\foreach \i/\j in {1/2,1/3,2/4,2/5,3/6,3/7,4/8,4/9,5/10,5/11,6/12,6/13,7/14,7/15}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=19,xshift=-0.25cm] {\parbox{0.3\linewidth}{\subcaption{}}};
+\end{scope}
+
+\begin{scope}[xshift=6cm,scale=1]
+\node [style=cotreenode] (1) at (1,1) {0};
+\node [style=vertex] (2) at (0,0) {};
+\node [style=cotreenode] (3) at (2,0) {1};
+\node [style=vertex] (4) at (1.5,-1) {};
+\node [style=vertex] (5) at (2.5,-1) {};
+
+\node (6) at (0.5,1) {$a$};
+\node (7) at (-0.3,0) {$b$};
+\node (8) at (2.5,0) {$c$};
+\node (9) at (1.5,-1.3) {$d$};
+\node (10) at (2.5,-1.3) {$e$};
+
+\foreach \i/\j in {1/2,1/3,3/4,3/5}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=9,xshift=-0.25cm] {\parbox{0.3\linewidth}{\subcaption{}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\setlength{\abovecaptionskip}{-10pt}
+\caption{El coárbol (b) es subcoárbol de (a). Se indica la asignación de los nodos de (b) a los nodos de (a).}\label{fig_subcoarbol01}
+\end{figure}
+
+\begin{lemma}\label{lema_subcoa_01}
+    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ sus coárboles correspondientes, entonces $H$ es subgráfica de $G$ si y sólo si $T_H$ es subcoárbol de $T_G$. 
+\end{lemma}
+
+\begin{proof}
+
+    Probemos la doble implicación.
+
+    \textbf{Necesidad}: Dem dem dem dem dem.
+    
+    \textbf{Suficiencia}: Como $T_H$ es subcoárbol de $T_G$, entonces existe una función de coasignación, $f$, de $T_H$ a $T_G$. Luego, sean $h_1$ y $h_2$ hojas de $T_H$ y $h_3$ el ancestro común más profundo de $h_1$ y $h_2$, tenemos que $f(h_1)$ y $f(h_2)$ son hojas de $T_G$ y que $h_3.etiqueta = f(h_3).etiqueta$. Así, $h_1$ y $h_2$ son adyacentes en $H$ si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes en $G$. Luego, $G[f[V(H)]]$ es una subgráfica de $G$ que es isomorfa a $H$. Así, $H$ es subgráfica de $G$.
+    
+\end{proof}
+
+Notemos que esta demostración funciona únicamente para los coárboles y no para los coárboles binarios. En la Figura \ref{fig_coar_bin01} se observan dos coárboles binarios que representan a la misma cográfica. Sin embargo ninguno de los dos es subcoárbol del otro.
+
+\begin{lemma}
+    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ coárboles binarios de $G$ y $H$ respectivamente. Si $T_H$ es subcoárbol de $T_G$, entonces $H$ es subgráfica de $G$. 
+\end{lemma}
+
+\begin{proof}
+    La demostración es igual a la segunda parte de la demostración del Lema \ref{lema_subcoa_01}.
+\end{proof}

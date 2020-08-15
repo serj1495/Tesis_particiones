@@ -1,0 +1,243 @@
+En este artículo de T.Ekim \cite{Ekim} se introduce la clase de las cográficas polares a la vez que se presenta su conjunto de obstrucciones mínimas (que existe dado que las cográficas polares son una clase hereditaria de gráficas). La metodología con la que se realiza la demostración de que el conjunto de gráficas que se proporciona (Figura \ref{obsts_cografics_polares}) es, en efecto, el conjunto de obstrucciones mínimas de las cográficas polares sirve como base de nuestra demostración de que el conjunto de gráficas que mostramos como conjunto de obstrucciones mínimas de la clase de cográficas que acepta una partición en dos gráficas multipartitas completas (a la que llamamos $M_2$) es correcto. En este artículo también se presentan las cográficas monopolares, una subclase de las cográficas polares, cuyo estudio sirve de inspiración para el estudio de algunas subclases de $M_2$. 
+
+Sea $G$ una cográfica, decimos que $G$ es una \emph{\textbf{cográfica polar}} si su conjunto de vértices $V$ acepta una partición $(A,B)$ tal que $A$ induce una gráfica multipartita completa y $B$ induce una unión ajena de clanes.
+Decimos que $G$ es ($s,k$)-polar si existe una partición ($A,B$) de los vértices de $G$ en donde $A$ induce en $G$ una unión completa de a lo más $s$ conjuntos independientes (Es decir una gráfica $s$-partita) y $B$ induce en $G$ una unión ajena de a lo más $k$ clanes. Notemos que las cográficas polares son las gráficas ($\infty, \infty$)-polares.
+
+\begin{theorem}
+    Sea $G$ una cográfica, decimos que $G$ es una cográfica polar si y sólo si no contiene como subgráfica inducida a ninguna de las gráficas de la Figura \ref{obsts_cografics_polares}.
+\end{theorem}
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+
+\node [style=vertex] (1) at (0.5,0) {};
+\node [style=vertex] (2) at (0.2,0.5) {};
+\node [style=vertex] (3) at (0.8,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1,1) {};
+\node [style=vertex] (6) at (0.5,1.5) {};
+\node [style=vertex] (7) at (0,2) {};
+\node [style=vertex] (8) at (1,2) {};
+\foreach \i/\j in {1/2,1/3,4/5,4/6,4/7,5/6,5/8,6/7,6/8,7/8}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=1] {\parbox{0.3\linewidth}{\subcaption*{$H_1$}}};
+
+\end{scope}
+
+\begin{scope}[xshift=2cm,scale=1]
+
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0.45,0.5) {};
+\node [style=vertex] (3) at (1.05,0.5) {};
+\node [style=vertex] (4) at (0.5,1) {};
+\node [style=vertex] (5) at (1.5,1) {};
+\node [style=vertex] (6) at (0,1.5) {};
+\node [style=vertex] (7) at (1,1.5) {};
+\node [style=vertex] (8) at (0.5,2) {};
+\node [style=vertex] (9) at (1.5,2) {};
+
+\foreach \i/\j in {1/2,1/3,4/6,4/7,5/7,5/9,6/7,6/8,7/9,7/8}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=1] {\parbox{0.3\linewidth}{\subcaption*{$H_2$}}};
+
+\end{scope}
+
+\begin{scope}[xshift=4.5cm,scale=1]
+
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0.45,0.5) {};
+\node [style=vertex] (3) at (1.05,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1.5,1) {};
+\node [style=vertex] (6) at (0.45,1.5) {};
+\node [style=vertex] (7) at (1.05,1.5) {};
+\node [style=vertex] (8) at (0,2) {};
+\node [style=vertex] (9) at (1.5,2) {};
+
+\foreach \i/\j in {1/2,1/3,4/5,4/6,4/7,4/8,5/6,5/7,5/9,6/7,6/8,7/9,8/9}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=1] {\parbox{0.3\linewidth}{\subcaption*{$H_3$}}};
+
+\end{scope}
+
+\begin{scope}[xshift=7cm,scale=1]
+
+\node [style=vertex] (1) at (1,0) {};
+\node [style=vertex] (2) at (0.7,0.5) {};
+\node [style=vertex] (3) at (1.3,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1,1) {};
+\node [style=vertex] (6) at (2,1) {};
+\node [style=vertex] (7) at (0,2) {};
+\node [style=vertex] (8) at (1,2) {};
+\node [style=vertex] (9) at (2,2) {};
+\foreach \i/\j in {1/2,1/3,4/5,4/7,4/8,5/6,5/7,5/8,5/9,6/8,6/9,7/8,8/9}
+  \draw [style=edge] (\i) to (\j);
+\node [below of=1] {\parbox{0.3\linewidth}{\subcaption*{$H_4$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\caption{Obstrucciones mínimas para las gráficas polares.}
+\label{obsts_cografics_polares}
+\end{figure}
+
+La demostración de que las gráficas de la Figura \ref{obsts_cografics_polares} forman el conjunto de obstrucciones mínimas de las cográficas polares se realiza describiendo a cada una de éstas en términos de la unión ajena y la unión completa de gráficas más pequeñas.
+
+\begin{enumerate}[(1)]
+    \item $H_1 = P_3 \union ( \overline{K_2} \oplus P_3) = P_3\union (K_1 \oplus P_4)$
+    \item $H_2 = P_3 \union (K_1 \oplus (P_3 \union K_2))$
+    \item $H_3 = P_3 \union ( \overline{P_3} \oplus \overline{P_3})$
+    \item $H_4 = P_3 \union (K_2 \oplus 2K_2)$
+\end{enumerate}
+
+Primero se demuestra que ninguna de estas gráficas es una cográfica polar y que, por lo tanto, cualquier gráfica que tenga a alguna de ellas como subgráfica inducida tampoco es una cográfica polar. Por último se muestra que si una cográfica $G$ no es polar, entonces debe de tener a alguna de estas gráficas como subgráfica inducida. 
+
+En este artículo también se presenta y se caracteriza la clase de las cográficas monopolares a través de su conjunto de obstrucciones mínimas. Éstas se muestran en la Figura \ref{obsts_cografics_monopolares} 
+
+%Sea $G$ una cográfica, decimos que $G$ es una cográfica monopolar si $G$ es una gráfica ($s,k$)-polar con $s\leq 1$ o $k \leq 1$.
+
+
+\begin{figure}[H]
+\begin{center}
+\begin{subfigure}{\textwidth}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+\node [style=vertex] (2) at (0.2,0.5) {};
+\node [style=vertex] (3) at (0.8,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1,1) {};
+\node [style=vertex] (6) at (0.5,1.5) {};
+\node [style=vertex] (7) at (0,2) {};
+\node [style=vertex] (8) at (1,2) {};
+\foreach \i/\j in {4/5,4/6,4/7,5/6,5/8,6/7,6/8,7/8}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.5,-0.25) {\parbox{0.3\linewidth}{\subcaption*{$G_1$}}};
+\end{scope}
+
+\begin{scope}[xshift=2cm,scale=1]
+\node [style=vertex] (2) at (0.5,0.5) {};
+\node [style=vertex] (3) at (1,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1,1) {};
+\node [style=vertex] (6) at (0.5,1.5) {};
+\node [style=vertex] (7) at (0,2) {};
+\node [style=vertex] (8) at (1,2) {};
+\foreach \i/\j in {2/6,4/5,4/6,4/7,5/6,5/8,6/7,6/8,7/8}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.5,-0.25) {\parbox{0.3\linewidth}{\subcaption*{$G_2$}}};
+\end{scope}
+
+\begin{scope}[xshift=4cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (1,0) {};
+\node [style=vertex] (2) at (0.5,0.5) {};
+\node [style=vertex] (3) at (1.5,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (1,1) {};
+\node [style=vertex] (6) at (0.5,1.5) {};
+\node [style=vertex] (7) at (1.5,1.5) {};
+\foreach \i/\j in {2/4,2/5,3/5,3/7,4/5,4/6,5/6,5/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_3$}}};
+\end{scope}
+
+\begin{scope}[xshift=6.5cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0,0.5) {};
+\node [style=vertex] (3) at (0.75,0.5) {};
+\node [style=vertex] (4) at (1.5,0.5) {};
+\node [style=vertex] (5) at (0,1.5) {};
+\node [style=vertex] (6) at (0.75,1.5) {};
+\node [style=vertex] (7) at (1.5,1.5) {};
+\foreach \i/\j in {2/3,2/5,2/6,3/4,3/5,3/6,3/7,4/6,4/7,5/6,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_4$}}};
+\end{scope}
+
+\begin{scope}[xshift=9cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0.25,0.5) {};
+\node [style=vertex] (3) at (1.25,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (0.75,1) {};
+\node [style=vertex] (6) at (1.5,1) {};
+\node [style=vertex] (7) at (0.75,1.5) {};
+\foreach \i/\j in {2/4,2/5,2/6,3/4,3/5,3/6,4/5,4/7,5/6,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_5$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0.25,0.5) {};
+\node [style=vertex] (3) at (1.25,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (0.75,1) {};
+\node [style=vertex] (6) at (1.5,1) {};
+\node [style=vertex] (7) at (0.75,1.5) {};
+\foreach \i/\j in {2/3,2/4,2/5,2/6,3/4,3/5,3/6,4/5,4/7,5/6,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_6$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0.25,0.5) {};
+\node [style=vertex] (3) at (1.25,0.5) {};
+\node [style=vertex] (4) at (0,1) {};
+\node [style=vertex] (5) at (0.75,1) {};
+\node [style=vertex] (6) at (1.5,1) {};
+\node [style=vertex] (7) at (0.75,1.5) {};
+\foreach \i/\j in {2/3,2/4,2/5,2/6,3/4,3/5,3/6,4/5,4/7,5/6,5/7,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_7$}}};
+\end{scope}
+
+\begin{scope}[xshift=5cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0,0.5) {};
+\node [style=vertex] (3) at (1.5,0.5) {};
+\node [style=vertex] (4) at (0.25,1) {};
+\node [style=vertex] (5) at (1.25,1) {};
+\node [style=vertex] (6) at (0,1.5) {};
+\node [style=vertex] (7) at (1.5,1.5) {};
+\foreach \i/\j in {2/3,2/4,2/5,2/6,3/4,3/5,3/7,4/5,4/6,5/7,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_8$}}};
+\end{scope}
+
+\begin{scope}[xshift=7.5cm, yshift=0.5cm,scale=1]
+\node [style=vertex] (1) at (0.75,0) {};
+\node [style=vertex] (2) at (0,0.5) {};
+\node [style=vertex] (3) at (1.5,0.5) {};
+\node [style=vertex] (4) at (0.25,1) {};
+\node [style=vertex] (5) at (1.25,1) {};
+\node [style=vertex] (6) at (0,1.5) {};
+\node [style=vertex] (7) at (1.5,1.5) {};
+\foreach \i/\j in {2/3,2/4,2/5,2/6,3/4,3/5,3/7,4/5,4/6,4/7,5/6,5/7,6/7}
+  \draw [style=edge] (\i) to (\j);
+\node at (0.75,-0.75) {\parbox{0.3\linewidth}{\subcaption*{$G_9$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+\end{center}
+\caption{Obstrucciones mínimas para las gráficas monopolares.}
+\label{obsts_cografics_monopolares}
+\end{figure}
+
+
+Como podemos observar, varias de las obstrucciones mínimas de las gráficas monopolares se asemejan a obstrucciones mínimas de las gráficas polares. Por ejemplo, las gráficas $G_1$, $G_3$, $G_4$ y $G_8$ son subgráficas de $H_1$, $H_2$, $H_3$ y $H_4$ respectivamente. Notemos que en los cuatro casos se obtiene una obstrucción mínima para las gráficas monopolares $G$ a partir de una obstrucción mínima para las gráficas polares $H$ al restar vértices de la componente conexa de $H$ que forma un $P_3$. En los últimos tres casos, el $P_3$ es reemplazado por un vértice aislado. Esto nos lleva a pensar en que se puede encontrar una relación entre el conjunto de obstrucciones mínimas de una clase y los conjuntos de obstrucciones mínimas de sus subclases.
