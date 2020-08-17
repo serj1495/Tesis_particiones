@@ -15,7 +15,7 @@
 \usepackage{setspace} %setstrech
 \usepackage{breqn} %equation break
 %\usepackage{algorithmic}
-\usepackage[linesnumbered,ruled,spanish,onelanguage,vlined]{algorithm2e} 
+\usepackage[linesnumbered,ruled,spanish,onelanguage,vlined]{algorithm2e}
 
 \usepackage{float}
 \usepackage{tikz}
@@ -32,15 +32,15 @@
 \tikzstyle{cotreenode}=[circle, fill=white, draw,
                     minimum size=5pt,
                     inner sep=2pt, outer sep=0pt]
-                
+
 \tikzstyle{cotreedescription}=[ellipse, fill=white, draw,
                     minimum size=5pt,
                     inner sep=2pt, outer sep=0pt]
-                    
+
 \tikzstyle{minivertex}=[circle, fill=white, draw,
                     minimum size=3pt,
                     inner sep=0pt, outer sep=0pt]
-                    
+
 \usepackage{subcaption}
 \usepackage[shortlabels]{enumitem}
 
@@ -63,11 +63,14 @@
 
 %\hyphenation{geo-mé-tri-cas}
 \graphicspath{ {images/} }
-\theoremstyle{definition}
-\newtheorem{definition}{Definición}
+
+% User-defined environments
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{corollary}{Corolario}[theorem]
 \newtheorem{lemma}[theorem]{Lema}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
 
@@ -130,4 +133,4 @@
 \bibliographystyle{unsrt}
 \bibliography{biblio.bib}
 
-\end{document} 
+\end{document}
