@@ -1,6 +1,6 @@
 Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo \ref{alg_coa_bin01}. En este algoritmo un nodo interno con al menos tres hijos, $r$, de un coárbol, se procesa creando un nuevo coárbol binario de la siguiente forma: La raíz del coárbol binario tiene como primer hijo al coárbol binario resultante de procesar al primer hijo de $r$ y como segundo hijo un nodo con la misma etiqueta de $r$ que a su vez tiene como primer hijo al árbol binario resultante de procesar al segundo hijo de $r$ y como segundo hijo un nuevo nodo con la misma etiqueta y así sucesivamente. Cuando sólo quedan los últimos dos hijos de $r$, estos se procesan y los árboles binarios resultantes son los hijos del último nodo creado. El árbol binario resultante es un árbol cargado a la derecha. La Figura \ref{fig_alg_coa_bin01} muestra una ejecución ilustrativa del algoritmo.
 
-\begin{algorithm}[h]
+\begin{algorithm}[ht!]
 \caption{CrearArbolBinario}
 \label{alg_coa_bin01}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
@@ -27,7 +27,7 @@ $r' \gets \text{nuevo nodo de árbol binario}$\;
 
 \end{algorithm}
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 
 \begin{subfigure}{0.7\textwidth}
