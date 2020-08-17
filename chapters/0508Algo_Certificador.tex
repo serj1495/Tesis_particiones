@@ -53,7 +53,7 @@ El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos
         }
     }
 }
-    
+
 $\Return\ verdadero$\;
 
 \end{algorithm}
@@ -151,9 +151,9 @@ El algoritmo \ref{alg_cert_caso1} corresponde al $Caso\ 1$ de la demostración d
                 \If{ggchild \text{es una hoja}}{
                     $gchild.color \gets azul$\;
                 }
-                \Else(\tcp*[h]{Se marca la obstrucción $I$}){ 
+                \Else(\tcp*[h]{Se marca la obstrucción $I$}){
                     Marcar con anaranjado: una hoja en $ggchild.hijos[0]$, una hoja en $ggchild.hijos[1]$, una hoja en un hermano de $ggchild$, una hoja en un hermano de $gchild$ y dos hojas cuyo ancestro común más profundo sea el hermano de $g.hijos[0]$\;
-                    
+
                     $\Return\ falso$\;
                 }
             }
@@ -552,7 +552,7 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
 
     $aux\_gchild \gets null$\;
     $ggchildren\_no\_hojas \gets 0$\;
-    
+
     \For{child \textbf{\emph{en}} $g.hijos$}{
         \If{child \text{es una hoja}}{
             $child.color \gets azul$\;
@@ -578,12 +578,12 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
                     }
                 }
             }
-            
+
             \If{ggchildren\_no\_hojas = 0}{
                 $\Return\ verdadero$\;
             }
             \ElseIf{ggchildren\_no\_hojas = 1}{
-                $\Return$ M2\_Caso\_2($aux\_gchild$)\; 
+                $\Return$ M2\_Caso\_2($aux\_gchild$)\;
             }
             \Else{
                 \For{ggchild \textbf{\emph{en}} aux\_gchild}{
@@ -593,10 +593,10 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
                     }
                 }
             }
-            
+
         }
     }
-    
+
     $\Return\ verdadero$\;
 
 
@@ -885,7 +885,7 @@ Finalmente, el Algoritmo \ref{alg_cert_m2} utiliza los algoritmos anteriores par
 \KwOut{Verdadero si la gráfica representada por $G$ pertenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $G$ se colorean.}
 
     \If{$g$ \text{es una hoja}}{
-        $g.color \get azul$\;
+        $g.color \gets azul$\;
         $\Return\ verdadero$\;
     }
     \ElseIf{$g.etiqueta = 1$}{
@@ -900,7 +900,7 @@ Finalmente, el Algoritmo \ref{alg_cert_m2} utiliza los algoritmos anteriores par
         $componentes\_no\_triviales \gets 0$\;
         \For{child \textbf{\emph{en}} $g.hijos$}{
             \If{$child$ \text{es una hoja}}{
-                $child.color \get azul$\;
+                $child.color \gets azul$\;
             }
             \Else{
                 $componentes\_no\_triviales \gets componentes\_no\_triviales + 1$\;

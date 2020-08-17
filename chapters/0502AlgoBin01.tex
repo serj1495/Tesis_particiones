@@ -12,7 +12,7 @@ $r' \gets \text{nuevo nodo de árbol binario}$\;
 \If{$r\ \emph{es un nodo interno} $}{
     $r'.etiqueta = r.etiqueta$\;
     $s \gets r'$\;
-    $i \gets 0\;
+    $i \gets 0$\;
     \While{$i < r.children.size - 2$}{
         $s.primerHijo \gets \text{CrearArbolBinario}(r.hijos[i])$\;
         $s.segundoHijo \gets \text{nuevo nodo de árbol binario}$\;
@@ -24,7 +24,7 @@ $r' \gets \text{nuevo nodo de árbol binario}$\;
     $s.segundoHijo \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
 }
 \Return $r'$\;
-    
+
 \end{algorithm}
 
 \begin{figure}[h!]
@@ -147,6 +147,6 @@ $r' \gets \text{nuevo nodo de árbol binario}$\;
 \end{figure}
 
 
-En términos de las particiones de las componentes conexas de la gráfica, el algoritmo realiza lo siguiente. Si la etiqueta de $r$ es $0$, entonces el coárbol con raíz en $r$ representa una cográfica inconexa y se elige la partición de sus vértices en la que la primera parte es una componente conexa y la segunda parte es el resto. Sucede lo mismo si la etiqueta de $r$ es uno, pero como la cográfica representada es conexa, en su lugar se toman una componente conexa del complemento de la cográfica representada en la primera parte y el resto en la segunda. 
+En términos de las particiones de las componentes conexas de la gráfica, el algoritmo realiza lo siguiente. Si la etiqueta de $r$ es $0$, entonces el coárbol con raíz en $r$ representa una cográfica inconexa y se elige la partición de sus vértices en la que la primera parte es una componente conexa y la segunda parte es el resto. Sucede lo mismo si la etiqueta de $r$ es uno, pero como la cográfica representada es conexa, en su lugar se toman una componente conexa del complemento de la cográfica representada en la primera parte y el resto en la segunda.
 
 Dado que el Algoritmo \ref{alg_coa_bin01} recorre a lo más una vez cada nodo de $r$, su tiempo de ejecución es $O(n)$ en donde $n$ es el número total de nodos del árbol con raíz $r$.
