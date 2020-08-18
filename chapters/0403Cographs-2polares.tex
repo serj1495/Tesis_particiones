@@ -1,15 +1,30 @@
 %%Por definir: k-polares
-En este artículo de Hell \cite{Hell03} se presenta el conjunto de obstrucciones mínimas de la clase de cográficas 2-polares. Para construir este conjunto primero se presentan resultados preliminares sobre las obstrucciones de mínimas de cualquier clase de cográficas $(k,k)$-polares (a las que llamamos simplemente cográficas $k$-polares). Posteriormente se presenta una operación que conserva la 2-polaridad, el complemento parcial. Se utilizan estas características y el complemento parcial para construir las 24 obstrucciones mínimas inconexas de las cográficas 2-polares.
+En \cite{Hell03}, Hell, Hern\'andez-Cruz y Linhares-Sales
+exhiben el conjunto de obstrucciones mínimas de la clase
+de las cográficas 2-polares. Para construir este conjunto
+primero se presentan resultados preliminares sobre la
+estructura de las obstrucciones mínimas de las cográficas
+$(k,k)$-polares (llamadas simplemente cográficas $k$-polares)
+para cualquier entero positivo $k$. Posteriormente se presenta
+el complemento parcial, una operación que conserva la
+$2$-polaridad, para construir las 24 obstrucciones m\'inimas
+inconexas de las cogr\'aficas $2$-polares a partir de un
+conjunto de cuatro obtrucciones m\'inimas.
 
-Entre los resultados preliminares encontramos el siguiente lema.
+El siguiente lema describe la estructura de las
+obstrucciones m\'inimas para las cogr\'aficas
+$k$-polares con el m\'aximo n\'umero posible de
+componentes conexas.
 
 \begin{lemma}
 \label{lema_2polares_01}
-Sean $l$ y $k$ enteros tales que $1 \leq l \leq k+1$. Salvo isomorfismo, hay exactamente una obstrucción mínima para las cográficas $k$-polares con $k+2$ componentes en total y $l$ componentes triviales. Esta obstrucción mínima es isomorfa a
+Sean $l$ y $k$ enteros tales que $1 \le l \le k+1$. Salvo isomorfismo, hay exactamente una obstrucción mínima para las cográficas $k$-polares con $k+2$ componentes en total y $l$ componentes triviales. Esta obstrucción mínima es isomorfa a
 $$lk_1+(k-l+1)k_2+k_{l,l}$$
 \end{lemma}
 
-Aplicando el Lema \ref{lema_2polares_01}, podemos encontrar 3 obstrucciones mínimas para las cográficas $2$-polares. Éstas se muestran en la Figura \ref{obsts_2polares_01}.
+Aplicando el Lema \ref{lema_2polares_01}, podemos encontrar
+tres obstrucciones mínimas para las cográficas $2$-polares.
+Éstas se muestran en la Figura \ref{obsts_2polares_01}.
 
 \begin{figure}[ht!]
 \begin{center}
@@ -63,14 +78,27 @@ Aplicando el Lema \ref{lema_2polares_01}, podemos encontrar 3 obstrucciones mín
 \label{obsts_2polares_01}
 \end{figure}
 
-Posteriormente nos encontramos con la definición de una operación que preserva la 2-polaridad (Definición \ref{def_complemento_parcial}), el complemento parcial.
+Ahora introducimos una operaci\'on que preserva la
+$2$-polaridad y la propiedad de ser cogr\'afica, por lo
+que resulta bastante \'util en el estudio de las
+obstrucciones m\'inimas para las cogr\'aficas $2$-polares.
+Sea $H$ una gráfica, un \textbf{\emph{complemento parcial}}
+de $H$ es una gráfica obtenida de $H$ al dividir a sus
+componentes conexas en dos gráficas $H'$ y $H''$, y tomando
+de forma separada el complemento de cada una.
 
-\begin{definition}
-\label{def_complemento_parcial}
-Sea $H$ una gráfica, un complemento parcial de $H$ es una gráfica obtenida al dividir las componentes conexas de $H$ en dos gráficas $H'$ y $H''$, y tomando de forma separada el complemento de cada una.
-\end{definition}
-
-Aplicando el complemento parcial a las gráficas $F_1$, $F_{13}$ y $F_{21}$ (Figura \ref{obsts_2polares_01}), podemos encontrar otras tres familias de obstrucciones mínimas. Éstas se muestran en las Figuras \ref{obsts_2polares_02}, \ref{obsts_2polares_03} y \ref{obsts_2polares_04} respectivamente. Podemos encontrar una cuarta familia de obstrucciones mínimas al aplicar el complemento parcial a la gráfica $F_7$ (Figura \ref{obsts_2polares_05}) que también es una obstrucción mínima de las gráficas 2-polares. Si sustraemos el $K_2$ de la gráfica $F_7$, obtenemos una obstrucción mínima para las gráficas $(2,1)$-polares.
+Tomando todos los posibles complementos parciales de las
+gráficas $F_1$, $F_{13}$ y $F_{21}$ (Figura
+\ref{obsts_2polares_01}), encontramos tres familias de
+obstrucciones mínimas; \'estas se muestran en las Figuras
+\ref{obsts_2polares_02}, \ref{obsts_2polares_03} y
+\ref{obsts_2polares_04} respectivamente. Podemos encontrar
+una cuarta familia de obstrucciones mínimas tomar todos los
+posibles complementos parciales de la gráfica $F_7$ (Figura
+\ref{obsts_2polares_05}) que también es una obstrucción mínima
+de las gráficas 2-polares. La gráfica $F_7$ se puede construir
+de forma natural agregando un $K_2$ a una de las obstrucciones
+m\'inimas para $(2,1)$-polaridad en cogr\'aficas.
 
 \begin{figure}[ht!]
 \begin{subfigure}{\textwidth}
@@ -473,4 +501,17 @@ Aplicando el complemento parcial a las gráficas $F_1$, $F_{13}$ y $F_{21}$ (Fig
 \label{obsts_2polares_05}
 \end{figure}
 
-En este artículo podemos observar un ejemplo en el que, dada una clase hereditaria de cográficas $C$ y una operación $\omega$ tales que $C$ es cerrada bajo $\omega$, podemos encontrar familias de obstrucciones mínimas para $C$ a partir de obstrucciones mínimas de $C$ ya conocidas y a partir de obstrucciones mínimas de subclases de $C$ al aplicarles la operación $\omega$. Las clases de cográficas que estudiamos en nuestra investigación son cerradas bajo la unión completa y, de manera parecida a lo que vemos en el artículo de Hell \cite{Hell03}, encontramos reglas para generar obstrucciones mínimas para una clase hereditaria $D$ al aplicar la unión completa a obstrucciones mínimas de subclases de $D$.
+En este artículo podemos observar un ejemplo en el que, dada
+una clase hereditaria de cográficas $C$ y una operación
+$o$ tales que $C$ es cerrada bajo $o$, es posible encontrar
+familias de obstrucciones mínimas para $C$ a partir de
+obstrucciones mínimas de $C$ ya conocidas aplic\'andoles
+la operación $o$. Las clases de cográficas que estudiamos en
+nuestra investigación son cerradas bajo la unión completa y,
+de manera parecida a lo que sucede en \cite{Hell03},
+encontramos reglas para generar obstrucciones mínimas para
+una clase hereditaria $D$ al aplicar la unión completa a
+obstrucciones mínimas de subclases de $D$.
+
+% Quizá valdría la pena ser más específicos en la última
+% oración de este párrafo.
