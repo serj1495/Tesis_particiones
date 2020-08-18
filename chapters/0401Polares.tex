@@ -3,13 +3,36 @@ la clase de las cográficas polares y presentan una
 caracterizaci\'on de la misma mediante un conjunto de
 obstrucciones mínimas (que existe dado que las
 cográficas polares son una clase hereditaria de gráficas).
-La metodología con la que se realiza la demostración de que el conjunto de gráficas que se proporciona (Figura \ref{obsts_cografics_polares}) es, en efecto, el conjunto de obstrucciones mínimas de las cográficas polares sirve como base de nuestra demostración de que el conjunto de gráficas que mostramos como conjunto de obstrucciones mínimas de la clase de cográficas que acepta una partición en dos gráficas multipartitas completas (a la que llamamos $M_2$) es correcto. En este artículo también se presentan las cográficas monopolares, una subclase de las cográficas polares, cuyo estudio sirve de inspiración para el estudio de algunas subclases de $M_2$.
+La metodología que los autores utilizan para demostrar su
+resultado principal, i.e., que el conjunto de gráficas que
+se propone (Figura \ref{obsts_cografics_polares}) es, en
+efecto, el conjunto de obstrucciones mínimas para las
+cográficas polares, fue una gu\'ia importante para realizar
+la demostración de que nuestra propuesta de conjunto de
+obstrucciones mínimas de la clase $M_2$\footnote{Una
+cogr\'afica est\'a en la clase $M_2$ si acepta una
+partición en dos gráficas multipartitas completas.} es
+correcta.   En este artículo también se consideran las
+cográficas monopolares, una subclase de las cográficas
+polares, cuyo estudio sirve como inspiración para el
+estudio de algunas subclases de $M_2$.
 
-Sea $G$ una cográfica, decimos que $G$ es una \emph{\textbf{cográfica polar}} si su conjunto de vértices $V$ acepta una partición $(A,B)$ tal que $A$ induce una gráfica multipartita completa y $B$ induce una unión ajena de clanes.
-Decimos que $G$ es ($s,k$)-polar si existe una partición ($A,B$) de los vértices de $G$ en donde $A$ induce en $G$ una unión completa de a lo más $s$ conjuntos independientes (Es decir una gráfica $s$-partita) y $B$ induce en $G$ una unión ajena de a lo más $k$ clanes. Notemos que las cográficas polares son las gráficas ($\infty, \infty$)-polares.
+Dada una cogr\'afica $G$, decimos que $G$ es una
+\emph{\textbf{cográfica polar}} si su conjunto de vértices
+$V$ acepta una partición $(A,B)$ tal que $A$ induce una
+gráfica multipartita completa y $B$ induce una unión ajena
+de clanes. Decimos que $G$ es $(s,k)$-polar si existe una
+partición $(A,B)$ de los vértices de $G$ en donde $A$ induce
+en $G$ una unión completa de a lo más $s$ conjuntos
+independientes (es decir una gráfica $s$-partita) y $B$
+induce en $G$ una unión ajena de a lo más $k$ clanes. Notemos
+que las cográficas polares son las gráficas ($\infty,
+\infty$)-polares.
 
 \begin{theorem}
-    Sea $G$ una cográfica, decimos que $G$ es una cográfica polar si y sólo si no contiene como subgráfica inducida a ninguna de las gráficas de la Figura \ref{obsts_cografics_polares}.
+  Si $G$ es una cográfica, entonces $G$ es polar si y sólo
+  si no contiene como subgráfica inducida a ninguna de las
+  gráficas de la Figura \ref{obsts_cografics_polares}.
 \end{theorem}
 
 \begin{figure}[ht!]
@@ -90,7 +113,12 @@ Decimos que $G$ es ($s,k$)-polar si existe una partición ($A,B$) de los vértic
 \label{obsts_cografics_polares}
 \end{figure}
 
-La demostración de que las gráficas de la Figura \ref{obsts_cografics_polares} forman el conjunto de obstrucciones mínimas de las cográficas polares se realiza describiendo a cada una de éstas en términos de la unión ajena y la unión completa de gráficas más pequeñas.
+La demostración de que las gráficas de la Figura
+\ref{obsts_cografics_polares} conforman el conjunto de
+obstrucciones mínimas de las cográficas polares se
+realiza describiendo a cada una de éstas en términos
+de la unión ajena y la unión completa de gráficas más
+pequeñas.
 
 \begin{enumerate}[(1)]
     \item $H_1 = P_3 + ( \overline{K_2} \oplus P_3) = P_3+ (K_1 \oplus P_4)$
@@ -99,11 +127,21 @@ La demostración de que las gráficas de la Figura \ref{obsts_cografics_polares}
     \item $H_4 = P_3 + (K_2 \oplus 2K_2)$
 \end{enumerate}
 
-Primero se demuestra que ninguna de estas gráficas es una cográfica polar y que, por lo tanto, cualquier gráfica que tenga a alguna de ellas como subgráfica inducida tampoco es una cográfica polar. Por último se muestra que si una cográfica $G$ no es polar, entonces debe de tener a alguna de estas gráficas como subgráfica inducida.
+Primero se demuestra que ninguna de estas gráficas es
+una cográfica polar y que, por lo tanto, cualquier
+gráfica que tenga a alguna de ellas como subgráfica
+inducida tampoco es una cográfica polar. Por último se
+muestra que si una cográfica $G$ no es polar, entonces
+debe de tener a alguna de estas gráficas como subgráfica
+inducida.
 
-En este artículo también se presenta y se caracteriza la clase de las cográficas monopolares a través de su conjunto de obstrucciones mínimas. Éstas se muestran en la Figura \ref{obsts_cografics_monopolares}
+En este artículo también se presenta y se caracteriza,
+a través de su conjunto de obstrucciones mínimas, a la
+clase de las cográficas monopolares. El conjunto de
+obstrucciones m\'inimas se muestra en la Figura
+\ref{obsts_cografics_monopolares}
 
-%Sea $G$ una cográfica, decimos que $G$ es una cográfica monopolar si $G$ es una gráfica ($s,k$)-polar con $s\leq 1$ o $k \leq 1$.
+%Sea $G$ una cográfica, decimos que $G$ es una cográfica monopolar si $G$ es una gráfica $(s,k)$-polar con $s\leq 1$ o $k \leq 1$.
 
 
 \begin{figure}[ht!]
@@ -245,4 +283,16 @@ En este artículo también se presenta y se caracteriza la clase de las cográfi
 \end{figure}
 
 
-Como podemos observar, varias de las obstrucciones mínimas de las gráficas monopolares se asemejan a obstrucciones mínimas de las gráficas polares. Por ejemplo, las gráficas $G_1$, $G_3$, $G_4$ y $G_8$ son subgráficas de $H_1$, $H_2$, $H_3$ y $H_4$ respectivamente. Notemos que en los cuatro casos se obtiene una obstrucción mínima para las gráficas monopolares $G$ a partir de una obstrucción mínima para las gráficas polares $H$ al restar vértices de la componente conexa de $H$ que forma un $P_3$. En los últimos tres casos, el $P_3$ es reemplazado por un vértice aislado. Esto nos lleva a pensar en que se puede encontrar una relación entre el conjunto de obstrucciones mínimas de una clase y los conjuntos de obstrucciones mínimas de sus subclases.
+Como podemos observar, varias de las obstrucciones mínimas
+de las gráficas monopolares se asemejan a obstrucciones
+mínimas de las gráficas polares. Por ejemplo, las gráficas
+$G_1$, $G_3$, $G_4$ y $G_8$ son subgráficas de $H_1$, $H_2$,
+$H_3$ y $H_4$ respectivamente. Notemos que en los cuatro
+casos se obtiene una obstrucción mínima $G$ para las gráficas
+monopolares, a partir de una obstrucción mínima $H$ para las
+gráficas polares al eliminar vértices de la componente conexa
+de $H$ que forma un $P_3$. En los últimos tres casos, el
+$P_3$ es reemplazado por un vértice aislado. Esto nos lleva
+a pensar en que se puede encontrar una relación entre el
+conjunto de obstrucciones mínimas de una clase y los conjuntos
+de obstrucciones mínimas de sus subclases.
