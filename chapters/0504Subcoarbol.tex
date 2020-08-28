@@ -4,7 +4,7 @@
 
 El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$ son coárboles con $U$ subcoárbol de $T$, entonces tenemos que los nodos de $U$ se pueden encontrar dispersos entre los nodos de $T$ a diferencia de lo que se tendría si $U$ fuera subárbol de $T$. Esto se puede apreciar en la Figura \ref{fig_subcoarbol01}. Además, esta definición funciona también para coárboles binarios.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
 \begin{tikzpicture}
 
@@ -61,7 +61,7 @@ El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$ 
 \end{figure}
 
 \begin{lemma}\label{lema_subcoa_01}
-    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ sus coárboles correspondientes, entonces $H$ es subgráfica de $G$ si y sólo si $T_H$ es subcoárbol de $T_G$. 
+    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ sus coárboles correspondientes, entonces $H$ es subgráfica de $G$ si y sólo si $T_H$ es subcoárbol de $T_G$.
 \end{lemma}
 
 \begin{proof}
@@ -69,15 +69,15 @@ El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$ 
     Probemos la doble implicación.
 
     \textbf{Necesidad}: Dem dem dem dem dem.
-    
+
     \textbf{Suficiencia}: Como $T_H$ es subcoárbol de $T_G$, entonces existe una función de coasignación, $f$, de $T_H$ a $T_G$. Luego, sean $h_1$ y $h_2$ hojas de $T_H$ y $h_3$ el ancestro común más profundo de $h_1$ y $h_2$, tenemos que $f(h_1)$ y $f(h_2)$ son hojas de $T_G$ y que $h_3.etiqueta = f(h_3).etiqueta$. Así, $h_1$ y $h_2$ son adyacentes en $H$ si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes en $G$. Luego, $G[f[V(H)]]$ es una subgráfica de $G$ que es isomorfa a $H$. Así, $H$ es subgráfica de $G$.
-    
+
 \end{proof}
 
 Notemos que esta demostración funciona únicamente para los coárboles y no para los coárboles binarios. En la Figura \ref{fig_coar_bin01} se observan dos coárboles binarios que representan a la misma cográfica. Sin embargo ninguno de los dos es subcoárbol del otro.
 
 \begin{lemma}
-    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ coárboles binarios de $G$ y $H$ respectivamente. Si $T_H$ es subcoárbol de $T_G$, entonces $H$ es subgráfica de $G$. 
+    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ coárboles binarios de $G$ y $H$ respectivamente. Si $T_H$ es subcoárbol de $T_G$, entonces $H$ es subgráfica de $G$.
 \end{lemma}
 
 \begin{proof}

@@ -2,7 +2,7 @@ Si bien, el Algoritmo \ref{alg_decision} es capaz de identificar a las cográfic
 
 \subsubsection{Algoritmo para reconocer gráficas bipartitas completas conexas}
 
-El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos subsecuentes. Éste recibe la raíz de un coárbol, $g$, y devuelve $verdadero$ si la gráfica representada por dicho coárbol es una gráfica bipartita completa conexa, coloreando los vértices de una parte de color $azul$ y los de la otra parte de $verde$. En el caso contrario, se colorean con $amarillo$  tres hojas cuyo ancestro común más profundo sea un nodo con etiqueta 1. Es decir que se colorean los vértices que inducen un $K_3$ en la gráfica. El bloque de la línea 9 a la 28 se ejecuta sólo si $g$ tiene exactamente dos hijos. En las líneas 10 a 18 se busca un $K_3$ en el primer hijo de $g$ y en las líneas 19 a 27 se busca en el segundo hijo. La Figura \ref{fig_bipartitas} muestra el resultado de la ejecución de este algoritmo para algunos coárboles.
+El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos subsecuentes. Éste recibe la raíz de un coárbol, $g$, y devuelve $verdadero$ si la gráfica representada por dicho coárbol es una gráfica bipartita completa conexa, coloreando los vértices de una parte de color $azul$ y los de la otra parte de $verde$. En el caso contrario, se colorean con $amarillo$  tres hojas cuyo ancestro común más profundo sea un nodo con etiqueta 1. Es decir que se colorean los vértices que inducen un $K_3$ en la gráfica. El bloque de la línea 9 a la 28 se ejecuta sólo si $g$ tiene exactamente dos hijos. En las líneas 10 a 18 se busca un $K_3$ en el primer hijo de $g$ y en las líneas 19 a 27 se busca en el segundo hijo. La Figura \ref{fig_bipartita} muestra el resultado de la ejecución de este algoritmo para algunos coárboles.
 
 \begin{algorithm}[!htbp]
 \caption{Es\_bipartita_completa}
@@ -53,7 +53,7 @@ El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos
         }
     }
 }
-    
+
 $\Return\ verdadero$\;
 
 \end{algorithm}
@@ -151,9 +151,9 @@ El algoritmo \ref{alg_cert_caso1} corresponde al $Caso\ 1$ de la demostración d
                 \If{ggchild \text{es una hoja}}{
                     $gchild.color \gets azul$\;
                 }
-                \Else(\tcp*[h]{Se marca la obstrucción $I$}){ 
+                \Else(\tcp*[h]{Se marca la obstrucción $I$}){
                     Marcar con anaranjado: una hoja en $ggchild.hijos[0]$, una hoja en $ggchild.hijos[1]$, una hoja en un hermano de $ggchild$, una hoja en un hermano de $gchild$ y dos hojas cuyo ancestro común más profundo sea el hermano de $g.hijos[0]$\;
-                    
+
                     $\Return\ falso$\;
                 }
             }
@@ -552,7 +552,7 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
 
     $aux\_gchild \gets null$\;
     $ggchildren\_no\_hojas \gets 0$\;
-    
+
     \For{child \textbf{\emph{en}} $g.hijos$}{
         \If{child \text{es una hoja}}{
             $child.color \gets azul$\;
@@ -578,12 +578,12 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
                     }
                 }
             }
-            
+
             \If{ggchildren\_no\_hojas = 0}{
                 $\Return\ verdadero$\;
             }
             \ElseIf{ggchildren\_no\_hojas = 1}{
-                $\Return$ M2\_Caso\_2($aux\_gchild$)\; 
+                $\Return$ M2\_Caso\_2($aux\_gchild$)\;
             }
             \Else{
                 \For{ggchild \textbf{\emph{en}} aux\_gchild}{
@@ -593,10 +593,10 @@ El algoritmo \ref{alg_cert_caso2} corresponde al $Caso\ 2$ de la demostración d
                     }
                 }
             }
-            
+
         }
     }
-    
+
     $\Return\ verdadero$\;
 
 
@@ -885,7 +885,7 @@ Finalmente, el Algoritmo \ref{alg_cert_m2} utiliza los algoritmos anteriores par
 \KwOut{Verdadero si la gráfica representada por $G$ pertenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $G$ se colorean.}
 
     \If{$g$ \text{es una hoja}}{
-        $g.color \get azul$\;
+        $g.color \gets azul$\;
         $\Return\ verdadero$\;
     }
     \ElseIf{$g.etiqueta = 1$}{
@@ -900,7 +900,7 @@ Finalmente, el Algoritmo \ref{alg_cert_m2} utiliza los algoritmos anteriores par
         $componentes\_no\_triviales \gets 0$\;
         \For{child \textbf{\emph{en}} $g.hijos$}{
             \If{$child$ \text{es una hoja}}{
-                $child.color \get azul$\;
+                $child.color \gets azul$\;
             }
             \Else{
                 $componentes\_no\_triviales \gets componentes\_no\_triviales + 1$\;

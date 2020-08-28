@@ -1,6 +1,6 @@
 Haciendo uso  del Algoritmo \ref{alg_subgraph} se puede determinar si una cográfica pertenece o no a la clase $M_2$. Como se especificó en la Sección \ref{sec_AlgoSub}, el tiempo de este algoritmo crece de forma lineal de acuerdo con el tamaño de la gráfica en la que se está buscando la obstrucción si se fija el tamaño de esta última. Como conocemos las obstrucciones mínimas de la clase $M_2$, que son finitas, se puede buscar cada una en tiempo lineal y por lo tanto se puede reconocer si una cográfica pertenece a la clase $M_2$ en tiempo lineal. El Algoritmo \ref{alg_decision} corresponde a este proceso. Los árboles binarios de cada una de las obstrucciones de la clase $M_2$ se muestran en la Figura \ref{fig_obsts_bin}.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \centering
 
 \begin{subfigure}{0.85\textwidth}
@@ -120,14 +120,13 @@ Haciendo uso  del Algoritmo \ref{alg_subgraph} se puede determinar si una cográ
 \KwOut{$pertenece$, verdadero si $G$ peretenece a la clase $M_2$. Falso en el caso contrario}
 
  $coárboles_bin \gets \{H_1, H_2, H_3, I_1, J_1, \}$\;
- 
+
 \ForEach{árbol \textbf{\emph{en}} coárboles_bin}{
     \If{\emph{Es\_subgráfica(}g, árbol.raíz\emph{)}}{
         $\Return\ falso$\;
     }
-} 
+}
 
 $\Return\ verdadero$\;
 
 \end{algorithm}
-    

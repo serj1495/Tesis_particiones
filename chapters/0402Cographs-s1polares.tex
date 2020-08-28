@@ -1,10 +1,26 @@
-En este artículo de Contreras-Mendoza \cite{Fernando} se proporciona el conjunto de obstrucciones mínimas de las cográficas $(\infty, 1)$-polares. Este conjunto es utilizado para describir cómo se puede obtener el conjunto de obstrucciones mínimas de cualquiera de las clases de cográficas $(s,1)$-polares dado un entero $s \geq 2$. En nuestra investigación encontramos un resultado similar a éste para las gráficas que aceptan una partición en un conjunto independiente y una gráfica multipartita completa. 
+En \cite{Fernando}, Contreras-Mendoza y Hern\'andez-Cruz
+exhiben el conjunto de obstrucciones mínimas de las
+cográficas $(\infty, 1)$-polares. Este conjunto es
+utilizado para describir cómo se puede obtener el conjunto
+de obstrucciones mínimas de cualquiera de las clases de
+cográficas $(s,1)$-polares dado un entero $s \ge 2$. En
+nuestra investigación encontramos un resultado similar,
+el Lema \ref{}, donde describimos a las obstrucciones
+m\'inimas para las gráficas que aceptan una partición en
+un conjunto independiente y una gráfica multipartita completa.
 
-\begin{theorem}
-    Sea $G$ una cográfica. Entonces $G$ es $(\infty,1)$-polar si y sólo si no contiene ninguna de las gráficas de la Figura \ref{obsts_cografics_esenciales_1spolares} como subgráfica inducida. Este conjunto es llamado el conjunto de obstrucciones esenciales.
+A continuaci\'on reproducimos el resultado antes mencionado.
+
+\begin{theorem}[\cite{Fernando}]
+\label{thm:s,1-ess}
+  Sea $G$ una cográfica. Entonces $G$ es $(\infty,1)$-polar
+  si y sólo si no contiene alguna de las gráficas de la Figura
+  \ref{obsts_cografics_esenciales_1spolares} como subgráfica
+  inducida. Este conjunto es llamado el conjunto de obstrucciones
+  esenciales.
 \end{theorem}
 
-\begin{figure}[H]
+\begin{figure}[ht!]
 \begin{center}
 \begin{tikzpicture}
 
@@ -61,21 +77,74 @@ En este artículo de Contreras-Mendoza \cite{Fernando} se proporciona el conjunt
 \label{obsts_cografics_esenciales_1spolares}
 \end{figure}
 
-Haciendo uso de este conjunto de gráficas, podemos definir una lista de reglas para encontrar las obstrucciones mínimas de cualquiera de las clases de gráficas $(s,1)$-polares para algún entero $s \geq 2$.
+Haciendo uso de estas obstrucciones esenciales,
+los autores caracterizan, para cualquier entero
+$s$, con $s \ge 2$, a las obstrucciones m\'inimas
+para la clase de cogr\'aficas $(s,1)$-polares.
+Resulta interesante notar que, adem\'as de las
+obstrucciones esenciales, existen cuatro familias
+espor\'adicas de obstrucciones m\'inimas, y se
+plantea una regla recursiva para generar
+obstrucciones m\'inimas para las cogr\'aficas
+$(s,1)$-polares utilizando obstrucciones
+m\'inimas no esenciales para las cogr\'aficas
+$(t,1)$-polares, con $t < s$.
 
 \begin{theorem}
-    Sea $G$ una cográfica y $s \geq 2$ un entero. Entonces $G$ es una obstrucción mínima de las cográficas $(s,1)$-polares si y sólo si es una de las siguientes gráficas:
-    
-    \begin{itemize}
-        \item Una de las cuatro obstrucciones esenciales.
-        \item $2K_{s+1}$.
-        \item $K_2 + (\overline{K_2}\oplus K_s)$.
-        \item $K_1 + (C_4 \oplus K_{s-1})$.
-        \item $\overline{(s+1)K_2}$.
-        \item El complemento de $G$ es inconexo con componentes $G_1, \dots, G_t$ tales que $t \leq s$, y cada $G_i$ es el complemento de una obstrucción mínima no esencial de la clase de cográficas $(s_i, 1)$-polares con $\sum^{t}_{i=1}s_i = s-t+1$.
-    \end{itemize}
-    
+\label{thm:s,1}
+  Sea $G$ una cográfica y $s \ge 2$ un entero. Entonces
+  $G$ es una obstrucción mínima de las cográficas
+  $(s,1)$-polares si y sólo si es una de las siguientes
+  gráficas:
+
+  \begin{itemize}
+    \item Una de las cuatro obstrucciones esenciales.
+
+    \item $2K_{s+1}$.
+
+    \item $K_2 + (\overline{K_2}\oplus K_s)$.
+
+    \item $K_1 + (C_4 \oplus K_{s-1})$.
+
+    \item $\overline{(s+1)K_2}$.
+
+    \item El complemento de $G$ es inconexo con componentes
+      $G_1, \dots, G_t$ tales que $t \leq s$, y cada $G_i$
+      es el complemento de una obstrucción mínima no esencial
+      de la clase de cográficas $(s_i, 1)$-polares con
+      $\sum^{t}_{i=1}s_i = s-t+1$.
+  \end{itemize}
 \end{theorem}
 
-Esta lista de reglas 
+Si $s$ y $k$ son enteros positivos arbitrarios, determinar
+las obstrucciones m\'inimas para las cogr\'aficas
+$(s,k)$-polares parece ser un problema dif\'icil de
+resolver.   El resultado presentado en el Teorema
+\ref{thm:s,1} es un buen ejemplo de c\'omo, al restringir
+un problema a un subproblema bien definido, es f\'acil
+encontrar soluciones parciales al problema general.   En
+particular, se obtuvo una caracterizaci\'on por obstrucciones
+m\'inimas para una subclase infinita de las cogr\'aficas
+$(s,k)$-polares.
 
+M\'as a\'un, los Teoremas \ref{thm:s,1-ess} y \ref{thm:s,1}
+son un buen ejemplo de otro fen\'omeno interesante.   Es
+posible pensar a las gr\'aficas $(\infty,1)$-polares como
+el l\'imite cuando $s$ tiende al infinito de las gr\'aficas
+$(s,1)$-polares.  Para cualquier entero positivo $s$, se
+tiene que una gr\'afica $(s,1)$-polar tambi\'en es
+$(\infty,1)$-polar, y rec\'iprocamente, toda gr\'afica
+$(\infty,1)$-polar es $(s,1)$-polar para alg\'un entero
+positivo $s$.   Tomando la contrapositiva de las afirmaciones
+anteriores, as\'i como la del Teorema \ref{thm:s,1-ess},
+resulta natural utilizar a las obstrucciones esenciales
+$G_1, G_2, G_3$ y $G_4$ como base para buscar al conjunto
+de obstrucciones m\'inimas para las cogr\'aficas
+$(s,1)$-polares.   En nuestra investigación encontramos
+ejemplos semejantes a este %por ejemplo, referencia.
+
+% No estoy seguro qué idea intentabas transmitir en la escritura
+% original de este párrafo.   Vuelve a leer lo que tú escribiste,
+% y date cuenta de que es muy vago.  En particular, utilizas
+% 'algunas' dos veces en la misma oración, refiriéndote a cosas
+% distintas, sin aterrizar la idea.
