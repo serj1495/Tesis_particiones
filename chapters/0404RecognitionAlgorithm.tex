@@ -1,0 +1,27 @@
+En \cite{Corneil02}, Corneil, Perl y Stewart presentan un algoritmo que, 
+dada una gráfica, determina si ésta es una cográfica y si lo es, devuelve
+su coárbol. Éste es un algoritmo incremental en el que se va construyendo 
+un coárbol agregando los vértices de la gráfica recibida como entrada uno 
+a uno. Para agregar un nuevo vértice $x$ de la gráfica de entrada $G$ al 
+coárbol que se va construyendo $T$, el algoritmo ejecuta primero una 
+subrutina que se encarga de marcar los nodos de $T$ empezando por sus 
+hojas. Una hoja de $T$ se marca sólo si ésta representa un vértice de $G$ 
+adyacente a $x$. La subrutina continúa marcando nodos de $G$ subiendo hacia
+la raíz. En nuestra investigación presentamos un algoritmo similar, el 
+Algoritmo \ref{alg_subcoarbol}. que ayuda a determinar si una cográfica 
+$H$ es subcográfica de otra cográfica $I$ marcando los vértices de un 
+coárbol binario\footnote{Un coárbol binario es un coárbol en el que cada 
+nodo tiene necesariamente dos hijos y pueden haber nodos adyacentes con la 
+misma etiqueta.} de $I$ partiendo desde las hojas y subiendo hacia la raíz.
+A continuación se presenta el algoritmo de marcado presentado en el artículo.
+
+
+%Esto iría después de poner el algoritmo.
+Al final de la ejecución del Algoritmo \ref{alg_mark_corneil}, algunos de los nodos de $T$ pueden continuar marcados. Si $G+x$ es una cográfica , entonces el nodo marcado de $T$ con mayor profundidad será ancestro de $x$ en $T$. Es posible determinar si 
+
+
+
+
+
+Así como el Algoritmo \ref{alg_mark_corneil} consolida un ejemplo de un algoritmo que funciona marcando los nodos de un coárbol empezando por 
+
