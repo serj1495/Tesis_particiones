@@ -22,6 +22,19 @@ Al final de la ejecución del Algoritmo \ref{alg_mark_corneil}, algunos de los n
 
 
 
-
-Así como el Algoritmo \ref{alg_mark_corneil} consolida un ejemplo de un algoritmo que funciona marcando los nodos de un coárbol empezando por 
+%Cierre
+Así como el Algoritmo \ref{alg_mark_corneil} consolida un ejemplo de un
+algoritmo que funciona marcando los nodos de un coárbol empezando por las
+hojas y dirigiéndose hacia la raíz, el Algoritmo \ref{alg_reco_corneil} es
+un ejemplo de un algoritmo certificador. Es decir que, al ser ejecutado, no
+sólo resuelve un problema de decisión, sino que proporciona una prueba de
+que su respuesta es correcta. En este caso, la prueba es el coárbol de la
+gráfica recibida como entrada. En nuestra investigación, el Algoritmo
+\ref{alg_cert_m2} es un algoritmo certificador. Éste no sólo es capaz de
+determinar si una cográfica $G$ pertenece a la clase $M_2$, sino que
+devuelve una coloración de las hojas de su coárbol $T$ tal que si $G\in
+M_2$, las hojas de $T$ tienen uno de dos colores y las hojas del mismo color
+inducen una gráfica multipartita completa en $G$. En el caso contrario,
+algunas de las hojas de $T$ tendrán un color distintivo que indica que esos
+vértices inducen una obstrucción mínima de $M_2$ en $G$.
 
