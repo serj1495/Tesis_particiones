@@ -1,0 +1,144 @@
+En \cite{Corneil02}, Corneil, Perl y Stewart presentan un algoritmo
+que, dada una gráfica, determina si ésta es una cográfica y, si lo
+es, devuelve su coárbol. Éste es un algoritmo incremental, se
+construye un coárbol agregando los vértices de la gráfica recibida
+como entrada uno a uno. Para agregar un nuevo vértice $x$, de la
+gráfica de entrada $G$, al coárbol $T$ que se va construyendo, el
+algoritmo ejecuta primero una subrutina que se encarga de marcar los
+nodos de $T$ empezando por sus hojas. Una hoja de $T$ se marca sólo
+si ésta representa un vértice de $G$ adyacente a $x$. La subrutina
+continúa marcando nodos de $G$ subiendo hacia la raíz. En nuestra
+investigación presentamos un algoritmo similar, el Algoritmo
+\ref{alg_subcoarbol}, que ayuda a determinar si una cográfica
+$H$ es subcográfica de otra cográfica $I$ marcando los vértices de
+un coárbol binario\footnote{Un coárbol binario es un coárbol en el
+que cada nodo tiene necesariamente dos hijos y pueden haber nodos
+adyacentes con la misma etiqueta.} de $I$ partiendo desde las hojas
+y subiendo hacia la raíz.
+
+A continuación se reproducen los resultados de \cite{ Corneil02},
+empezando por el algoritmo de marcado antes mencionado.
+
+\begin{algorithm}[!htbp]
+\caption{Marcar}
+\label{alg_mark_corneil}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$T$, un coárbol con raíz $R$ cuyas hojas son vértices de una gráfica $G$; $x$, el vértice de $G$ que se busca agregar a $T$}
+\KwOut{Se marcan y se desmarcan algunos nodos de $T$ }
+Marcar todas las hojas de $T$ que sean adyacentes a $x$\;
+
+\ForEach{\emph{nodo marcado $u$ de $T$ con todos sus hijos marcados y desmarcados}}{
+    Desmarcar a $u$\;
+    \If{$u \neq R$}{
+        \emph{Marcar al padre de $u$}\;
+    }
+}
+
+\end{algorithm}
+
+Sean $T$ un coárbol, $x$ un vértice y $M$ el conjunto de nodos
+de $T$ que se encuentran marcados al terminar la ejecución del
+Algoritmo \ref{alg_mark_corneil} al recibir como entrada a $T$
+y a $x$. El Teorema \ref{teo_teo1_corneil} puede ser utilizado
+para determinar si la gráfica que se obtiene al agregar $x$ a
+la gráfica representada por $T$ es una cográfica.
+Las siguientes definiciones son necesarias para presentar dicho
+teorema. Sea $\alpha$ un nodo de $M$ de profundidad máxima en $T$
+y sea $\beta$ un nodo en $M-\{a\}$ de profundidad máxima en $T$.
+Decimos que un nodo $\gamma$ de $T$ con etiqueta 1 está
+correctamente marcado si y sólo si todos sus hijos, excepto uno,
+fueron marcados y desmarcados. Un camino legítimamente alternante
+en un coárbol marcado es un camino alternante de nodos correctamente
+marcados y nodos sin marcar, con etiqueta 0, cuyos extremos son nodos
+con etiqueta 1.
+
+
+\begin{theorem}
+    \label{teo_teo1_corneil}
+    Si $G$ es una cográfica con árbol $T$, entonces $G+x$ es una cográfica si y sólo si:
+    \begin{itemize}
+        \item $M$ es vacío o
+        \item se cumplen las siguientes dos condiciones
+        \begin{itemize}
+            \item $M-\{\alpha\}$ consiste exactamente de los nodos
+              con etiqueta 1 de un camino legítimamente alternante
+              que termina en $R$.
+
+            \item $\alpha$ es un nodo con etiqueta 0 cuyo padre es
+              $\beta$ o $\alpha$ es un nodo con etiqueta 1 cuyo
+              abuelo, si existe, es $\beta$.
+        \end{itemize}
+    \end{itemize}
+\end{theorem}
+
+El Algoritmo \ref{alg_principal_corneil}, que constituye el resultado
+principal del artículo, utiliza el Algoritmo \ref{alg_mark_corneil} y
+el Teorema \ref{teo_teo1_corneil} para determinar si una gráfica es
+una cográfica, y construir su coárbol en caso de que lo sea.
+
+\begin{algorithm}[!htbp]
+\caption{AlgoritmoDeReconocimiento}
+\label{alg_principal_corneil}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$G$, una gráfica cuyo conunto de vértices es $V=\{v_1, v_2, \dots, v_n\}$}
+\KwOut{El coárbol de $G$ si $G$ es una cográfica, $null$ en el caso contrario}
+
+Crear el coárbol $T$ cuya raíz $R$ tiene etiqueta 1 si $v_1$ y $v_2$ son adyacentes o etiqueta 0 en el caso contrario\;
+
+\ForEach{x \emph{\textbf{en}} $V(G)-\{v_1,v_2\}$}{
+    Marcar($T$, $x$)\;
+    \If{Todos los nodos de $T$ fueron marcados y desmarcados}{
+        \If{$R$ tiene etiqueta 1}{
+            Agregar a $x$ como hijo de $R$\;
+        }
+        \Else{
+            $R\gets$ un nuevo nodo con etiqueta 1 cuyos hijos sean $x$ y $R$\;
+        }
+    }
+    \ElseIf{Ninguno de los nodos de $T$ fue marcado}{
+        \If{$R$ tiene etiqueta 0}{
+            Agregar a $x$ como hijo de $R$\;
+        }
+        \Else{
+            $R\gets$ un nuevo nodo con etiqueta 0 cuyos hijos sean $x$ y $R$\;
+        }
+    }
+    \ElseIf{La gráfica representada por $T$ agregando $x$ es una cográfica}{
+        $u\gets$ el nodo marcado más profundo de $T$\;
+        Encontrar en qué nodo del coárbol con raíz $u$ se debe insertar $x$\;
+    }
+    \Else{
+        \Return $null$\;
+    }
+}
+
+\end{algorithm}
+
+%Cierre
+El Algoritmo \ref{alg_mark_corneil} consolida un ejemplo
+de un algoritmo que funciona marcando los nodos de un coárbol
+empezando por las hojas y dirigiéndose hacia la raíz\footnote{En
+ingl\'es un {\em bottom-up} algorithm.}. Por otro lado, el Algoritmo
+\ref{alg_mark_corneil} es un ejemplo de un algoritmo que, al ser
+ejecutado, no sólo resuelve un problema de decisión, sino que
+proporciona una prueba (o {\em certificado}) de que su respuesta
+es correcta. En este caso, la prueba es el coárbol de la
+gráfica recibida como entrada. Sin embargo, cuando la gr\'afica
+que se recibe como entrada no es una cogr\'afica, el Algoritmo
+\ref{alg_mark_corneil} s\'olo devuelve {\em null}. Si desconfi\'aramos
+de una implementaci\'on de este algoritmo, y quisi\'eramos comprobar
+que la salida es correcta, podr\'iamos utilizar el co\'arbol en un
+caso, pero en el otro, no tendr\'iamos informaci\'on adicional.
+
+En nuestra investigación, el Algoritmo \ref{alg_cert_m2} es un
+algoritmo certificador, es decir, devuelve certificados para
+verificar, de manera eficiente, que la salida del algoritmo es
+correcta, en cualquier caso. Nuestro algoritmo no sólo es capaz de
+determinar si una cográfica $G$ pertenece a la clase $M_2$, sino que
+devuelve una coloración de las hojas de su coárbol $T$ tal que si
+$G \in M_2$, las hojas de $T$ tienen uno de dos colores y las hojas
+del mismo color inducen una gráfica multipartita completa en $G$
+(un {\em s\'i-certificado}). En el caso contrario, algunas de las
+hojas de $T$ tendrán un color distintivo que indica que esos
+vértices inducen una obstrucción mínima de $M_2$ en $G$ (un
+{\em no-certificado}).
