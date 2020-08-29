@@ -33,12 +33,14 @@ Marcar todas las hojas de $T$ que sean adyacentes a $x$\;
 \ForEach{\emph{nodo marcado $u$ de $T$ tal que todos sus hijos están en el conjunto $D$}}{
     Desmarcar a $u$\;
     Agregar $u$ a $D$\;
+
     \If{$u \neq R$}{
         \emph{Marcar al padre de $u$}\;
     }
 }
 
 \end{algorithm}
+
 Sean $T$ un coárbol, $x$ un vértice y $M$ el conjunto de nodos
 de $T$ que se encuentran marcados al terminar la ejecución del
 Algoritmo \ref{alg_mark_corneil} al recibir como entrada a $T$
