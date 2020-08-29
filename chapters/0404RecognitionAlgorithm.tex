@@ -25,10 +25,15 @@ empezando por el algoritmo de marcado antes mencionado.
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
 \KwIn{$T$, un coárbol con raíz $R$ cuyas hojas son vértices de una gráfica $G$; $x$, el vértice de $G$ que se busca agregar a $T$}
 \KwOut{Se marcan y se desmarcan algunos nodos de $T$ }
+
+$D\gets \{\}$ \tcp*[h]{El conjunto de los nodos que han sido marcados y desmarcados} \; 
+
 Marcar todas las hojas de $T$ que sean adyacentes a $x$\;
 
-\ForEach{\emph{nodo marcado $u$ de $T$ con todos sus hijos marcados y desmarcados}}{
+\ForEach{\emph{nodo marcado $u$ de $T$ tal que todos sus hijos están en el conjunto $D$}}{
     Desmarcar a $u$\;
+    Agregar $u$ a $D$\;
+
     \If{$u \neq R$}{
         \emph{Marcar al padre de $u$}\;
     }
@@ -110,6 +115,7 @@ Crear el coárbol $T$ cuya raíz $R$ tiene etiqueta 1 si $v_1$ y $v_2$ son adyac
     \Else{
         \Return $null$\;
     }
+	Desmarcar todos los nodos de $T$\;
 }
 
 \end{algorithm}
