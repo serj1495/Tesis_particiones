@@ -1,24 +1,22 @@
-A continuación presentamos los conceptos de subcoárbol y subcoárbol binario que
-serán utilizados para determinar si una cográfica $H$ es subgráfica inducida de
-una cográfica $G$ en el Algoritmo \ref{alg_subgraph}.
+A continuación presentamos los conceptos de subcoárbol y subcoárbol binario
+que serán utilizados para determinar si una cográfica $H$ es subgráfica
+inducida de una cográfica $G$ en el Algoritmo \ref{alg_subgraph}.
 
-\begin{definition}
-    Sean $T$ y $U$ dos coárboles y $u_1$, $u_2$ y $u_3$ nodos de $U$, decimos
-    que $U$ es un \emph{\textbf{subcoárbol}} de $T$ si existe una función
-    inyectiva $f:V(U)\rightarrow V(T)$ tal que, si $u_1$ es una hoja, entonces
-    $f(u_1)$ es una hoja también; si no, entonces $u_1.etiqueta =
-    f(u_1).etiqueta$ y, si $u_3$ es el ancestro común más profundo de $u_1$ y
-    $u_2$, entonces $f(u_3)$ es el ancestro común más profundo de $f(u_1)$ y
-    $f(u_2)$. Llamamos a $f$ la \textbf{\emph{función de coasignación}} de $U$ a
-    $T$.
-\end{definition}
+Sean $T$ y $U$ dos coárboles y $u_1$, $u_2$ y $u_3$ nodos de $U$, decimos
+que $U$ es un \emph{\textbf{subcoárbol}} de $T$ si existe una función
+inyectiva $f:V(U)\rightarrow V(T)$ tal que, si $u_1$ es una hoja, entonces
+$f(u_1)$ tambi\'en es una hoja; si no, entonces $u_1$ y $f(u_1)$ tienen la
+misma etiqueta y, si $u_3$ es el ancestro común más profundo de $u_1$ y
+$u_2$, entonces $f(u_3)$ es el ancestro común más profundo de $f(u_1)$ y
+$f(u_2)$. Llamamos a $f$ la \textbf{\emph{función de coasignación}} de $U$ a
+$T$.
 
 El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$
 son coárboles con $U$ subcoárbol de $T$, entonces tenemos que los nodos de $U$
 se pueden encontrar dispersos entre los nodos de $T$ a diferencia de lo que se
 tendría si $U$ fuera subárbol de $T$. Esto se puede apreciar en la Figura
-\ref{fig_subcoarbol01}. Además, esta definición funciona también para coárboles
-binarios.
+\ref{fig_subcoarbol01}. N\'otese que esta definición funciona también para
+coárboles binarios.
 
 \begin{figure}[h!]
 \begin{center}
@@ -82,9 +80,7 @@ binarios.
 
 \begin{proof}
 
-    Probemos la doble implicación.
-
-    \textbf{Necesidad}: Como $H$ es una subgráfica inducida de $G$, sabemos que
+    Supongamos primero que $H$ es una subgráfica inducida de $G$. Sabemos que
     $V(H)\subset V(G)$ y que dos vértices son adyacentes en $H$ si y sólo si
     también son adyacentes en $G$. Sean $v$ y $w$ vértices de $H$, $n_H$ el
     ancestro común más profundo de $v$ y $w$ en $T_H$, $n_G$ el ancestro común

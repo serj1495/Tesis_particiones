@@ -1,15 +1,23 @@
-Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo
-\ref{alg_coa_bin01}. En este algoritmo un nodo interno con al menos tres hijos,
-$r$, de un coárbol, se procesa creando un nuevo coárbol binario de la siguiente
-forma: La raíz del coárbol binario tiene como primer hijo al coárbol binario
-resultante de procesar al primer hijo de $r$ y como segundo hijo un nodo con la
-misma etiqueta de $r$ que a su vez tiene como primer hijo al árbol binario
-resultante de procesar al segundo hijo de $r$ y como segundo hijo un nuevo nodo
-con la misma etiqueta y así sucesivamente. Cuando sólo quedan los últimos dos
-hijos de $r$, estos se procesan y los árboles binarios resultantes son los
-hijos del último nodo creado. El árbol binario resultante es un árbol cargado a
-la derecha. La Figura \ref{fig_alg_coa_bin01} muestra una ejecución ilustrativa
-del algoritmo.
+Dada una cogr\'afica $G$, el Algoritmo \ref{alg_coa_bin01} construye
+recursivamente un co\'arbol binario de $G$ a partir de un co\'arbol de $G$.
+Las hojas del co\'arbol son la base de la recursi\'on; al procesar una hoja
+del co\'arbol original, simplemente se crea un nuevo nodo para el co\'arbol
+binario, inicialmente sin etiqueta, y se devuelve.  Los nodos internos de
+un co\'arbol siempre tienen al menos dos hijos.   Si $r$ es un nodo interno
+del co\'arbol original con dos hijos, entonces se crea un nuevo nodo en
+el co\'arbol binario con la misma etiqueta que $r$, y sus sub\'arboles
+izquierdo y derecho son los obtenidos al procesar recursivamente a su
+hijo izquierdo y derecho, respectivamente.   Si $r$ tiene al menos tres
+hijos, se procesa creando un nuevo coárbol binario de la siguiente forma:
+La raíz del coárbol binario tiene la misma etiqueta que $r$, como
+sub\'arbol izquierdo de la ra\'iz, se tiene al coárbol binario resultante
+de procesar recursivamente al primer hijo de $r$, y como sub\'arbol derecho,
+se tiene un nodo con la misma etiqueta que $r$, que a su vez tiene como
+sub\'arbol izquierdo al árbol binario resultante de procesar recursivamente
+al segundo hijo de $r$ y como sub\'arbol derecho un nuevo nodo con la misma
+etiqueta que \'el. El árbol binario resultante es un árbol cargado a la
+derecha. La Figura \ref{fig_alg_coa_bin01} muestra
+una ejecución ilustrativa del algoritmo.
 
 \begin{algorithm}[ht!]
 \caption{CrearArbolBinario}
@@ -25,13 +33,13 @@ $r' \gets $ nuevo nodo de árbol binario\;
     $s \gets r'$\;
     $i \gets 0$\;
     \While{$i < r.children.size - 2$}{
-        $s.izquiera \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+        $s.izquierda \gets \text{CrearArbolBinario}(r.hijos[i])$\;
         $s.derecha \gets $ nuevo nodo de árbol binario\;
         $s \gets s.derecha$\;
         $s.etiqueta \gets r.etiqueta$\;
         $i \gets i+1$\;
     }
-    $s.izquiera \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+    $s.izquierda \gets \text{CrearArbolBinario}(r.hijos[i])$\;
     $s.derecha \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
 }
 \Return $r'$\;
@@ -158,6 +166,13 @@ $r' \gets $ nuevo nodo de árbol binario\;
 \end{figure}
 
 
-En términos de las particiones de las componentes conexas de la gráfica, el algoritmo realiza lo siguiente. Si la etiqueta de $r$ es $0$, entonces el coárbol con raíz en $r$ representa una cográfica inconexa y se elige la partición de sus vértices en la que la primera parte es una componente conexa y la segunda parte es el resto. Sucede lo mismo si la etiqueta de $r$ es uno, pero como la cográfica representada es conexa, en su lugar se toman una componente conexa del complemento de la cográfica representada en la primera parte y el resto en la segunda.
+En términos de las particiones de las componentes conexas de la gráfica,
+el algoritmo realiza lo siguiente. Si la etiqueta de $r$ es $0$, entonces
+el coárbol con raíz en $r$ representa una cográfica inconexa y se elige
+la partición de sus vértices en la que la primera parte es una componente
+conexa y la segunda parte es el resto. Si la etiqueta de $r$ es uno, como
+la cográfica representada es conexa, se elige una componente conexa del
+complemento de la cográfica para la primera parte y el resto de las
+componentes del complemento para la segunda.
 
 Dado que el Algoritmo \ref{alg_coa_bin01} recorre a lo más una vez cada nodo de $r$, su tiempo de ejecución es $O(n)$ en donde $n$ es el número total de nodos del árbol con raíz $r$.
