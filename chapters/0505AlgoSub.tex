@@ -1,14 +1,26 @@
-La presente sección aborda el problema de determinar si una cográfica $G$ tiene a otra cográfica $H$ como subgráfica inducida haciendo uso de los conceptos de coárbol binario y subcoárbol. Se proporciona un algoritmo (Algoritmo \ref{alg_subgraph}) para resolver este problema tal que, si se fija el tamaño de $H$, su tiempo de ejecución crece de forma lineal con respecto al tamaño de $G$. Este algoritmo es útil para identificar a las gráficas pertenecientes a una clase caracterizada a través de su conjunto de obstrucciones mínimas de forma rápida.
+La presente sección aborda el problema de determinar si una cográfica $G$ tiene
+a otra cográfica $H$ como subgráfica inducida haciendo uso de los conceptos de
+coárbol binario y subcoárbol. Se proporciona un algoritmo (Algoritmo
+\ref{alg_subgraph}) para resolver este problema tal que, si se fija el tamaño de
+$H$, su tiempo de ejecución crece de forma lineal con respecto al tamaño de $G$.
+Este algoritmo es útil para identificar a las gráficas pertenecientes a una clase 
+caracterizada a través de su conjunto de obstrucciones mínimas de forma rápida.
 
 \subsubsection{Algoritmo para determinar si un coárbol binario es subcoárbol binario de otro}
 
 \begin{definition}
-    Sean $T$ y $U$ coárboles (binarios) y $u$ un nodo de $U$, decimos que $f:V(U)\rightarrow\{marcado, no\_marcado\}$ es una \textbf{\emph{función de verificación}} de $T$ para $U$ si $f(u) = marcado$ si y sólo si el coárbol (binario) con raíz en $u$ es subcoárbol (binario) de $T$. Si $f(u) = marcado$, decimos que $f$ \textbf{\emph{marca}} a $u$.
+    Sean $T$ y $U$ coárboles (binarios) y $u$ un nodo de $U$, decimos que
+    $f:V(U)\rightarrow\{marcado, no\_marcado\}$ es una \textbf{\emph{función de
+    verificación}} de $T$ para $U$ si $f(u) = marcado$ si y sólo si el coárbol
+    (binario) con raíz $u$ es subcoárbol (binario) de $T$. Si $f(u) = marcado$,
+    decimos que $f$ \textbf{\emph{marca}} a $u$.
 \end{definition}
 
-El Algoritmo \ref{alg_subcoarbol} recibe como entradas dos coárboles binarios, $G$ y $H$ representados por sus raíces $g$ y $h$ respectivamente, y devuelve una función de verificación, $f_g$, de $G$ para $H$.
+El Algoritmo \ref{alg_subcoarbol} recibe como entradas dos coárboles binarios,
+$G$ y $H$ representados por sus raíces $g$ y $h$ respectivamente, y devuelve una
+función de verificación, $f_g$, de $G$ para $H$.
 
-Este algoritmo funciona creando la función de verificación de cada subárbol de $G$ para $H$, empezando por los más profundos. De esta manera, si la función de verificación de $G$ para $H$ evaluada en $h$ es $marcado$, entonces  $H$ es subcoárbol de $G$.
+Este algoritmo funciona creando la función de verificación de cada subárbol de $G$ para $H$, empezando aquellos cuya raíz es más profunda. De esta manera, si la función de verificación de $G$ para $H$ evaluada en $h$ es $marcado$, entonces  $H$ es subcoárbol de $G$.
 
 \begin{algorithm}[ht!]
 \caption{Función\_de\_coasignación}
@@ -19,7 +31,7 @@ Este algoritmo funciona creando la función de verificación de cada subárbol d
 
  $func \gets \text{nueva función de coasignación tal que} func(x)=no\_marcado \text{ para todo } x\in V(H)$\;
 
- \If{g \emph{es una hoja}}{
+ \If{$g$ es una hoja}{
     $func \text{ marca a todas las hojas de } H$\;
  }
  \Else{
@@ -42,32 +54,134 @@ $\Return func$
 \end{algorithm}
 
 \begin{theorem}
-    La ejecución del Algoritmo \ref{alg_subcoarbol}, Función\_de\_coasignación $(g, h)$ regresa una función, $func$, tal que $func$ es una función de verificación de $árbol(g)$ para $árbol(h)$.
+    La ejecución del Algoritmo \ref{alg_subcoarbol}, \emph{Función\_de\_coasignación($g$, $h$)} regresa una función, $func$, tal que $func$ es una función de verificación de $\acute{a}rbol(g)$ para $\acute{a}rbol(h)$.
 \end{theorem}
 
 \begin{proof}
 
-    Sea $n$ un nodo de $árbol(h)$. Para probar que $func$ es una función de verificación de $árbol(g)$ para $árbol(h)$, tenemos que probar que $func(n) = marcado$ si y sólo si $árbol(n)$ es subcoárbol de $árbol(g)$.
+    Sea $n$ un nodo de $\acute{a}rbol(h)$. Para probar que $func$ es una función
+    de verificación de $\acute{a}rbol(g)$ para $\acute{a}rbol(h)$, tenemos que
+    probar que $func(n) = marcado$ si y sólo si $\acute{a}rbol(n)$ es subcoárbol
+    de $\acute{a}rbol(g)$.
 
     \textbf{Necesidad}: En esta parte de la demostración, se supone que el algoritmo ha sido ejecutado y que $func$ marca a $n$. Procedamos por inducción sobre la altura de $g$.
 
-    \emph{Caso base:} Si $g$ tiene altura 0, entonces $g$ es una hoja, por lo que $func$ marca únicamente a las hojas de $árbol(h)$. Como $func$ marca a $n$, entonces $n$ es una hoja. Luego, la función $f=\{(n,g)\}$ es una función de coasignación de $árbol(n)$ a $árbol(g)$, por lo que $árbol(n)$ es subcoárbol de $árbol(n)$.
+    \emph{Caso base:} Si $g$ tiene altura 0, entonces $g$ es una hoja, por lo
+    que $func$ marca únicamente a las hojas de $\acute{a}rbol(h)$. Como $func$
+    marca a $n$, entonces $n$ es una hoja. Luego, la función $f=\{(n,g)\}$ es
+    una función de coasignación de $\acute{a}rbol(n)$ a $\acute{a}rbol(g)$, por
+    lo que $\acute{a}rbol(n)$ es subcoárbol de $\acute{a}rbol(n)$.
 
-    \emph{Paso inductivo:} Si $g$ tiene altura $k > 0$. Supongamos como hipotesis inductiva (H.I.) que, para todo nodo de un coárbol binario, $g'$, de altura $k' < k$ se cumple que, si $func' = $ Función\_de\_coasignación$(g',h)$ marca a un nodo $n'$ de $árbol(h)$, entonces $árbol(n')$ es subcoárbol de $árbol(g')$. Como $g$ no es una hoja, el algoritmo debió de entrar al bloque de instrucciones de las líneas 5 a 11. En las líneas 5 y 6 se crean dos funciones que cumplen con la H.I., ya que $g.izquierda$ y $g.derecha$ tienen ambas una altura menor a $k$. Como $func$ marca a $n$, entonces $n$ debe de cumplir la condición de la línea 8 o la condición de la línea 10. Si se cumple la condición de la línea 8, entonces $v_{izq}(n) = marcado$ o $v_{der}(n) = marcado$, por lo que $árbol(n)$ es subcoárbol de $árbol(g.izquierda)$ o de $árbol(g.derecha)$, y por lo tanto es subcoárbol de $árbol(g)$. De lo contrario, se cumple la condición de la línea 10, entonces $v_{izq}$ marca a $n.izquierda$ o a $n.derecha$ y $v_{der}$ marca al otro. Supongamos sin pérdida de generalidad que $v_{izq}$ marca a $n.izquierda$ y $v_{der}$ marca a $n.derecha$. Sean $f_i:V(árbol(n.izquierda))\rightarrow V(árbol(g.izquierda))$ la función de coasignación de $árbol(n.izquierda)$ a $árbol(g.izquierda)$ y $f_d:V(árbol(n.derecha))\rightarrow V(árbol(g.derecha))$ la función de coasignación de $árbol(n.derecha)$ a $árbol(g.derecha)$, mostremos que la función $f = f_i \cup f_d \cup \{(n,g)\}$ es una función de coasignación de $árbol(n)$ a $árbol(g)$. Como los dominios de $f_i$ y $f_d$ son ajenos y ninguno contiene a $n$, entonces $f$ es una función. Como los rangos de $f_i$ y $f_d$ son ajenos, ninguno contiene a $g$ y tanto $f_i$ como $f_d$ son inyectivas, entonces $f$ es inyectiva. Por otra parte, por la condición de la línea 10, sabemos que $n.etiqueta = g.etiqueta$. También sabemos que, sea $x \in V(árbol(n.izquierda))$, si $x$ es una hoja, entonces $f(x) = f_i(x)$ es una hoja y si no, entonces $x.etiqueta = f_i(x).etiqueta = f(x).etiqueta$. Análogamente para un $y \in V(árbol(n.derecha))$ y $f_d$. Finalmente, si $n$ es el ancestro común más profundo de dos nodos $z_1$ y $z_2$, entonces $z_1$ es descendiente de $n.derecha$ y $z_2$ es descendiente de $n.izquierda$ o viceversa. Supongamos lo primero sin pérdida de generalidad. Luego, por la condición de la línea 10, $v_{izq}$ marca a uno y $v_{der}$ marca al otro. Supongamos sin pérdida de generalidad que $v_{izq}$ marca a $z_1$ y $v_{der}$ marca a $z_2$. Entonces, $f(z_1) = f_i(z_1) \in V(árbol(g.izquierda))$ y $f(z_2) = f_i(z_2) \in V(árbol(g.derecha))$, por lo que el ancestro común más profundo de $f(z_1)$ y $f(z_2)$ es $g = f(n)$. Así, $f$ es una función de coasignación de $árbol(n)$ a $árbol(g)$ y $árbol(n)$ es subcoárbol de $árbol(g)$.
+    \emph{Paso inductivo:} Si $g$ tiene altura $k > 0$. Supongamos como
+    hipotesis inductiva (H.I.) que, para todo nodo de un coárbol binario, $g'$,
+    de altura $k' < k$ se cumple que, si $func' = $
+    Función\_de\_coasignación$(g',h)$ marca a un nodo $n'$ de
+    $\acute{a}rbol(h)$, entonces $\acute{a}rbol(n')$ es subcoárbol de
+    $\acute{a}rbol(g')$. Como $g$ no es una hoja, el algoritmo debió de entrar
+    al bloque de instrucciones de las líneas 5 a 11. En las líneas 5 y 6 se
+    crean dos funciones que cumplen con la H.I., ya que $g.izquierda$ y
+    $g.derecha$ tienen ambas una altura menor a $k$. Como $func$ marca a $n$,
+    entonces $n$ debe de cumplir la condición de la línea 8 o la condición de la
+    línea 10. Si se cumple la condición de la línea 8, entonces $v_{izq}(n) =
+    marcado$ o $v_{der}(n) = marcado$, por lo que $\acute{a}rbol(n)$ es
+    subcoárbol de $\acute{a}rbol(g.izquierda)$ o de $\acute{a}rbol(g.derecha)$,
+    y por lo tanto es subcoárbol de $\acute{a}rbol(g)$. De lo contrario, se
+    cumple la condición de la línea 10, entonces $v_{izq}$ marca a $n.izquierda$
+    o a $n.derecha$ y $v_{der}$ marca al otro. Supongamos sin pérdida de
+    generalidad que $v_{izq}$ marca a $n.izquierda$ y $v_{der}$ marca a
+    $n.derecha$. Sean $f_i:V(\acute{a}rbol(n.izquierda))\rightarrow
+    V(\acute{a}rbol(g.izquierda))$ la función de coasignación de
+    $\acute{a}rbol(n.izquierda)$ a $\acute{a}rbol(g.izquierda)$ y
+    $f_d:V(\acute{a}rbol(n.derecha))\rightarrow V(\acute{a}rbol(g.derecha))$ la
+    función de coasignación de $\acute{a}rbol(n.derecha)$ a
+    $\acute{a}rbol(g.derecha)$, mostremos que la función $f = f_i \cup f_d \cup
+    \{(n,g)\}$ es una función de coasignación de $\acute{a}rbol(n)$ a
+    $\acute{a}rbol(g)$. Como los dominios de $f_i$ y $f_d$ son ajenos y ninguno
+    contiene a $n$, entonces $f$ es una función. Como los rangos de $f_i$ y
+    $f_d$ son ajenos, ninguno contiene a $g$ y tanto $f_i$ como $f_d$ son
+    inyectivas, entonces $f$ es inyectiva. Por otra parte, por la condición de
+    la línea 10, sabemos que $n.etiqueta = g.etiqueta$. También sabemos que, sea
+    $x \in V(\acute{a}rbol(n.izquierda))$, si $x$ es una hoja, entonces $f(x) =
+    f_i(x)$ es una hoja y si no, entonces $x.etiqueta = f_i(x).etiqueta =
+    f(x).etiqueta$. Análogamente para un $y \in V(\acute{a}rbol(n.derecha))$ y
+    $f_d$. Finalmente, si $n$ es el ancestro común más profundo de dos nodos
+    $z_1$ y $z_2$, entonces $z_1$ es descendiente de $n.derecha$ y $z_2$ es
+    descendiente de $n.izquierda$ o viceversa. Supongamos lo primero sin pérdida
+    de generalidad. Luego, por la condición de la línea 10, $v_{izq}$ marca a
+    uno y $v_{der}$ marca al otro. Supongamos sin pérdida de generalidad que
+    $v_{izq}$ marca a $z_1$ y $v_{der}$ marca a $z_2$. Entonces, $f(z_1) =
+    f_i(z_1) \in V(\acute{a}rbol(g.izquierda))$ y $f(z_2) = f_i(z_2) \in
+    V(\acute{a}rbol(g.derecha))$, por lo que el ancestro común más profundo de
+    $f(z_1)$ y $f(z_2)$ es $g = f(n)$. Así, $f$ es una función de coasignación
+    de $\acute{a}rbol(n)$ a $\acute{a}rbol(g)$ y $\acute{a}rbol(n)$ es
+    subcoárbol de $\acute{a}rbol(g)$.
 
-     \textbf{Suficiencia}: En esta parte de la demostración se supone que $árbol(n)$ es subcoárbol de $árbol(g)$ y se sigue la ejecución del algoritmo para mostrar que, al final de la misma, $func$ marcará a $n$. Sea $f$ la función de cosignación de $árbol(n)$ a $árbol(g)$, procedamos por inducción sobre la altura de $g$.
+     \textbf{Suficiencia}: En esta parte de la demostración se supone que
+     $\acute{a}rbol(n)$ es subcoárbol de $\acute{a}rbol(g)$ y se sigue la
+     ejecución del algoritmo para mostrar que, al final de la misma, $func$
+     marcará a $n$. Sea $f$ la función de cosignación de $\acute{a}rbol(n)$ a
+     $\acute{a}rbol(g)$, procedamos por inducción sobre la altura de $g$.
 
-    \emph{Caso base:} Si la altura de $g$ es 0, entonces $g$ es una hoja, por lo que se cumple con la condición de la línea 2 y se ejecuta la línea 3, haciendo que $func$ marque todas las hojas de $H$. Como $árbol(n)$ es subcoárbol de $árbol(g)$ y $árbol(g)$ sólo tiene un nodo, entonces $n$ debe de ser una hoja. Luego, $func$ marca a $n$.
+    \emph{Caso base:} Si la altura de $g$ es 0, entonces $g$ es una hoja, por lo
+    que se cumple con la condición de la línea 2 y se ejecuta la línea 3,
+    haciendo que $func$ marque todas las hojas de $H$. Como $\acute{a}rbol(n)$
+    es subcoárbol de $\acute{a}rbol(g)$ y $\acute{a}rbol(g)$ sólo tiene un nodo,
+    entonces $n$ debe de ser una hoja. Luego, $func$ marca a $n$.
 
-    \emph{Paso inductivo:} Si $g$ tiene altura $k > 0$. Supongamos como H.I. que todo coárbol, $g'$, con altura $k' < k$ cumple con que, siendo $n'$ un nodo de $árbol(h)$, si $árbol(n')$ es subcoárbol de $árbol(g')$, entonces $func'=$Función\_de\_coasignación $(g',h)$ marca a $n'$. Como $g$ no es una hoja, el algoritmo ejecuta las líneas 5 y 6 y posteriormente el bloque de las líneas 8 a 11 para cada nodo de $H$. Si $n$ es marcada por $v_{izq}$ o $v_{der}$, entonces se ejecuta la línea 9 y $func$ marca a $n$. En el caso contrario, probemos que se cumple la condición de la línea 10. Mostremos primero que $f(n) = g$ procediendo por contradicción. Supongamos que $f(n) = x$ para algún $x\in V(árbol(g))-\{g\}$. Como $x$ es descendiente de $g$, tiene altura menor a $k$. También sabemos que $f$ es una función de coasignación de $árbol(n)$ a $árbol(x)$, por lo que, por H.I., $n$ debería de ser marcado ya sea por $v_{izq}$ o por $v_{der}$, lo que es una contradicción. Luego, $f(n) = g$, y por lo tanto $n$ no es una hoja y $f(n).etiqueta = g.etiqueta$. Mostremos ahora que tanto $n.izquierda$ como $n.derecha$ son marcados cada uno ya sea por $v_{izq}$ o por $v_{der}$. Sabemos que $f(n.izquierda)$ y $f(n.derecha)$ son descendientes de $r$. Como $f\mid_{V(árbol(n.izquierda))}$ es una función de coasignación de $árbol(n.izquierda)$ a $árbol(f(n.izquierda))$ y $f(n.izquierda) \neq g$ ya que $f$ es inyectiva, entonces $árbol(n.izquierda)$ es subcoárbol de algún descendiente de $g$, al que llamaremos $y$. Como $y$ tiene altura menor a $k$, su función de verificación correspondiente marca a $n.izquierda$ (por H.I.), y por la condición de la línea 8, sus ancestros también lo marcan. Luego $v_{izq}$ o $v_{der}$ marcan a $n.izquierda$. Análogamente para $n.derecha$. Así, tanto $n.izquierda$ como $n.derecha$ están marcados cada uno ya sea en $v_{izq}$ o en $v_{der}$. Mostremos, por último, que uno es marcado po $v_{izq}$ y el otro es marcado por $v_{der}$. Como el ancestro común más profundo de $n.izquierda$ y $n.derecha$ es $n$, y $f(n)=g$, entonces el ancestro común más profundo de $f(n.izquierda)$ y $f(n.derecha)$ debe de ser $g$. Luego, $f(n.izquierda)$ está en una rama de $g$ y $f(n.derecha)$ está en la otra. Supongamos sin pérdida de generalidad que $f(n.izquierda)$ está en la rama izquierda de $g$ y $f(n.derecha)$ está en la rama derecha. Como $f\mid_{V(árbol(n.izquierda))}$ es una función de coasignación de $árbol(n.izquierda)$ a $árbol(g.izquierda)$ y por H.I., entonces $v_{izq}$ marca a $n.izquierda$. De forma análoga, $v_{der}$ marca a $n.derecha$. Concluyendo, como $n.etiqueta = r.etiqueta$ y tanto $n.izquierda$ como $n.derecha$ son marcados uno por $v_{izq}$ y el otro por $v_{der}$, se cumple la condición de la línea 10 y $func$ marca a $n$. Así, al final de la ejecución del algoritmo, $n$ estará marcado.
+    \emph{Paso inductivo:} Si $g$ tiene altura $k > 0$. Supongamos como H.I. que
+    todo coárbol, $g'$, con altura $k' < k$ cumple con que, siendo $n'$ un nodo
+    de $\acute{a}rbol(h)$, si $\acute{a}rbol(n')$ es subcoárbol de
+    $\acute{a}rbol(g')$, entonces $func'=$Función\_de\_coasignación $(g',h)$
+    marca a $n'$. Como $g$ no es una hoja, el algoritmo ejecuta las líneas 5 y 6
+    y posteriormente el bloque de las líneas 8 a 11 para cada nodo de $H$. Si
+    $n$ es marcada por $v_{izq}$ o $v_{der}$, entonces se ejecuta la línea 9 y
+    $func$ marca a $n$. En el caso contrario, probemos que se cumple la
+    condición de la línea 10. Mostremos primero que $f(n) = g$ procediendo por
+    contradicción. Supongamos que $f(n) = x$ para algún $x\in
+    V(\acute{a}rbol(g))-\{g\}$. Como $x$ es descendiente de $g$, tiene altura
+    menor a $k$. También sabemos que $f$ es una función de coasignación de
+    $\acute{a}rbol(n)$ a $\acute{a}rbol(x)$, por lo que, por H.I., $n$ debería
+    de ser marcado ya sea por $v_{izq}$ o por $v_{der}$, lo que es una
+    contradicción. Luego, $f(n) = g$, y por lo tanto $n$ no es una hoja y
+    $f(n).etiqueta = g.etiqueta$. Mostremos ahora que tanto $n.izquierda$ como
+    $n.derecha$ son marcados cada uno ya sea por $v_{izq}$ o por $v_{der}$.
+    Sabemos que $f(n.izquierda)$ y $f(n.derecha)$ son descendientes de $r$. Como
+    $f\mid_{V(\acute{a}rbol(n.izquierda))}$ es una función de coasignación de
+    $\acute{a}rbol(n.izquierda)$ a $\acute{a}rbol(f(n.izquierda))$ y $f(n.izquierda)
+    \neq g$ ya que $f$ es inyectiva, entonces $\acute{a}rbol(n.izquierda)$ es
+    subcoárbol de algún descendiente de $g$, al que llamaremos $y$. Como $y$
+    tiene altura menor a $k$, su función de verificación correspondiente marca a
+    $n.izquierda$ (por H.I.), y por la condición de la línea 8, sus ancestros
+    también lo marcan. Luego $v_{izq}$ o $v_{der}$ marcan a $n.izquierda$.
+    Análogamente para $n.derecha$. Así, tanto $n.izquierda$ como $n.derecha$
+    están marcados cada uno ya sea en $v_{izq}$ o en $v_{der}$. Mostremos, por
+    último, que uno es marcado por $v_{izq}$ y el otro es marcado por $v_{der}$.
+    Como el ancestro común más profundo de $n.izquierda$ y $n.derecha$ es $n$, y
+    $f(n)=g$, entonces el ancestro común más profundo de $f(n.izquierda)$ y
+    $f(n.derecha)$ debe de ser $g$. Luego, $f(n.izquierda)$ está en una rama de
+    $g$ y $f(n.derecha)$ está en la otra. Supongamos sin pérdida de generalidad
+    que $f(n.izquierda)$ está en la rama izquierda de $g$ y $f(n.derecha)$ está
+    en la rama derecha. Como $f\mid_{V(\acute{a}rbol(n.izquierda))}$ es una
+    función de coasignación de $\acute{a}rbol(n.izquierda)$ a
+    $\acute{a}rbol(g.izquierda)$ y por H.I., entonces $v_{izq}$ marca a
+    $n.izquierda$. De forma análoga, $v_{der}$ marca a $n.derecha$. Concluyendo,
+    como $n.etiqueta = r.etiqueta$ y tanto $n.izquierda$ como $n.derecha$ son
+    marcados uno por $v_{izq}$ y el otro por $v_{der}$, se cumple la condición
+    de la línea 10 y $func$ marca a $n$. Así, al final de la ejecución del
+    algoritmo, $n$ estará marcado.
 
 \end{proof}
 
-Dado que, para cada nodo de $G$, se crea una función de verificación cuyo dominio es el conjunto de los nodos de $H$, el tiempo de ejecución del algoritmo crece de la forma $O(\mid V(G) \mid \mid V(H) \mid)$.
+Dado que, para cada nodo de $G$, se crea una función de verificación cuyo
+dominio es el conjunto de los nodos de $H$, el tiempo de ejecución del algoritmo
+crece de la forma $O(\mid V(G) \mid \mid V(H) \mid)$. 
 
 \subsubsection{Determinar si una cográfica es subcográfica de otra}
 
-Haciendo uso del Algoritmo \ref{alg_subcoarbol}, se puede idear otro algoritmo para determinar si una cográfica, $H$ es subgráfica de otra cográfica, $G$, al buscar todas las formas del coárbol binario de $H$ en un solo coárbol binario de $G$.
+Haciendo uso del Algoritmo \ref{alg_subcoarbol}, se puede idear otro algoritmo
+para determinar si una cográfica, $H$ es subgráfica de otra cográfica, $G$, al
+buscar todas las formas del coárbol binario de $H$ en un solo coárbol binario de
+$G$.
 
 \begin{algorithm}[ht!]
 \caption{Es\_subgráfica}
@@ -77,7 +191,7 @@ Haciendo uso del Algoritmo \ref{alg_subcoarbol}, se puede idear otro algoritmo p
 \KwOut{$verdadero$ si la cográfica representada por $H$ es subgráfica de la cográfica representada por $G$. $falso$ en el caso contrario.}
 
 $g\_bin \gets \text{CrearÁrbolBinario}(g)$\;
-$h\_bins \gets \text{las raíces de todos los coárboles binarios correspondientes a } H$\;
+$h\_bins \gets$ las raíces de todos los coárboles binarios correspondientes a $H$\;
 
 \ForEach{bin \textbf{\emph{en}} h\_bins}{
     $f = \text{Función\_de\_coasignación}(g\_bin,bin)$\;
@@ -90,4 +204,41 @@ $\Return\ falso$\;
 
 \end{algorithm}
 
-Como la línea 1 Algoritmo \ref{alg_subgraph} se ejecuta en tiempo $O(\mid V(G) \mid)$, la complejidad temporal de éste depende del número de coárboles binarios correspondientes a $H$ (que crece con mayor rapidez). Sin embargo, si se fija $H$, la complejidad temporal de éste es simplemente  $O(\mid V(G) \mid)$. Fijar $H$ resultará útil cuando se esté resolviendo un problema específico como el de encontrar una obstrucción mínima en una gráfica.
+Como la línea 1 Algoritmo \ref{alg_subgraph} se ejecuta en tiempo $O(\mid V(G)
+\mid)$, la complejidad temporal de éste depende del número de coárboles binarios
+correspondientes a $H$ (que crece con mayor rapidez). Sin embargo, si se fija
+$H$, la complejidad temporal de éste es simplemente  $O(\mid V(G) \mid)$. Fijar
+$H$ resultará útil cuando se esté resolviendo un problema específico como el de
+encontrar una obstrucción mínima en una gráfica. La aplicación de este algoritmo
+en el presente trabajo de tesis es desarrollar algoritmos que nos permitan
+identificar a los elementos de una clase hereditaria de cográficas en tiempo
+lineal. Esto se muestra en el Algoritmo \ref{alg_esta_en_clase}. 
+
+\begin{algorithm}[ht!]
+\caption{Pertenece_a_la_clase}
+\label{alg_esta_en_clase}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz del coárbol de una cográfica $G$.}
+\KwOut{$verdadero$ si $G$ pertenece a la clase hereditaria de cográficas $C$}
+
+$g\_bin \gets \text{CrearÁrbolBinario}(g)$\;
+$C\_bins \gets$ las raíces de todos los coárboles binarios de todas las obstrucciones mínimas de la clase $C$\;
+
+\ForEach{$bin$ \textbf{\emph{en}} $C\_bins$}{
+    $f = \text{Función\_de\_coasignación}(g\_bin,bin)$\;
+    \If{$f(bin) = marcado$}{
+        $\Return\ verdadero$\;
+    }
+}
+
+$\Return\ falso$\;
+
+\end{algorithm}
+
+El Algoritmo \ref{alg_esta_en_clase} es una variación del Algoritmo
+\ref{alg_subgraph} en el que se fija una clase $C$ cuyos elementos se desea
+identificar. Al computar el conjunto de coárboles binarios de cada una de las
+obstrucciones mínimas de $C$ antes de la ejecución del algoritmo
+\ref{alg_esta_en_clase}, la línea 2 del algoritmo se puede ejecutar en tiempo
+constante. Gracias a esto obtenemos un algoritmo que determina si una gráfica
+$G$ pertenece a la clase $C$ en tiempo $O(\mid V(G) \mid)$.
