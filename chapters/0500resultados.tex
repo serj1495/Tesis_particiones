@@ -1,16 +1,45 @@
-
+En este capítulo presentamos el producto de nuestra investigación. La primera
+sección del capítulo tiene como resultado principal un algoritmo capaz de
+determinar si una cográfica pertenece a una clase hereditaria de gráficas fija
+en tiempo lineal. A partir de la segunda sección abordamos el problema
+principal de nuestra tesis, determinar si una cográfica acepta una partición en
+un número dado de gráficas multipartitas completas. Comenzamos realizando un
+amplio estudio de la clase de cográficas que aceptan una partición en dos
+gráficas multipartitas completas, a la que llamamos $M_2$. En la segunda
+sección del capítulo caracterizamos a la clase $M_2$ a través de su conjunto de
+obstrucciones mínimas, proporcionamos un algoritmo para reconocer a sus
+elementos (utilizando el resultado principal de la primera sección) y
+presentamos un algoritmo certificador que no sólo es capaz de reconocer si una
+cográfica $G$ pertenece a  $M_2$, sino que encuentra una partición de $G$ en
+dos gráficas multipartitas completas o una obstrucción mínima de la clase como
+subgráfica inducida de $G$. En la tercera sección estudiamos a las clases
+$(\alpha, \beta)-M_2$, subclases de $M_2$ cuyos elementos aceptan una partición
+en dos gráficas multipartitas completas de tamaños restringidos. El resultado
+principal de esta sección es un algoritmo para encontrar obstrucciones mínimas
+para cualquier clase $(\alpha, \beta)-M_2$. La cuarta y última sección del
+capítulo da un paso en la generalización de los resultados de las secciones
+anteriores. En éste se proporcionan algunas familias de obstrucciones mínimas
+para caracterizar a la clase de cográficas que aceptan una partición en $i$
+gráficas multipartitas completas dado un entero $i \geq 2$.
 
 \section{Términos y algoritmos generales}
-    El presente capítulo tiene como objetivo exponer un conjunto de conceptos y algoritmos cuya utilidad, aunque acotada a las cográficas, no se limita a la clase de cográficas cuyo conjunto de vértices acepta una partición en dos gráficas multipartitas completas.
+    En esta sección se presenta un conjunto de conceptos y algoritmos cuya
+    utilidad, aunque acotada a las cográficas, no se limita a las clase de
+    cográficas que conforman el tema principal de nuestra tesis. El resultado
+    principal de la sección es un algoritmo de tiempo lineal que es capaz de
+    determinar si una cográfica representada por su coárbol pertenece a una
+    clase hereditaria fija de cográficas caracterizada por su conjunto de
+    obstrucciones mínimas.
+    
     \subsection{Coárbol binario}
         \input{chapters/0501CoarbolBinario.tex}
     \subsection{Algoritmo para generar un coárbol binario}
         \input{chapters/0502AlgoBin01.tex}
-    \subsection{Algoritmo para generar todos los coárboles binarios}
+    \subsection{Algoritmo para generar todos los coárboles binarios de una gráfica}
         \input{chapters/0503AlgoBin02.tex}
     \subsection{Subcoárbol}
         \input{chapters/0504Subcoarbol.tex}
-    \subsection{Algoritmo para encontrar una subgráfica en un coárbol} \label{sec_AlgoSub}
+    \subsection{Algoritmo para encontrar obstrucciones mínimas} \label{sec_AlgoSub}
         \input{chapters/0505AlgoSub.tex}
 
 
@@ -52,3 +81,4 @@
     \subsection{Familia $O$ de obstrucciones}
 
     \subsection{Familia $P$ de obstrucciones}
+

@@ -1,14 +1,32 @@
-Tomando como base el concepto de coárbol, podemos imaginar otra estructura de tipo árbol para la representación de las cográficas en la que cada nodo tenga a lo más un número $k$ de hijos. Esta limitante resulta útil para formular algoritmos rápidos en cográficas. El menor valor que puede tomar $k$ es de 2. Este valor será utilizado a lo largo de este capítulo para representar a las cográficas a través de árboles binarios.
+Tomando como base el concepto de coárbol, podemos imaginar otra estructura de
+tipo árbol para la representación de las cográficas en la que cada nodo tenga a
+lo más un número $k$ de hijos. Esta limitante resulta útil para formular
+algoritmos rápidos en cográficas. El menor valor que puede tomar $k$ es de 2.
+Este valor será utilizado a lo largo de este capítulo para representar a las
+cográficas a través de árboles binarios. 
 
 
 \begin{definition}{}
 
-    Sean $G=(V,E)$ una cográfica, $C = \{c_1, c_2, \dots, c_n$\} el conjunto de las componentes conexas de $G$, $D = {d_1, d_2, \dots, d_m}$ el conjunto de las componentes conexas de $\overline{G}$, $(C_1, C_2)$ una partición en dos partes de $C$ y $(D_1, D_2)$ una partición en dos partes de $D$, decimos que el árbol binario arraigado etiquetado, $(T,r)$, es un \textbf{\emph{coárbol binario}} de $G$ si se puede construir de la siguiente manera: Si $G$ consta de un sólo vértice, entonces $T$ sólo contiene a $r$. De lo contrario, si $G$ es conexa, entonces $r$ tiene la etiqueta $1$, uno de los hijos de $r$ es el coárbol binario de $G-D_1$ y el otro es el coárbol binario de $G-D_2$. Y finalmente, si $G$ es inconexa, entonces $r$ tiene la etiqueta $0$, uno de sus hijos es el coárbol binario de $G-C_1$ y el otro el coárbol binario de $G-C_2$.
-
+    Sean $G=(V,E)$ una cográfica, $C = \{c_1, c_2, \dots, c_n$\} el conjunto de
+    las componentes conexas de $G$, $D = \{d_1, d_2, \dots, d_m\}$ el conjunto
+    de las componentes conexas de $\overline{G}$, $(C_1, C_2)$ una partición en
+    dos partes de $C$ y $(D_1, D_2)$ una partición en dos partes de $D$, decimos
+    que el árbol binario arraigado etiquetado, $(T,r)$, es un
+    \textbf{\emph{coárbol binario}} de $G$ si se puede construir de la siguiente
+    manera: Si $G$ consta de un sólo vértice, entonces $T$ sólo contiene a $r$.
+    De lo contrario, si $G$ es conexa, entonces $r$ tiene la etiqueta $1$, uno
+    de los hijos de $r$ es el coárbol binario de $G-D_1$ y el otro es el coárbol
+    binario de $G-D_2$. Y finalmente, si $G$ es inconexa, entonces $r$ tiene la
+    etiqueta $0$, uno de sus hijos es el coárbol binario de $G-C_1$ y el otro el
+    coárbol binario de $G-C_2$.
 
 \end{definition}
 
-Claramente, una cográfica puede ser representada por más de un coárbol binario diferente como se muestra en la Figura \ref{fig_coar_bin01}. Sin embargo, la propiedad de que dos vértices son adyacentes si y sólo si su ancestro común más profundo tiene la etiqueta 1 se mantiene.
+Claramente, una cográfica puede ser representada por más de un coárbol binario
+diferente como se muestra en la Figura \ref{fig_coar_bin01}. Sin embargo, la
+propiedad de que dos vértices son adyacentes si y sólo si su ancestro común más
+profundo tiene la etiqueta 1 se mantiene.
 
 \begin{figure}[ht!]
 \begin{center}
@@ -57,9 +75,9 @@ Claramente, una cográfica puede ser representada por más de un coárbol binari
 
 \end{scope}
 
-
 \end{tikzpicture}
 \end{center}
 \setlength{\abovecaptionskip}{-10pt}
 \caption{(b) y (c) son dos coárboles binarios diferentes que representan a la cográfica (a).}\label{fig_coar_bin01}
 \end{figure}
+

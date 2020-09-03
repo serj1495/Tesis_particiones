@@ -1,4 +1,15 @@
-Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo \ref{alg_coa_bin01}. En este algoritmo un nodo interno con al menos tres hijos, $r$, de un coárbol, se procesa creando un nuevo coárbol binario de la siguiente forma: La raíz del coárbol binario tiene como primer hijo al coárbol binario resultante de procesar al primer hijo de $r$ y como segundo hijo un nodo con la misma etiqueta de $r$ que a su vez tiene como primer hijo al árbol binario resultante de procesar al segundo hijo de $r$ y como segundo hijo un nuevo nodo con la misma etiqueta y así sucesivamente. Cuando sólo quedan los últimos dos hijos de $r$, estos se procesan y los árboles binarios resultantes son los hijos del último nodo creado. El árbol binario resultante es un árbol cargado a la derecha. La Figura \ref{fig_alg_coa_bin01} muestra una ejecución ilustrativa del algoritmo.
+Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo
+\ref{alg_coa_bin01}. En este algoritmo un nodo interno con al menos tres hijos,
+$r$, de un coárbol, se procesa creando un nuevo coárbol binario de la siguiente
+forma: La raíz del coárbol binario tiene como primer hijo al coárbol binario
+resultante de procesar al primer hijo de $r$ y como segundo hijo un nodo con la
+misma etiqueta de $r$ que a su vez tiene como primer hijo al árbol binario
+resultante de procesar al segundo hijo de $r$ y como segundo hijo un nuevo nodo
+con la misma etiqueta y así sucesivamente. Cuando sólo quedan los últimos dos
+hijos de $r$, estos se procesan y los árboles binarios resultantes son los
+hijos del último nodo creado. El árbol binario resultante es un árbol cargado a
+la derecha. La Figura \ref{fig_alg_coa_bin01} muestra una ejecución ilustrativa
+del algoritmo.
 
 \begin{algorithm}[ht!]
 \caption{CrearArbolBinario}
@@ -7,21 +18,21 @@ Podemos obtener un coárbol binario a partir de un coárbol con el Algoritmo \re
 \KwIn{$r$ la raíz del coárbol}
 \KwOut{$r'$ la raíz del coárbol binario}
 
-$r' \gets \text{nuevo nodo de árbol binario}$\;
+$r' \gets $ nuevo nodo de árbol binario\;
 
-\If{$r\ \emph{es un nodo interno} $}{
+\If{$r$ es un nodo interno}{
     $r'.etiqueta = r.etiqueta$\;
     $s \gets r'$\;
     $i \gets 0$\;
     \While{$i < r.children.size - 2$}{
-        $s.primerHijo \gets \text{CrearArbolBinario}(r.hijos[i])$\;
-        $s.segundoHijo \gets \text{nuevo nodo de árbol binario}$\;
-        $s \gets s.segundoHijo$\;
+        $s.izquiera \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+        $s.derecha \gets $ nuevo nodo de árbol binario\;
+        $s \gets s.derecha$\;
         $s.etiqueta \gets r.etiqueta$\;
         $i \gets i+1$\;
     }
-    $s.primerHijo \gets \text{CrearArbolBinario}(r.hijos[i])$\;
-    $s.segundoHijo \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
+    $s.izquiera \gets \text{CrearArbolBinario}(r.hijos[i])$\;
+    $s.derecha \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
 }
 \Return $r'$\;
 
