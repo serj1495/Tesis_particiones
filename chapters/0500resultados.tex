@@ -44,13 +44,26 @@ gráficas multipartitas completas dado un entero $i \geq 2$.
 
 \section{La clase $M_2$}
 
-    En el presente capítulo se desarrolla el tema principal de la tesis, del cual se desprenden el resto de los resultados.
-
+    A partir de esta sección abordamos el problema principal de la tesis, determinar si una cográfica acepta una partición en un número dado de gráficas multipartitas completas. Empezamos por dar nombre a las clases de cográficas que estudiamos, y procedemos con el análisis de una de estas clases que nos servirá de base para estudiar el resto. 
+    
     \begin{definition}
-        La \textbf{\emph{clase $M_2$}} es la clase de cográficas cuyo conjunto de vértices acepta una partición en dos partes tal que cada parte induce una gráfica multipartita completa. %Es decir que $M_2 = \{G \mid G $ es una cográfica y existe una partición de $ V = (A,B) $ tal que $ G(A) $ y $ G(B) $  son gráficas multipartitas completas$\}$.
+        Dado un entero $i\geq 1$, la \textbf{\emph{clase $M_i$}} es la clase de cográficas que contiene una gráfica $G$ si y sólo si $V(G)$ acepta una partición $(A_1, A_2, \dots, A_i)$ tal que $G[A_j]$ es una gráfica multipartita completa para cada $1\leq j \leq i$.  Decimos que $(A_1, A_2, \dots, A_i)$ es una $M_i$-partición de $G$.
     \end{definition}
 
-    Claramente, $M_2$ es una clase hereditaria, pues si tomamos una gráfica de esta clase y sustraemos uno de sus vértices, de cualquiera de sus dos partes, dicha parte seguirá siendo una gráfica multipartita completa. Al ser una clase hereditaria, $M_2$ puede ser caracterizada por un conjunto de obstrucciones mínimas. También se puede decidir si una cográfica pertenece a ésta en tiempo lineal \cite{unknown}.
+    Dado que las gráficas multipartitas completas conforman una clase hereditaria de gráficas, es claro toda clase $M_i$ es una clase hereditaria de gráficas, pues si tomamos uno de sus elementos $G$ que tiene una $M_i$-partición $(A_1, A_2, \dots, A_i)$ y sustraemos uno de sus vértices $x$, dicho vértice será elemento de algún $A_j$ con $1\leq j \leq i$. Como $G[A_j]-\{x\}$ sigue siendo una gráfica multipartita completa, entonces $G-\{x\}$ sigue siendo un elemento de $M_i$. 
+    
+    Dado que toda clase $M_i$ es una clase hereditaria de gráficas, cada una de éstas puede se caracterizadas por un conjunto de obstrucciones mínimas y se puede identificar a sus elementos en tiempo lineal con el Algoritmo \ref{alg_esta_en_clase}. Una característica de estas clases que nos será de utilidad es que son cerradas bajo la unión completa (\ref{lema_union_completa}). 
+    
+    \begin{lemma}
+    \label{lema_union_completa}
+    Sea $i$ un entero mayor o igual a 2, la clase $M_i$ es cerrada bajo la unión completa.
+    \end{lemma}
+    Sean $G,H\in M_i$, sabemos que existen $M_i$-particiones $(A_1,A_2,\dots, A_i)$ y $(B_1,B_2, \dots, B_i)$ de $G$ y $H$ respectivamente. Mostremos que $P = (A_1\cup B_1, A_2\cup B_2, \dots, A_i \cup B_i)$ es una $M_i$-partición de $G\oplus H$.
+    \begin{proof}
+    Claramente, cada uno de los vértices de $G \oplus H$ se encuentra en exactamente uno de los elementos de $P$. Así, $P$ es una partición de los vértices de $G \oplus H$. Luego, como la unión completa de gráficas multipartitas completas es una gráfica multipartita, tenemos que $(G\oplus H)[A_j\cup B_j] = G[A_j]\oplus G[B_j]$ es una gráfica multipartita completa para cualquier $1\le j \le i$. Así, $P$ es una $M_i$ partición de $G \oplus H$ y $G \oplus H\in M_i$.
+    \end{proof}
+    
+    Notemos que la clase $M_1$ es la clase de las gráficas multipartitas completas. En la presente sección nos enfocaremos en la clase $M_2$, que es la más pequeña de las clases $M_i$ después de $M_1$ (que ha sido ampliamente estudiada). Caracterizamos a $M_2$ a través de su conjunto de obstrucciones mínimas, proporcionamos un algoritmo de tiempo lineal para identificar a sus elementos y presentamos un algoritmo certificador que no sólo determina si una gráfica $G$ pertenece a $M_2$, sino que colorea las hojas de su coárbol indicando si se encontró una $M_2$-partición de $G$ o una obstrucción mínima de la clase como subgráfica inducida de $G$.
 
     \subsection{Obstrucciones mínimas}
         \input{chapters/0506ObstruccionesM2.tex}
