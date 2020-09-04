@@ -79,7 +79,17 @@ coárboles binarios.
 \end{lemma}
 
 \begin{proof}
-
+    {\color{red}
+    Revisa esta demostraci\'on.   En particular, al principio, cuando
+    est'as declarando variables, declaras a $f$ como si ya existiera,
+    pero justamente quieres demostrar su existencia.   En lugar de
+    declararla con las dem\'as variables, puedes decir que vamos a
+    definir una funci\'on $f$ con $f \colon V(T_H)\rightarrow V(T_G)$,
+    tal que, etc. y verificaremos que es una coasignaci\'on.   De
+    entrada, no es clara la definici\'on de $f$; parece ser una
+    definici\'on recursiva, de abajo hacia arriba, pero esto tampoco
+    es claro.
+    }
     Supongamos primero que $H$ es una subgráfica inducida de $G$. Sabemos que
     $V(H)\subset V(G)$ y que dos vértices son adyacentes en $H$ si y sólo si
     también son adyacentes en $G$. Sean $v$ y $w$ vértices de $H$, $n_H$ el
@@ -110,14 +120,14 @@ coárboles binarios.
     $z''$ cuyo ancestro común más profundo es $z$. Así, $f$ es una función de
     coasignación de $T_H$ a $T_G$ y $T_H$ es subcoárbol de $T_G$.
 
-    \textbf{Suficiencia}: Como $T_H$ es subcoárbol de $T_G$, entonces existe
+    Rec\'iprocamente, si $T_H$ es subcoárbol de $T_G$, entonces existe
     una función de coasignación, $f$, de $T_H$ a $T_G$. Luego, sean $h_1$ y
     $h_2$ hojas de $T_H$ y $h_3$ el ancestro común más profundo de $h_1$ y
     $h_2$, tenemos que $f(h_1)$ y $f(h_2)$ son hojas de $T_G$ y que
-    $h_3.etiqueta = f(h_3).etiqueta$. Así, $h_1$ y $h_2$ son adyacentes en $H$
-    si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes en $G$. Luego, $G[f[V(H)]]$
-    es una subgráfica de $G$ que es isomorfa a $H$. Así, $H$ es subgráfica de
-    $G$.
+    $h_3.etiqueta = f(h_3).etiqueta$. Así, $h_1$ y $h_2$ son adyacentes
+    en $H$ si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes en $G$. Luego,
+    $G[f[V(H)]]$ es una subgráfica de $G$ que es isomorfa a $H$. Así, $H$
+    es subgráfica de $G$.
 
 \end{proof}
 
