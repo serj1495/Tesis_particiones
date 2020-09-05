@@ -75,9 +75,10 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
         \item $J = (\overline{P_3} \oplus \overline{P_3}) + K_1$.
     \end{enumerate}
 
-    \textbf{\emph{Necesidad}}: Probemos la contrapositiva de la afirmación. Es
-    decir que si $G$ tiene a $H$, a $I$ o a $J$ como subgráficas inducidas,
-    entonces $G\notin M_2$. Así, basta con que probemos que ninguna de estas
+    Supongamos primero que $G\in M_2$ y procedamos probando la contrapositiva
+    de la afirmación. Es decir, probemos que que si $G$ tiene a $H$, a $I$ 
+    o a $J$ como subgráficas inducidas, entonces $G\notin M_2$. Para ello basta
+    con que probemos que ninguna de estas
     gráficas es un elemento de $M_2$. Procedamos por contradicción. Supongamos
     que existe una $M_2$-partición de $G$. Si ambos vértices del $K_2$ en $H$
     se encuentran en la misma parte, entonces no puede haber ningún vértice
@@ -89,7 +90,9 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
     por los vértices restantes contiene un $K_3$, ésta no es bipartita y no se
     puede dividir en dos conjuntos independientes. Así, $H$ no pertenece a
     $M_2$. El argumento para probar que $I$ no está en $M_2$ es igual al
-    argumento anterior. Por otra parte, como $J$ tiene un vértice aislado, el
+    argumento anterior. 
+    
+    Por otra parte, como $J$ tiene un vértice aislado, el
     resto de sus vértices (mismos que forman un $\overline{P_3} \oplus
     \overline{P_3}$) deben de poder dividirse en dos partes de manera tales que
     una induzca un conjunto independiente y la otra una gráfica multipartita
@@ -101,7 +104,8 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
     partición en un conjunto independiente y una gráfica multipartita completa.
     Luego, $J$ no está en $M_2$.
 
-    \textbf{\emph{Suficiencia}}: Para realizar esta demostración consideramos
+    Recíprocamente, supongamos que $G$ es libre de $H$, $I$ y $J$ y probemos
+    que es elemento de $M_2$. Para ello consideramos
     cuatro casos que son exhaustivos. Los primeros tres casos cubren toda
     situación en la que $G$ es inconexa, mientras que el último caso se cumple
     si $G$ es conexa.
@@ -137,7 +141,11 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
 
     \textbf{Caso base}: $d = 0$. O bien, $y = z$.
 
-    Notemos que $z$ tiene etiqueta 1, pues $Paw$ es una gráfica conexa. Dado que $z$ tiene etiqueta 1, todos sus hijos inducen gráficas multipartitas completas menos uno, $w$, que tiene etiqueta 0. Mostremos por contradicción que todos los hijos de $w$ inducen gráficas multipartitas completas. Supongamos que alguno de los hijos de $w$ contiene un $\overline{P_3}$. Como el nodo más profundo que contiene un $\overline{P_3}$ debe tener etiqueta 0, $w$ tiene un hijo de etiqueta 1 y éste a su vez tiene al menos 2 hijos, uno de los cuales contiene al $\overline{P_3}$ y el otro que tiene al menos un $K_1$. Luego, dicho hijo contiene un $Paw$, lo que es una contradicción. Si $w$ tiene un sólo hijo que no es un vértice, el resto de sus hijos forman un conjunto independiente, $C$. Si eliminamos este conjunto independiente, como el único hijo de $w$ que queda induce una gráfica multipartita completa, entonces $G'[w] - C$ es una gráfica multipartita completa. Luego, $G'[z] - C$ es una unión completa de de gráficas multipartitas completas y por lo tanto una gráfica multipartita completa. De esto se sigue que $G[z]$ acepta una partición en un conjunto independiente, $C$, y una gráfica multipartita completa. Si $w$ tiene al menos dos hijos no triviales, notemos que ninguno de ellos puede contener a $K_3$, o de lo contrario $w$ contendría a $K_2+K_3$ y $G$ no sería libre de $I$. Luego, todos los hijos de $w$ han de inducir gráficas bipartitas, es decir que $w$ induce también una gráfica bipartita. En otras palabras, $G'[w]$ acepta una partición en dos conjuntos independientes. Si sustraemos uno de estos conjuntos independientes, denotado por $D$, entonces $G'[w]-D$ es un conjunto independiente. Luego $G'[z]-D$ es la unión completa de al menos una gráfica multipartita completa y un conjunto independiente. Así, $G'[z]-D$ es una gráfica multipartita completa. Luego, $G'[z]$ acepta una partición en un conjunto independiente, $D$ y una gráfica multipartita completa, $G'[z] - D$.
+    Notemos que $z$ tiene etiqueta 1, pues $Paw$ es una gráfica conexa. Dado que $z$ tiene etiqueta 1, todos sus hijos inducen gráficas multipartitas completas menos uno, $w$, que tiene etiqueta 0. Mostremos por contradicción que todos los hijos de $w$ inducen gráficas multipartitas completas. Supongamos que alguno de los hijos de $w$ contiene un $\overline{P_3}$. Como el nodo más profundo que contiene un $\overline{P_3}$ debe tener etiqueta 0, $w$ tiene un hijo de etiqueta 1 y éste a su vez tiene al menos 2 hijos, uno de los cuales contiene al $\overline{P_3}$ y el otro que tiene al menos un $K_1$. Luego, dicho hijo contiene un $Paw$, lo que es una contradicción. 
+    
+    Si $w$ tiene un sólo hijo que no es un vértice, el resto de sus hijos forman un conjunto independiente, $C$. Si eliminamos este conjunto independiente, como el único hijo de $w$ que queda induce una gráfica multipartita completa, entonces $G'[w] - C$ es una gráfica multipartita completa. Luego, $G'[z] - C$ es la unión completa de varias gráficas multipartitas completas y por lo tanto es una gráfica multipartita completa. De esto se sigue que $G[z]$ acepta una partición en un conjunto independiente, $C$, y una gráfica multipartita completa $G'[z] - C$. 
+    
+    Si $w$ tiene al menos dos hijos no triviales, notemos que ninguno de ellos puede contener a $K_3$, o de lo contrario $w$ contendría a $K_2+K_3$ y $G$ no sería libre de $I$. Luego, todos los hijos de $w$ han de inducir gráficas bipartitas, es decir que $w$ induce también una gráfica bipartita. En otras palabras, $G'[w]$ acepta una partición en dos conjuntos independientes. Si sustraemos uno de estos conjuntos independientes, denotado por $D$, entonces $G'[w]-D$ es un conjunto independiente. Luego $G'[z]-D$ es la unión completa de al menos una gráfica multipartita completa y un conjunto independiente. Así, $G'[z]-D$ es una gráfica multipartita completa. Luego, $G'[z]$ acepta una partición en un conjunto independiente, $D$ y una gráfica multipartita completa, $G'[z] - D$.
 
     Como en todos los casos $z$ acepta una partición en un conjunto independiente y una gráfica multipartita completa y $y = z$, entonces $y$ acepta la misma partición.
 
@@ -146,7 +154,6 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
     Notemos que $d$ siempre será par, ya que tanto $y$ como $z$ son nodos con etiqueta 1. Sea $k$ un entero tal que $k \geq 2$, supongamos, como hipótesis inductiva, que si $G''$ es una cográfica conexa libre de $H, I$ y $J$ tal que la distancia, $d'$, entre la raíz, $y'$ de su coárbol y el nodo más profundo que contiene un $Paw$ es igual a $k-2$, entonces $G''$ acepta una partición en un conjunto independiente y una gráfica multipartita completa.
 
     Dado que $G'$ es libre de $J$, todos los hijos de $y$ menos uno inducen gráficas multipartitas completas. Dicho hijo, $v$, tiene etiqueta 0 y al menos uno de sus hijos debe de contener un $Paw$. Denotemos a dicho hijo como $u$. El resto de los hijos de $v$ deben de ser vértices, o de lo contrario, $G'[v]$ contendría a $K_2 + K_3$ como subgráfica inducida, por lo que $G$ contendría a $I$. Denotemos a este conjunto de vértices como $E$. Luego, $G'[u]$  es una cográfica que cumple con las condiciones de la hipótesis inductiva, por lo que acepta una partición en un conjunto independiente, $D$ y una gráfica multipartita completa. Si eliminamos de $u$ los vértices de $D$, entonces teneos que $G'[u] - D$ es una gráfica multipartita completa. Luego, si eliminamos también los vértices de $E$ de $G'[v]$, tenemos que $(G'[v]-D)-E$ es una gráfica multipartita completa. Luego, $(G'-D)-E$ es una unión completa de gráficas multipartitas completas por lo que también es una gráfica multipartita completa. Notemos que, dado que $v$ tiene etiqueta 0, no existen aristas entre los vértices en $D$ y los vértices en $E$, es decir que $D \cup E$ es un conjunto independiente. Así, $G'$ acepta una partición en un conjunto independiente, $D \cup E$ y una gráfica multipartita completa, $(G' - D) - E$.
-
 
     Como $G'$ acepta una partición en un conjunto independiente y una gráfica multipartita completa, entonces $G \in M_2$.
 
@@ -157,7 +164,6 @@ El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha clas
 
     \emph{Caso 4:} $G$ es conexa.
 
-    Dado que toda cográfica inconexa libre de $H$, $I$ y $J$ acepta una partición en dos gráficas multipartitas completas y una cográfica conexa es o un vértice aislado o una unión de cográficas inconexas y la clase $M_2$ es cerrada bajo la unión completa (Lema \ref{lema_union_completa}), se sigue que $G \in M_2$.
+    Dado que toda cográfica inconexa libre de $H$, $I$ y $J$ acepta una partición en dos gráficas multipartitas completas y una cográfica conexa es o un vértice aislado o una unión completa de cográficas inconexas y la clase $M_2$ es cerrada bajo la unión completa (Lema \ref{lema_union_completa}), se sigue que $G \in M_2$.
 
 \end{proof}
-
