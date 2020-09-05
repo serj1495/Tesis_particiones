@@ -79,24 +79,23 @@ coárboles binarios.
 \end{lemma}
 
 \begin{proof}
-    {\color{red}
-    Revisa esta demostraci\'on.   En particular, al principio, cuando
-    est'as declarando variables, declaras a $f$ como si ya existiera,
-    pero justamente quieres demostrar su existencia.   En lugar de
-    declararla con las dem\'as variables, puedes decir que vamos a
-    definir una funci\'on $f$ con $f \colon V(T_H)\rightarrow V(T_G)$,
-    tal que, etc. y verificaremos que es una coasignaci\'on.   De
-    entrada, no es clara la definici\'on de $f$; parece ser una
-    definici\'on recursiva, de abajo hacia arriba, pero esto tampoco
-    es claro.
-    }
+    
     Supongamos primero que $H$ es una subgráfica inducida de $G$. Sabemos que
     $V(H)\subset V(G)$ y que dos vértices son adyacentes en $H$ si y sólo si
-    también son adyacentes en $G$. Sean $v$ y $w$ vértices de $H$, $n_H$ el
-    ancestro común más profundo de $v$ y $w$ en $T_H$, $n_G$ el ancestro común
-    más profundo de $v$ y $w$ en $T_G$ y $f:V(T_H)\rightarrow V(T_G)$ una
-    función tal que $f(v)=v$ y $f(n_H) = n_G$, mostremos que $f$ es una función
-    de coasignación de $T_H$ a $T_G$. Sean $x,y,z\in V(T_H)$. Si $x$ es una
+    también son adyacentes en $G$. Sean $v$ y $w$ vértices diferentes de $H$,
+    $n_H$ el ancestro común más profundo de $v$ y $w$ en $T_H$, $n_G$ el
+    ancestro común más profundo de $v$ y $w$ en $T_G$ y $f$ un subconjunto de
+    $V(H)\times V(G)$ tal que $(v,v)\in f$ y $(n_H, n_G)\in f$, mostremos que
+    $f$ es una función de coasignación de $T_H$ a $T_G$. Empecemos por mostrar
+    que $f$ es una función. Dado que todo nodo de $T_H$ es una hoja o, en su
+	defecto, es el ancestro común más profundo de dos hojas, cada uno de estos
+	será el primer elemento de al menos una pareja elemento de $f$. Como $n_G$
+	y $n_H$ son únicos para cualesquiera $v$ y $w$, entonces si una pareja 
+	$(g,h)$ es elemento de $f$, entonces ésta es la única pareja que tiene a 
+	$g$ como primer elemento y a $h$ como segundo elemento. Así, 
+	$f:V(T_H)\rightarrow V(T_G)$ es una función. 
+    
+    Sean $x,y,z\in V(T_H)$. Si $x$ es una
     hoja de $T_H$, es claro que $f(x) = x$ es una hoja de $T_G$. Si no,
     entonces $x$ es el ancestro común más profundo de algún par de hojas de
     $T_H$ y tiene etiqueta 1 si y sólo si éstas son adyacentes en $H$, lo que
