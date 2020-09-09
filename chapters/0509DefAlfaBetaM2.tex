@@ -1,0 +1,17 @@
+En esta subsección, presentamos el concepto de conjunto de parejas mínimas, que nos ayudará a determinar si una cográfica $G$ pertenece a una clase $(\alpha, \beta)$-$M_2$ sin tener que revisar todas las posibles $M_2$-particiones de $G$.
+
+Sean $P_1=(\alpha_1, \beta_1)$ y $P_2=(\alpha_2, \beta_2)$ parejas de enteros tales que $0 < \alpha_1 \le \beta_1$ y $0 < \alpha_2 \le \beta_2$. Decimos que $P_1$ \emph{\textbf{domina}} a $P_2$ si $\alpha_1 \geq \alpha_2$ y $\beta_1 \geq \beta_2$. Notemos que ésta es una relación transitiva.
+
+Sea $G$ una gráfica en $M_2$, denotamos por $S(G)$ al conjunto de todas las parejas ordenadas de enteros $(\alpha, \beta)$ tales que $G$ acepta una $M_2$-partición de tamaño $(\alpha, \beta)$. 
+
+Sea $G$ una gráfica en $M_2$, el \textbf{\emph{conjunto de parejas mínimas}} de $G$, denotado por $\mu(G)$, es el conjunto de todas las parejas $(\alpha, \beta)\in S(G)$ tales que, para cualquier otro $(\alpha', \beta')\in S(G)$, $(\alpha, \beta)$ no domina a $(\alpha', \beta')$.
+
+\begin{lemma}
+Sean $G$ una gráfica en $M_2$ y $(\alpha, \beta)$ una pareja de enteros mayores a cero. $G$ pertenece a la clase $(\alpha, \beta)$-$M_2$ si y sólo si existe una pareja de enteros $(\alpha', \beta')\in m(G)$ tal que $(\alpha, \beta)$ domina a $(\alpha', \beta')$.
+\end{lemma}
+
+\begin{proof}
+Supongamos primero que $G\in (\alpha, \beta)\text{-}M_2$. Sabemos que $G$ acepta una $M_2$-partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por $\alpha'$ conjuntos independientes con $\alpha' \le \alpha$ y $G[B]$ es una gráfica multipartita completa formada por $\beta'$ conjuntos independientes con $\beta' \le \beta$. Como $(A,B)$ es una $M_2$-partición de $G$, entonces $(\alpha', \beta')\in S(G)$. Supongamos sin pérdida de generalidad (dado que la dominación es una relación transitiva) que $(\alpha', \beta')\in \mu(G)$. Luego, como $\alpha' \le \alpha$ y $\alpha' \le \alpha$, entonces $(\alpha, \beta)$ domina a $(\alpha', \beta') \in \mu(G)$. 
+
+Recíprocamente. Como $(\alpha', \beta')\in m(G)$, entonces $(\alpha', \beta')\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(\alpha', \beta')$. Como $(\alpha, \beta)$ domina a $(\alpha', \beta')$, entonces $G[A]$ es una gráfica multiaprtita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multiaprtita completa formada por a lo más $\beta$ conjuntos independientes. Así, $G\in (\alpha, \beta)\text{-}M_2$.
+\end{proof}
