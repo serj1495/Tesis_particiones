@@ -1,10 +1,11 @@
-Sean $\alpha$ y $\beta$ enteros tales que $0 < \alpha \le \beta$, la \emph{\textbf{clase $(\alpha, \beta)-M_2$}} es la clase de cográficas que contiene a una gráfica $G$ si y sólo si su conjunto de vértices acepta una partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multipartita completa formada por a lo más $\beta$ conjuntos independientes. Decimos que $(A,B)$ es una $M_2$-partición de $G$ de tamaño $(\alpha, \beta)$.
+Sean $\alpha$ y $\beta$ enteros tales que $0 < \alpha \le \beta$, una gr\'afica $G$ es\'a en la \emph{\textbf{clase $(\alpha, \beta)-M_2$}}  si y sólo si su conjunto de vértices acepta una partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multipartita completa formada por a lo más $\beta$ conjuntos independientes. Decimos que $(A,B)$ es una $M_2$-partición de $G$ de tamaño $(\alpha, \beta)$.
 
-Notemos que la clase $M_2$ es la clase $(\infty, \infty)$-$M_2$ y que la clase $(1,1)$-$M_2$ es la clase de todas las cográficas bipartitas. En la demostración del Teorema \ref{teo_obsts_m2} hablamos de las cográficas que aceptan una partición en un conjunto independiente y una gráfica multipartita completa. Es decir, las gráficas de la clase $(1,\infty)$-$M_2$. A partir de esta demostración, podemos encontrar las obstrucciones mínimas de la clase. É stas nos serán de ayuda para entender el comportamiento de las clases $(1,\beta)$-$M_2$.
+Notemos que la clase $M_2$ es la clase $(\infty, \infty)$-$M_2$ y que la clase $(1,1)$-$M_2$ es la clase de todas las cográficas bipartitas. En la demostración del Teorema \ref{teo_obsts_m2} % No es común referir resultados futuros.   Quizá bastaría mencionar el contexto en el que esta observación será útil más adelante.
+ hablamos de las cográficas que aceptan una partición en un conjunto independiente y una gráfica multipartita completa. Es decir, las gráficas de la clase $(1,\infty)$-$M_2$. A partir de esta demostración, podemos encontrar las obstrucciones mínimas de la clase. Éstas nos serán de ayuda para entender el comportamiento de las clases $(1,\beta)$-$M_2$.
 
 \begin{lemma}
 
-Sea $G$ una cográfica, $G\in(1,\infty)$-$M_2$ si y sólo si $G$ es libre de las gráficas de la Figura \ref{obsts_1infM2}. 
+Sea $G$ una cográfica, $G\in(1,\infty)$-$M_2$ si y sólo si $G$ es libre de las gráficas de la Figura \ref{obsts_1infM2}.
 
 \end{lemma}
 
@@ -49,26 +50,23 @@ Sea $G$ una cográfica, $G\in(1,\infty)$-$M_2$ si y sólo si $G$ es libre de las
 
 \begin{proof}
 
-Notemos que $H'=K_2 + K_3$ y $J'=\overline{P_3} \oplus \overline{P_3}$. 
+Notemos que $H'=K_2 + K_3$ y $J'=\overline{P_3} \oplus \overline{P_3}$.
 
-Supongamos primero que $G \in (1,\infty)$-$M_2$. Veamos que $H'\notin (1,\infty)$-$M_2$. Procedamos por contradicción. Supongamos que $H' \in (1,\infty)$-$M_2$. Luego, $H$ (Figura \ref{obsts_M2}) también está en $(1,\infty)$-$M_2$ y por lo tanto $H\in M_2$, lo que es una contradicción. Así,  $H'\notin (1,\infty)$-$M_2$. Análogamente para $J'$. Como ni $H'$ ni $J'$ están en $(1,\infty)$-$M_2$ y toda subgráfica inducida de $G$ sí lo está, $G$ es libre de $H'$ y $J'$.
+Supongamos primero que $G \in (1,\infty)$-$M_2$. Veamos que $H'\notin (1,\infty)$-$M_2$. Procedamos por contradicción. Supongamos que $H' \in (1,\infty)$-$M_2$. Luego, $H$ (Figura \ref{obsts_O_M3}) también está en $(1,\infty)$-$M_2$ y por lo tanto $H\in M_2$, lo que es una contradicción. Así,  $H'\notin (1,\infty)$-$M_2$. Análogamente para $J'$. Como ni $H'$ ni $J'$ están en $(1,\infty)$-$M_2$ y toda subgráfica inducida de $G$ sí lo está, $G$ es libre de $H'$ y $J'$.
 
 Recíprocamente, si $G$ es libre de $H'$ y $J'$, mostremos que $G\in (1,\infty)$-$M_2$. Sea $r$ la raíz del coárbol de $G$. Consideremos los siguientes casos que son exhaustivos.
 
-\emph{Caso 1}: $G$ es conexa. 
+Supongamos primero que $G$ es conexa.  Si $G$ es un vértice aislado, es claro que $G \in (1,\infty)$-$M_2$. En el caso contrario, como $G$ es libre de $J'$, todos los hijos de $r$ representan gráficas multipartitas completas. Luego, $G$ es la unión completa de varias gráficas multipartitas completas, por lo que $G$ es multipartita completa. Así, $G \in (1,\infty)$-$M_2$.
+% Todos quizá excepto uno, ¿no?
 
-Si $G$ es un vértice aislado, es claro que $G \in (1,\infty)$-$M_2$. En el caso contrario, como $G$ es libre de $J'$, todos los hijos de $r$ representan gráficas multipartitas completas. Luego, $G$ es la unión completa de varias gráficas multipartitas completas, por lo que $G$ es multipartita completa. Así, $G \in (1,\infty)$-$M_2$.
+Si $G$ es una gr\'afica vac\'ia, entoces es claro que $G \in (1,\infty)$-$M_2$.
 
-\emph{Caso 2}: $G$ es un conjunto independiente inconexo. 
+Como tercer caso, consideremos que $G$ es inconexa y tiene exactamente una componente no trivial y al menos una trivial. Entonces, del Caso 2 de la segunda parte de la demostración del Teorema \ref{teo_obsts_m2}, se sigue que $G \in (1,\infty)$-$M_2$.
+% ¿La referencia es correcta?   Creo que sí, pero en los warnings,
+% que son más importantes de lo que parece, tienes etiquetas
+% definidas en múltiples ocasiones.  Revísalas para que todo tenga
+% sentido.
 
-Es claro que $G \in (1,\infty)$-$M_2$.
-
-\emph{Caso 3}: $G$ es inconexa y tiene exactamente una componente no trivial y al menos una trivial. 
-
-Del Caso 2 de la segunda parte de la demostración del Teorema \ref{teo_obsts_m2} se sigue que $G \in (1,\infty)$-$M_2$.
-
-\emph{Caso 4}: $G$ tiene al menos dos componentes no triviales. 
-
-Como $G$ es libre de $H'$, entonces cada componente de $G$ es libre de $K_3$. Es decir que cada componente de $G$ es bipartita. Luego, $G$ es bipartita. Así, $G \in (1,1)$-$M_2$, por lo que $G \in (1,\infty)$-$M_2$. 
+Finalmente, supongamos que $G$ tiene al menos dos componentes no triviales. Como $G$ es libre de $H'$, entonces cada componente de $G$ es libre de $K_3$. Es decir que cada componente de $G$ es bipartita. Luego, $G$ es bipartita. Así, $G \in (1,1)$-$M_2$, por lo que $G \in (1,\infty)$-$M_2$.
 
 \end{proof}
