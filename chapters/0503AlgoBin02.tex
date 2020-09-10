@@ -1,33 +1,50 @@
-\iffalse
+Podemos obtener todos los coárboles binarios correspondientes a un coárbol
+haciendo uso del Algoritmo \ref{alg_coa_bin02}. Este algoritmo recibe como
+entrada la raíz del coárbol, $r$, y devuelve un conjunto de nodos, $S$, cada
+uno de cuyos elementos es la raíz de un coárbol binario. En el algoritmo,
+los nodos internos son procesados creando un nuevo coárbol binario para cada
+posible partición del conjunto de hijos de dicho nodo. Al procesar las hojas,
+simplemente se crea un nuevo nodo que será una hoja en los árboles binarios.
 
-Podemos obtener todos los coárboles binarios correspondientes a un coárbol haciendo uso del Algoritmo \ref{alg_coa_bin02}. Este algoritmo recibe como entrada la raíz del coárbol, $r$, y devuelve un conjunto de nodos, $S$, cada uno de cuyos elementos es la raíz de un coárbol binario. Los nodos internos son procesados creando un nuevo coárbol binario para cada posible partición del conjunto de hijos de dicho nodo. Al procesar las hojas, simplemente se crea un nuevo nodo que será una hoja en los árboles binarios. 
-
-
-\begin{algorithm}[h]
+\begin{algorithm}[ht!]
 \caption{CrearÁrbolesBinarios}
 \label{alg_coa_bin02}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-\KwIn{$r$ la raíz de un coárbol}
-\KwOut{$S = \{r'_1, r'_2, \dots, r'_n\}$ con $r_i$ la raíz de un coárbol binario}
+\KwIn{$r$ la raíz de un coárbol $T$}
+\KwOut{$S = \{r'_1, r'_2, \dots, r'_n\}$ con $r_i$ la raíz de un coárbol binario de $T$ para todo $1 \le i \le n$}
 
-$r' \gets \text{nuevo nodo de árbol binario}$\;
-
-\If{$r\ \emph{es un nodo interno} $}{
-    $r'.etiqueta = r.etiqueta$\;
-    $s \gets r'$\;
-    $i \gets 0\;
-    \While{$i < r.children.size - 2$}{
-        $s.primerHijo = \text{CrearArbolBinario}(r.hijos[i])$\;
-        $s.segundoHijo \gets \text{nuevo nodo de árbol binario}$\;
-        $s \gets s.segundoHijo$\;
-        $s.etiqueta = r.etiqueta$\;
-        $i = i+1$\;
-    }
-    $s.primerHijo = \text{CrearArbolBinario}(r.hijos[i])$\;
-    $s.segundoHijo = \text{CrearArbolBinario}(r.hijos[i+1])$\;
+$S \gets \varnothing$\;
+\If{$r$ es una hoja}{
+    Agregar un nuevo nodo de coárbol binario a $S$\;
 }
-\Return $r'$\;
-    
+\Else{
+    \ForEach{partición en dos partes $(A,B)$ del conjunto de hijos de $r$}{
+        \If{$A$ tiene sólo un elemento $a$}{
+            $L \gets \text{CrearÁrbolesBinarios(\emph{a})}$\;
+        }
+        \Else{
+            $a'\gets$ nuevo nodo de coárbol con la etiqueta de $r$\;
+            Agregar todos los elementos de $A$ como hijos de $a'$\;
+            $L \gets \text{CrearÁrbolesBinarios(\emph{a'})}$\;
+        }
+        \If{$B$ tiene sólo un elemento $b$}{
+            $R \gets \text{CrearÁrbolesBinarios(\emph{b})}$\;
+        }
+        \Else{
+            $b'\gets$ nuevo nodo de coárbol con la etiqueta de $r$\;
+            Agregar todos los elementos de $B$ como hijos de $b'$\;
+            $R \gets \text{CrearÁrbolesBinarios(\emph{b'})}$\;
+        }
+        \ForEach{$l\in L$ \textbf{y cada} $r \in R$}{
+            $s\gets $ nuevo nodo de coárbol binario con la etiqueta de $r$\;
+            $s.izquierda \gets l$\;
+            $s.derecha \gets r$\;
+            Agregar $s$ a $S$\;
+        }
+    }
+}
+\Return $S$\;
+
 \end{algorithm}
 
-\fi
+Dado que el número de coárboles binarios que representan a una gráfica crece de forma exponencial, el tiempo en el que se pueden generar dichos coárboles binarios crece al menos de forma exponencial. El Algoritmo \ref{alg_coa_bin02} no es óptimo, ya que todos los nodos con excepción de la raíz y las hojas se procesan múltiples veces. Esto no repercute en el resultado principal de la sección, el Algoritmo \ref{alg_esta_en_clase}, que sirve para identificar a los elementos de una clase hereditaria de cográficas $C$, ya que, aunque se requiere encontrar todos los coárboles binarios de cada una de las obstrucciones mínimas de $C$, se contempla que este cómputo se realice antes de la ejecución del algoritmo.

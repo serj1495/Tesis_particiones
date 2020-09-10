@@ -1,4 +1,4 @@
-Si bien, el Algoritmo \ref{alg_decision} es capaz de identificar a las cográficas que pertenece a la clase $M_2$, no es posible determinar a partir de éste cuáles son las dos partes en las que se puede dividir una gráfica de la clase. La presente sección muestra un algoritmo (Algoritmo \ref{alg_cert_m2}) que, dada una cográfica representada por su coárbol, devuelve una coloración de las hojas de este último. Si la gráfica pertenece a $M_2$, las hojas tendrán dos colores, $verde$ y $azul$, cada uno de los cuales corresponde a una parte de la partición en dos gráficas multipartitas completas. En el caso contrario, las hojas correspondientes a los vértices que forman una obstrucción mínima tendrán un color que indique de qué obstrucción mínima se trata ($amarillo$ para $H$, $anaranjado$ para $I$ y $rojo$ para $J$). El Algoritmo \ref{alg_cert_m2} hace uso de los Algoritmos \ref{alg_cert_caso1} y \ref{alg_cert_caso2}, que funcionan de la misma manera para casos específicos del problema. La correctitud de estos algoritmo se sigue de la demostración del Teorema \ref{teo_obsts_m2}
+Si bien, el Algoritmo \ref{alg_decision} es capaz de identificar a las cográficas que pertenecen a la clase $M_2$, no es posible determinar a partir de éste cuáles son las dos partes en las que se puede dividir una gráfica de la clase. La presente subsección muestra un algoritmo (Algoritmo \ref{alg_cert_m2}) que, dada una cográfica $G$ representada por su coárbol $T$, devuelve una coloración de las hojas de este último. Si $G$ pertenece a $M_2$, cada una de las hojas de $T$ tendrá uno de dos colores, $verde$ o $azul$. Cada uno de estos cuales corresponde a una parte de la $M_2$-partición de $G$. En el caso contrario, las hojas de $T$ correspondientes a los vértices que forman una obstrucción mínima tendrán un color que indique de qué obstrucción mínima se trata ($amarillo$ para $H$, $anaranjado$ para $I$ y $rojo$ para $J$). El Algoritmo \ref{alg_cert_m2} hace uso de los Algoritmos \ref{alg_cert_caso1} y \ref{alg_cert_caso2}, que funcionan de la misma manera para casos específicos del problema. La correctitud de estos algoritmo se sigue de la demostración del Teorema \ref{teo_obsts_m2}
 
 \subsubsection{Algoritmo para reconocer gráficas bipartitas completas conexas}
 
@@ -10,7 +10,7 @@ El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos
 
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
 \KwIn{$g$, la raíz de un coárbol, $G$}
-\KwOut{Verdadero si la gráfica representada por $G$ es bipartita completa. Falso en el caso contrario. Las hojas de $árbol(g)$ se colorean.}
+\KwOut{Verdadero si la gráfica representada por $G$ es bipartita completa. Falso en el caso contrario. Las hojas de $\acute{a}rbol(g)$ se colorean.}
 
 \If{g \text{es una hoja}}{
     $g.color \gets azul$\;
@@ -19,17 +19,17 @@ El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos
 \ElseIf{$g.etiqueta = 0$}{
     $\Return\ falso$\;
 }
-\ElseIf{$g.hijos.tamaño > 2$}{
+\ElseIf{$g.hijos.tama\tilde{n}o > 2$}{
     Marcar con amarillo: una hoja en cada uno de tres hijos diferentes de $g$\;
     $\Return\ falso$\;
 }
 \Else(\tcp*[h]{Hay exactamente dos hijos}){
-    \If{g.hijos\emph{[0]} \text{es una hoja}}{
+    \If{$g.hijos\emph{[0]}$ es una hoja}{
         $g.hijos[0].color \gets azul$\;
     }
     \Else{
-        \For{gchild \textbf{\emph{en}} g.hijos\emph{[0]}.hijos}{
-            \If{gchild \text{es una hoja}}{
+        \ForEach{$gchild$ \textbf{\emph{en}} $g.hijos\emph{[0]}.hijos$}{
+            \If{$gchild$ es una hoja}{
                 $gchild.color \gets azul$\;
             }
             \Else{
@@ -38,11 +38,11 @@ El Algoritmo \ref{alg_bpc} es un algoritmo que resulta útil para los algoritmos
             }
         }
     }
-    \If{g.hijos\emph{[1]} \text{es una hoja}}{
+    \If{$g.hijos\emph{[1]}$ es una hoja}{
         $g.hijos[1].color \gets verde$\;
     }
     \Else{
-        \For{gchild \textbf{\emph{en}} g.hijos\emph{[1]}.hijos}{
+        \ForEach{$gchild$ \textbf{\emph{en}} $g.hijos\emph{[1]}.hijos$}{
             \If{gchild \text{es una hoja}}{
                 $gchild.color \gets verde$\;
             }
@@ -139,16 +139,16 @@ El algoritmo \ref{alg_cert_caso1} corresponde al $Caso\ 1$ de la demostración d
 
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
 \KwIn{$g$, la raíz de un coárbol con etiqueta 0 y al menos dos hijos que no son hojas}
-\KwOut{Verdadero si $G$ pertenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $árbol(g)$ se colorean.}
+\KwOut{Verdadero si $G$ pertenece a la clase $M_2$. Falso en el caso contrario. Las hojas de $\acute{a}rbol(g)$ se colorean.}
 
-\If{g.hijos.tamaño = 2}{
+\If{$g.hijos.tama\tilde{n}o = 2$}{
     \For{gchild \textbf{\emph{en}} g.hijos\emph{[0]}}{
-        \If{gchild \text{es una hoja}}{
+        \If{$gchild$ es una hoja}{
             $gchild.color \gets azul$\;
         }
         \Else{
-            \For{ggchild \textbf{\emph{en}} gchild.hijos}{
-                \If{ggchild \text{es una hoja}}{
+            \ForEach{$ggchild$ \textbf{\emph{en}} $gchild.hijos$}{
+                \If{$ggchild$ es una hoja}{
                     $gchild.color \gets azul$\;
                 }
                 \Else(\tcp*[h]{Se marca la obstrucción $I$}){
@@ -162,8 +162,8 @@ El algoritmo \ref{alg_cert_caso1} corresponde al $Caso\ 1$ de la demostración d
     Repetir el procedimiento de las líneas 2 a 11 para $g.hijos[1]$, pero marcando con color $verde$ en vez de $azul$\;
 }
 \Else{
-    \For{child \textbf{\emph{en}} g.hijos}{
-        \If{\emph{Es\_bipartita\_completa(}$child$\emph{)} = falso}{
+    \For{$child$ \textbf{\emph{en}} $g.hijos$}{
+        \If{\emph{Es\_bipartita\_completa(}$child$\emph{)} $= falso$}{
              Marcar con amarillo: dos hojas cuyo ancestro común más profundo sea un hermano de $child$ que no sea una hoja y una hoja en un hermano diferente\;
                         $\Return\ falso$\;
         }
