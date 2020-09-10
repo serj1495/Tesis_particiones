@@ -1,4 +1,4 @@
-Haciendo uso  del Algoritmo \ref{alg_subgraph} se puede determinar si una cográfica pertenece o no a la clase $M_2$. Como se especificó en la Sección \ref{sec_AlgoSub}, el tiempo de este algoritmo crece de forma lineal de acuerdo con el tamaño de la gráfica en la que se está buscando la obstrucción si se fija el tamaño de esta última. Como conocemos las obstrucciones mínimas de la clase $M_2$, que son finitas, se puede buscar cada una en tiempo lineal y por lo tanto se puede reconocer si una cográfica pertenece a la clase $M_2$ en tiempo lineal. El Algoritmo \ref{alg_decision} corresponde a este proceso. Los árboles binarios de cada una de las obstrucciones de la clase $M_2$ se muestran en la Figura \ref{fig_obsts_bin}.
+Haciendo uso  del Algoritmo \ref{alg_esta_en_clase} se puede determinar si una cográfica pertenece o no a la clase $M_2$. Como se especificó en la Sección \ref{sec_AlgoSub}, el tiempo de este algoritmo crece de forma lineal de acuerdo con el tamaño de la gráfica de entrada si encontramos primero todos los coárboles binarios de las obstrucciones de la clase. Como conocemos las obstrucciones mínimas de la clase $M_2$, que son finitas, se puede buscar cada una en tiempo lineal y por lo tanto se puede reconocer si una cográfica pertenece a la clase $M_2$ en tiempo lineal. El Algoritmo \ref{alg_decision}, que es una instancia del Algoritmo \ref{alg_esta_en_clase} corresponde a este proceso. Los árboles binarios de cada una de las obstrucciones de la clase $M_2$ se muestran en la Figura \ref{fig_obsts_bin}.
 
 \begin{figure}[ht!]
 \centering
@@ -112,21 +112,25 @@ Haciendo uso  del Algoritmo \ref{alg_subgraph} se puede determinar si una cográ
 \end{figure}
 
 
-\begin{algorithm}[!htbp]
+\begin{algorithm}[ht!]
 \caption{Pertenece\_a\_M2}
 \label{alg_decision}
 \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
-\KwIn{$g$, la raíz de un coárbol, $G$}
-\KwOut{$pertenece$, verdadero si $G$ peretenece a la clase $M_2$. Falso en el caso contrario}
+\KwIn{$g$, la raíz del coárbol de una cográfica $G$.}
+\KwOut{$verdadero$ si $G$ pertenece a la clase hereditaria de cográficas $C$}
 
- $coárboles_bin \gets \{H_1, H_2, H_3, I_1, J_1, \}$\;
+$g\_bin \gets \text{CrearÁrbolBinario}(g)$\;
+$C\_bins \gets \{H_1, H_2, H_3, I_1, J_1\}$\;
 
-\ForEach{árbol \textbf{\emph{en}} coárboles_bin}{
-    \If{\emph{Es\_subgráfica(}g, árbol.raíz\emph{)}}{
-        $\Return\ falso$\;
+\ForEach{$bin$ \textbf{\emph{en}} $C\_bins$}{
+    $f = \text{Función\_de\_coasignación}(g\_bin,bin)$\;
+    \If{$f(bin) = marcado$}{
+        $\Return\ verdadero$\;
     }
 }
 
-$\Return\ verdadero$\;
+$\Return\ falso$\;
 
 \end{algorithm}
+
+

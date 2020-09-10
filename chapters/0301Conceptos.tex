@@ -12,11 +12,14 @@ A continuación proporcionamos conceptos básicos del área de Teoría de Gráfi
 
 Una \textbf{\emph{gráfica}} $G$ es una pareja ordenada de conjuntos ajenos $(V,E)$ tal que $E$ es subconjunto del conjunto de parejas no ordenadas de elementos de $V$. Decimos que $V$ es el conjunto de \textbf{\emph{vértices}} de $G$ y que $E$ es el conjunto de \textbf{\emph{aristas}} de $G$.
 
-Si $G$ es una gráfica, denotamos su conjunto de vértices como $V(G)$ y su conjunto de aristas como $E(G)$. Sin embargo, cuando $G$ es la única gráfica de la que estamos hablando, podemos referirnos a su conjunto de vértices simplemente como $V$ y a su conjunto de aristas como $E$. Si $x$ es un vértice de $G$, podemos escribir $x\in G$ en lugar de $x \in V(G)$.
+Si $G$ es una gráfica, denotamos a su conjunto de vértices como $V(G)$ y a su conjunto de aristas como $E(G)$. Sin embargo, cuando $G$ es la única gráfica de la que estamos hablando, podemos referirnos a su conjunto de vértices simplemente como $V$ y a su conjunto de aristas como $E$.
 
-Dada una arista $\{x,y\}$ de una gráfica, decimos que $\{x,y\}$ \textbf{\emph{une}} a los vértices $x$ y $y$ y la denotamos como $xy$. Los vértices $x$ y $y$ son los \textbf{\emph{extremos}} de dicha arista. Si $xy \in E(G)$, entonces $x$ y $y$ son \textbf{\emph{adyacentes}} en $G$. Si el contexto es claro, simplemente decimos que $x$ y $y$ son adyacentes. Notemos que la arista $xy$ es exactamente la misma arista que $yx$.
+Dada una arista $\{x,y\}$ de una gráfica, decimos que $\{x,y\}$ \textbf{\emph{une}} a los vértices $x$ y $y$ y la denotamos como $xy$. Los vértices $x$ y $y$ son los \textbf{\emph{extremos}} de dicha arista. Si $xy \in E(G)$, entonces $x$ y $y$ son \textbf{\emph{adyacentes}} en $G$. Si el contexto es claro, simplemente decimos que $x$ y $y$ son adyacentes. Notemos que la arista $xy$ es exactamente la misma arista que $yx$. Un vértice que no es extremo de arista alguna es llamado un \textbf{\emph{vértice aislado}}. Un conjunto de vértices es un \textbf{\emph{conjunto independiente}} si no contiene elementos que sean adyacentes.
 
-Decimos que una gráfica $G$ es una \textbf{\textit{gráfica finita}} si tanto $V$ como $E$ son finitos. A lo largo de este documento, trabajaremos exclusivamente con gráficas finitas. Si $G$ es una gráfica finita, decimos que el \textbf{\emph{orden}} de $G$, denotado como $|V(G)|$, es el número de vértices de $G$. El \textbf{\emph{tamaño}} de $G$ es el número de aristas de $G$, denotado como $|E(G)|$.
+Decimos que una gráfica $G$ es una \textbf{\textit{gráfica finita}} si tanto $V$ como $E$ son finitos. A lo largo de este documento, trabajaremos exclusivamente con gráficas finitas. Si $G$ es una gráfica finita, decimos que el \textbf{\emph{orden}} de $G$ es el número de vértices de $G$, i.e., $|V(G)|$. El \textbf{\emph{tamaño}} de $G$ es el número de aristas de $G$, i.e., $|E(G)|$.
+% En este párrafo en particular, no estás introduciendo notación, porque
+% simplemente estás describiendo con la notación usual de cardinalidad de
+% conjuntos lo que acabas de decir en palabras.   Por eso puse el "es decir".
 
 Las gráficas suelen ser representadas por medio de dibujos. En esta representación los vértices aparecen como pequeños círculos y las aristas como líneas que conectan a los vértices que son sus extremos. Podemos ver un ejemplo de esto en la Figura \ref{fig_ejemplo_graph}. Las etiquetas que aparecen a lado de cada vértice indican el nombre con el que se denota dicho vértice. Usualmente estas etiquetas no son incluidas.
 
@@ -48,7 +51,7 @@ Las gráficas suelen ser representadas por medio de dibujos. En esta representac
 \caption{Ejemplo de la representación de una gráfica.}\label{fig_ejemplo_graph}
 \end{figure}
 
-Dadas dos gráficas $G=(V,E)$ y $G'=(V',E')$, decimos que $G'$ es \textbf{\emph{subgráfica}} de $G$ si $V' \subseteq V$ y $E' \subseteq E$. Denotamos esto como $G' \subseteq G$. La subgráfica de $G$ \emph{\textbf{inducida}} por $V'\in V$, a la que denotamos como $G[V']$, es la gráfica cuyo conjunto de vértices es $V'$ y cuyas aristas unen a dos vértices si y sólo si estos son adyacentes en $G$.
+Dadas dos gráficas $G=(V,E)$ y $G'=(V',E')$, decimos que $G'$ es \textbf{\emph{subgráfica}} de $G$, denotado $G' \subseteq G$, si $V' \subseteq V$ y $E' \subseteq E$. La subgráfica de $G$ \emph{\textbf{inducida}} por $V'\in V$, a la que denotamos como $G[V']$, es la gráfica cuyo conjunto de vértices es $V'$ y cuyas aristas unen a dos vértices si y sólo si estos son adyacentes en $G$.
 
 En la Figura \ref{fig_ejemplo_subgraph} se muestran dos gráficas. Ambas gráficas son subgráficas de la gráfica de la Figura \ref{fig_ejemplo_graph}, a la que llamaremos $G$ para los fines de este ejemplo. Dado que la gráfica (a) no incluye las aristas $ab$ y $ac$, ésta no es una subgráfica inducida de $G$. Por otra parte, la gráfica (b) es la subgráfica de $G$ inducida por el conjunto de vértices $\{a,b,c,d,g,h\}$.
 
@@ -100,21 +103,40 @@ En la Figura \ref{fig_ejemplo_subgraph} se muestran dos gráficas. Ambas gráfic
 
 Decimos que dos gráficas $G=(V,E)$ y $G'=(V',E')$ son \textbf{\emph{isomorfas}} si existe una biyección $\phi:V\rightarrow V'$ tal que $xy\in E$ si y sólo si $\phi(x)\phi(y) \in E' $. A lo largo de este documento no hacemos distinción entre gráficas isomorfas. Es decir que, si dos gráficas $G$ y $G'$ son isomorfas, las consideramos como la misma gráfica.
 
+Una gráfica $G$ es \textbf{\emph{bipartita}} con clases $V_1$ y $V_2$ si $V(G) = V_1 \cup V_2$, $V_1 \cap V_2 = \emptyset$ y cada arista en $E(G)$ une a un vértice de $V_1$ con un vértice de $V_2$. Decimos que $G$ tiene una \textbf{\emph{bipartición}} $(V_1,V_2)$. De manera similar, $G$ es \textbf{\emph{r-partita}} (\textbf{\emph{multipartita}}) con clases $V_1, V_2, \dots, V_r$ si $V(G) = \bigcup_{i=1}^r V_i$, $V_i \cap V_j = \varnothing$ para cualesquiera $1 \le i < j \le r$ y ninguna arista une vértices de la misma clase.
+
+
+
+\subsection{Operaciones en gráficas}
+
+A continuación presentamos algunas operaciones que se pueden aplicar a las gráficas. Éstas son útiles para construir gráficas a partir de otras gráficas. También nos sirven para describir algunas gráficas y estructuras que se utilizan en el documento.
+
+Dada una gráfica $G$, el \textbf{\emph{complemento}} $\overline{G}$ de $G$, es la gráfica tal que $V(\overline{G}) = G$ y $E(\overline{G})$ es el conjunto de todas las parejas no ordenadas de elementos de $V$ menos las aristas de $E(G)$; así, dos vértices son adyacentes en $\overline{G}$ si y sólo si no son adyacentes en $G$.
+
+ Dada una gráfica $G$ y uno de sus vértices $x$, denotamos como $G - x $ a la gráfica $G[V-\{x\}]$. Es decir, la subgráfica de $G$ inducida por el conjunto de vértices $V-\{x\}$.
+
+Dadas dos gr\'aficas $G$ y $H$ tales que $V(G) \cap V(H) = \varnothing$, decimos que la gráfica $G + H = (V(G)\cup V(H), E(G)\cup E(H))$ es la \textbf{\emph{unión ajena}} de $G$ y $H$. Por otra parte, obtenemos la \textbf{\emph{unión completa}} de $G$ y $H$, denotada como $G \oplus H$, a partir de $G + H$ al agregar todas las aristas entre los vértices de $G$ y los vértices de $H$.   Al usar notaci\'on aditiva para la uni\'on ajena, es coherente utilizar $kG$ para denotar la uni\'on ajena de $k$ copias de $G$.
+
+
 \subsection{Algunas gráficas distinguidas}
 
-A continuación se presentan algunas familias de gráficas a cuyos elementos nos referimos por medio de un nombre específico. A lo largo del documento usaremos dicho nombre para referirnos a cualquier copia isomorfa de estas gráficas.
+A continuación se presentan algunas familias de gráficas a cuyos elementos nos referimos por medio de un nombre específico, debido a que \'estos son \'unicos salvo isomorfismo. A lo largo del documento usaremos dicho nombre para referirnos a cualquier copia isomorfa de estas gráficas.
 
-El tamaño de una gráfica de orden $n$ es al menos $0$ y a lo más $\binom{n}{2}$. Una gráfica de orden $n$ y tamaño $\binom{n}{2}$ es llamada \textbf{\emph{gráfica completa}} de orden $n$ y se denota como $K_n$. En $K_n$ cualesquiera dos vértices son adyacentes. Decimos que la gráfica $K_1$ es una gráfica \textbf{\emph{trivial}}.
+El tamaño de una gráfica de orden $n$ es al menos $0$ y a lo más $\binom{n}{2}$. La gráfica (\'unica salvo isomorfismo) de orden $n$ y tamaño $\binom{n}{2}$ es la \textbf{\emph{gráfica completa}} de orden $n$ y se denota como $K_n$. En $K_n$ cualesquiera dos vértices son adyacentes. Decimos que la gráfica $K_1$ es una gráfica \textbf{\emph{trivial}}.
 
-Un vértice que no es adyacente a ningún otro vértice es llamado un \textbf{\emph{vértice aislado}}. Un conjunto de vértices es un \textbf{\emph{conjunto independiente}} si no contiene elementos que sean adyacentes.
 
-Una \textbf{\emph{trayectoria}} es una gráfica $P$ tal que $V(P) = {x_0,x_1,\dots,x_l}$ y $E(P) = {x_0x_1,x_1x_2,\dots,x_{l-1}x_l}$.
-La trayectoria $P$ se denota usualmente como $x_0x_1\dots x_l$. Decimos que $P$ es una trayectoria de $x_0$ a $x_l$. Denotamos
-como $P_l$ a una trayectoria arbitraria de orden $l$.
 
-Un \textbf{\emph{camino}} $W$ en una gráfica $G$ es una sucesi\'on alternante de vértices y aristas de $G$, digamos $x_0, e_1, x_1, e_2, \dots, e_l, x_l$ en donde $e_i=x_{i-1}x_i$, $0<i\leq l$. De acuerdo con la terminología anterior, $W$ es un $(x_0 x_l)$-camino y es denotado como $x_0x_1\dots x_l$; la \textbf{\emph{longitud}} de $W$ es $l$. Este camino es llamado un  \textbf{\emph{paseo}} si todas sus aristas son distintas. Notemos que una trayectoria es un camino en el que todos sus vértices son distintos. Un paseo cuyos vértices de inicio y fin coinciden es llamado un \textbf{\emph{circuito}}. Para ser más precisos, un circuito es un paseo cerrado sin vértices de inicio y fin distinguidos. Si un camino $W = x_0x_1\dots x_l$ es tal que $l\geq 3$, $x_0=x_l$ y los vértices $x_i$, $0<i<l$ son distintos los unos de los otros y de $x_0$, decimos que $W$ es un \textbf{\emph{ciclo}}.
+Una \textbf{\emph{trayectoria}} es una gráfica $P$ tal que $V(P) =
+{x_0,\dots,x_\ell}$ y $E(P) = {x_0x_1,\dots,x_{\ell-1}x_\ell}$.
+Utilizamos la notaci\'on $P = x_0 \dots x_\ell$, y decimos
+que $P$ es una trayectoria de $x_0$ a $x_\ell$. Usamos la notaci\'on
+$P_\ell$ para referirnos a la trayectoria de longitud $\ell$. An\'alogamente,
+un \textbf{\emph{ciclo}} es una gráfica $C$, con al menos tres v\'ertices,
+y tal que $V(C) = {x_0,\dots,x_\ell}$ y $E(C) = {x_0x_1,\dots,x_{\ell-1}x_\ell,
+x_\ell x_0}$. Utilizamos la notaci\'on $C = x_0 \dots x_\ell x_0$. Para
+referirnos al ciclo de longitud $\ell$ usamos $C_\ell$.
 
-Con frecuencia usamos la notación $P_l$ para referirnos a una trayectoria arbitraria de longitud $l$ y la notación $C_l$ para referirnos a un ciclo de longitud $l$. En la Figura \ref{fig_tipos_graficas} podemos ver ejemplos de una gráfica completa, un camino y un ciclo.
+En la Figura \ref{fig_tipos_graficas} podemos ver ejemplos de una gráfica completa, un camino y un ciclo.
 
 \begin{figure}[!htbp]
 \centering
@@ -151,9 +173,34 @@ Con frecuencia usamos la notación $P_l$ para referirnos a una trayectoria arbit
 \label{fig_tipos_graficas}
 \end{figure}
 
-Una gráfica es \textbf{\emph{conexa}} si para cada par de vértices distintos existe un camino de entre ellos. Una gráfica que no es conexa es llamada \textbf{\emph{inconexa}}. Dada una gráfica $G$, una subgráfica de $G$ conexa y m\'axima por contenci\'on (es decir que se vuelve inconexa si se le agrega cualquier otro vértice) es llamada una \textbf{\emph{componente conexa}} de $G$.
+Una gráfica es \textbf{\emph{r-partita completa}} (o bien, \textbf{\emph{multipartita completa}}) si es $r$-partita (o multipartita) y todo par de vértices de clases distintas son adyacentes. Nos referimos a las gr\'aficas $2$-partitas completas como \textbf{\emph{bipartitas completas}}. Utilizamos $K_{n,m}$ para denotar a la gr\'afica bipartita completa que tiene $n$ v\'ertices en una de sus clases y $m$ v\'ertices en la otra.  Notemos que una gr\'afica es $r$-partita completa si y s\'olo si es la uni\'on completa de a lo m\'as $r$ conjuntos independientes ajenos.
 
-Una gráfica $G$ es \textbf{\emph{bipartita}} con clases $V_1$ y $V_2$ si $V(G) = V_1 \cup V_2$, $V_1 \cap V_2 = \emptyset$ y cada arista en $E(G)$ une a un vértice de $V_1$ con un vértice de $V_2$. Decimos que $G$ tiene una \textbf{\emph{bipartición}} $(V_1,V_2)$. De manera similar, $G$ es \textbf{\emph{r-partita}} (\textbf{\emph{multipartita}}) con clases $V_1, V_2, \dots, V_r$ si $V(G) = \bigcup_{i=1}^r V_i$, $V_i \cap V_j = \emptyset$ para todos $1\leq i < j \leq r$ y ninguna arista une vértices de la misma clase. Una gráfica es \textbf{\emph{r-partita completa}} (o bien, \textbf{\emph{multipartita completa}}) si es multipartita y si todo par de vértices de clases distintas son adyacentes.
+\subsection{Caminos y conexidad}
+
+Un \textbf{\emph{camino}} $W$ en una gráfica $G$ es una sucesi\'on
+alternante de vértices y aristas de $G$, digamos $x_0, e_1, x_1, e_2,
+\dots, e_\ell, x_\ell$ en donde $e_i = x_{i-1} x_i$, $0 < i \le \ell$. De
+acuerdo con la terminología anterior, $W$ es un $(x_0 x_\ell)$-camino y es
+denotado como $x_0x_1\dots x_l$; la \textbf{\emph{longitud}} de $W$ es $\ell$.
+Este camino es llamado un \textbf{\emph{paseo}} si todas sus aristas son
+distintas. Notemos que una trayectoria es un camino en el que todos sus
+vértices son distintos (lo que coincide con la definici\'on de trayectoria
+considerada anteriormente). Un paseo cuyos vértices de inicio y fin coinciden
+es un \textbf{\emph{circuito}}. Para ser más precisos, un circuito es un paseo
+cerrado sin vértices de inicio y fin distinguidos. Si un camino $W =
+x_0 \dots x_l$ es tal que $l \ge 3$, $x_0 = x_l$ y los vértices $x_i$,
+$0<i<l$ son distintos los unos de los otros y de $x_0$, decimos que $W$ es
+un \textbf{\emph{ciclo}} en $G$.
+
+Una gráfica es \textbf{\emph{conexa}} si para cada par de vértices
+distintos existe un camino de entre ellos. Una gráfica que no es conexa
+es \textbf{\emph{inconexa}}. Dada una gráfica $G$, una subgráfica de $G$
+conexa y m\'axima por contenci\'on (es decir que se vuelve inconexa si se
+le agrega cualquier otro vértice) es llamada una \textbf{\emph{componente
+conexa}} de $G$.   As\'i, una gr\'afica es conexa si y s\'olo si tiene
+una \'unica componente conexa.   Adem\'as, toda gr\'afica puede expresarse
+como la uni\'on ajena de sus componentes conexas.
+
 
 \subsection{Árboles}
 
@@ -185,7 +232,7 @@ Un \textbf{\emph{árbol arraigado}} es un árbol con un vértice distinguido al 
 \node [vertex] (16) at (4,0) {};
 \foreach \i/\j in {1/2,1/3,1/4,2/5,2/6,4/7,4/8,8/12,8/14,14/15,14/16}
   \draw [edge] (\i) to (\j);
-\node [right of=1] {\parbox{0.1\linewidth}{$raíz$}};
+\node [right of=1] {\parbox{0.1\linewidth}{$\textnormal{raíz}$}};
 \end{scope}
 \end{tikzpicture}
 \end{subfigure}
@@ -230,15 +277,7 @@ Sea $T$ un árbol arraigado con raíz $r$, y sean $u$ y $v$ nodos de $T$. Denota
 \end{figure}
 
 
-\subsection{Operaciones en gráficas}
 
-A continuación presentamos algunas operaciones que se pueden aplicar a las gráficas. Éstas son útiles para construir gráficas a partir de otras gráficas. También nos sirven para describir algunas gráficas y estructuras que se utilizan en el documento.
-
-Dada una gráfica $G$, el \textbf{\emph{complemento}} de $G$, denotado como $\overline{G}$, es la gráfica tal que $V(\overline{G}) = G$ y $E(\overline{G})$ es el conjunto de todas las parejas no ordenadas de elementos de $V$ menos las aristas de $E(G)$; así, dos vértices son adyacentes en $\overline{G}$ si y sólo si no son adyacentes en $G$.
-
- Dada una gráfica $G$ y uno de sus vértices $x$, denotamos como $G - x $ a la gráfica $G[V-\{x\}]$. Es decir, la subgráfica de $G$ inducida por el conjunto de vértices $V-\{x\}$.
-
-Decimos que la gráfica $G + H = (V(G)\cup V(H), E(G)\cup E(H))$ es la \textbf{\emph{unión ajena}} de $G$ y $H$. Por otra parte, obtenemos la \textbf{\emph{unión completa}} de $G$ y $H$, denotada como $G \oplus H$, a partir de $G + H$ al agregar todas las aristas entre los vértices de $G$ y los vértices de $H$.
 
 \subsection{Clases de gráficas hereditarias}
 
