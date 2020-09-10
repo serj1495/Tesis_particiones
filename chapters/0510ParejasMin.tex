@@ -1,72 +1,19 @@
-Sean $\alpha$ y $\beta$ enteros tales que $0 < \alpha \le \beta$, una gr\'afica $G$ est\'a en la \emph{\textbf{clase $(\alpha, \beta)-M_2$}}  si y sólo si su conjunto de vértices acepta una partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multipartita completa formada por a lo más $\beta$ conjuntos independientes. Decimos que $(A,B)$ es una $M_2$-partición de $G$ de tamaño $(\alpha, \beta)$.
+En esta subsección, presentamos el concepto de conjunto de parejas mínimas, que nos ayudará a determinar si una cográfica $G$ pertenece a una clase $(\alpha, \beta)$-$M_2$ sin tener que revisar todas las posibles $M_2$-particiones de $G$.
 
-Notemos que la clase $M_2$ es la clase $(\infty, \infty)$-$M_2$ y que la clase $(1,1)$-$M_2$ es la clase de todas las cográficas bipartitas. En la demostración del Teorema \ref{teo_obsts_m2} % No es común referir resultados futuros.   Quizá bastaría mencionar el contexto en el que esta observación será útil más adelante. Es un Teorema anterior. 
- hablamos de las cográficas que aceptan una partición en un conjunto independiente y una gráfica multipartita completa. Es decir, las gráficas de la clase $(1,\infty)$-$M_2$. A partir de esta demostración, podemos encontrar las obstrucciones mínimas de la clase. Éstas nos serán de ayuda para entender el comportamiento de las clases $(1,\beta)$-$M_2$.
+Sean $P_1=(\alpha_1, \beta_1)$ y $P_2=(\alpha_2, \beta_2)$ parejas de enteros tales que $0 < \alpha_1 \le \beta_1$ y $0 < \alpha_2 \le \beta_2$. Decimos que $P_1$ \emph{\textbf{domina}} a $P_2$ si $\alpha_1 \geq \alpha_2$ y $\beta_1 \geq \beta_2$. Notemos que ésta es una relación transitiva.
+
+Sea $G$ una gráfica en $M_2$, denotamos por $S(G)$ al conjunto de todas las parejas ordenadas de enteros $(\alpha, \beta)$ tales que $G$ acepta una $M_2$-partición de tamaño $(\alpha, \beta)$.
+
+Sea $G$ una gráfica en $M_2$, el \textbf{\emph{conjunto de parejas mínimas}} de $G$, denotado por $\mu(G)$, es el conjunto de todas las parejas $(\alpha, \beta)\in S(G)$ tales que, para cualquier otro $(\alpha', \beta')\in S(G)$, $(\alpha, \beta)$ no domina a $(\alpha', \beta')$.
 
 \begin{lemma}
-
-Sea $G$ una cográfica, $G\in(1,\infty)$-$M_2$ si y sólo si $G$ es libre de las gráficas de la Figura \ref{obsts_1infM2}.
-
+Sean $G$ una gráfica en $M_2$ y $(\alpha, \beta)$ una pareja de enteros mayores a cero. $G$ pertenece a la clase $(\alpha, \beta)$-$M_2$ si y sólo si existe una pareja de enteros $(\alpha', \beta')\in \mu(G)$ tal que $(\alpha, \beta)$ domina a $(\alpha', \beta')$.
 \end{lemma}
 
-\begin{figure}[ht!]
-\begin{center}
-\begin{tikzpicture}
-
-\begin{scope}[xshift=0cm,scale=1]
-
-\node [style=vertex] (1) at (0,0) {};
-\node [style=vertex] (2) at (1,0) {};
-\node [style=vertex] (3) at (0,0.5) {};
-\node [style=vertex] (4) at (1,0.5) {};
-\node [style=vertex] (5) at (0.5,1.25) {};
-\foreach \i/\j in {1/2,3/4,3/5,4/5}
-  \draw [style=edge] (\i) to (\j);
-\node [below of=1,xshift=.5cm]
-{\parbox{0.3\linewidth}{\subcaption*{$H'$}}};
-
-\end{scope}
-
-\begin{scope}[xshift=3cm,scale=1]
-
-\node [style=vertex] (1) at (0,0) {};
-\node [style=vertex] (2) at (0.5,0.5) {};
-\node [style=vertex] (3) at (1.5,0.5) {};
-\node [style=vertex] (4) at (0.5,1.5) {};
-\node [style=vertex] (5) at (1.5,1.5) {};
-\node [style=vertex] (6) at (0,2) {};
-
-\foreach \i/\j in {1/2,1/3,1/6,2/3,2/4,2/5,3/4,3/5,4/5,4/6,5/6}
-  \draw [style=edge] (\i) to (\j);
-\node [below of=1,xshift=0.75cm] {\parbox{0.3\linewidth}{\subcaption*{$J'$}}};
-
-\end{scope}
-\end{tikzpicture}
-\end{center}
-\setlength{\abovecaptionskip}{-15pt}
-\caption{Obstrucciones mínimas para la clase $(1,\infty)$-$M_2$.}
-\label{obsts_1infM2}
-\end{figure}
-
 \begin{proof}
+Supongamos primero que $G\in (\alpha, \beta)\text{-}M_2$. Sabemos que $G$ acepta una $M_2$-partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por $\alpha'$ conjuntos independientes con $\alpha' \le \alpha$ y $G[B]$ es una gráfica multipartita completa formada por $\beta'$ conjuntos independientes con $\beta' \le \beta$. Como $(A,B)$ es una $M_2$-partición de $G$, entonces $(\alpha', \beta')\in S(G)$. Supongamos sin pérdida de generalidad (dado que la dominación es una relación transitiva) que $(\alpha', \beta')\in \mu(G)$. Luego, como $\alpha' \le \alpha$ y $\alpha' \le \alpha$, entonces $(\alpha, \beta)$ domina a $(\alpha', \beta') \in \mu(G)$.
 
-Notemos que $H'=K_2 + K_3$ y $J'=\overline{P_3} \oplus \overline{P_3}$.
-
-Supongamos primero que $G \in (1,\infty)$-$M_2$. Veamos que $H'\notin (1,\infty)$-$M_2$. Procedamos por contradicción. Supongamos que $H' \in (1,\infty)$-$M_2$. Luego, $H$ (Figura \ref{obsts_M2}) también está en $(1,\infty)$-$M_2$ y por lo tanto $H\in M_2$, lo que es una contradicción. Así,  $H'\notin (1,\infty)$-$M_2$. Análogamente para $J'$. Como ni $H'$ ni $J'$ están en $(1,\infty)$-$M_2$ y toda subgráfica inducida de $G$ sí lo está, $G$ es libre de $H'$ y $J'$.
-
-Recíprocamente, si $G$ es libre de $H'$ y $J'$, mostremos que $G\in (1,\infty)$-$M_2$. Sea $r$ la raíz del coárbol de $G$. Consideremos los siguientes casos que son exhaustivos.
-
-Supongamos primero que $G$ es conexa.  Si $G$ es un vértice aislado, es claro que $G \in (1,\infty)$-$M_2$. En el caso contrario, como $G$ es libre de $J'$, todos los hijos de $r$ representan gráficas multipartitas completas. Luego, $G$ es la unión completa de varias gráficas multipartitas completas, por lo que $G$ es multipartita completa. Así, $G \in (1,\infty)$-$M_2$.
-% Todos quizá excepto uno, ¿no?
-
-Si $G$ es una gr\'afica vac\'ia, entoces es claro que $G \in (1,\infty)$-$M_2$.
-
-Como tercer caso, consideremos que $G$ es inconexa y tiene exactamente una componente no trivial y al menos una trivial. Entonces, del Caso 2 de la segunda parte de la demostración del Teorema \ref{teo_obsts_m2}, se sigue que $G \in (1,\infty)$-$M_2$.
-% ¿La referencia es correcta?   Creo que sí, pero en los warnings,
-% que son más importantes de lo que parece, tienes etiquetas
-% definidas en múltiples ocasiones.  Revísalas para que todo tenga
-% sentido.
-
-Finalmente, supongamos que $G$ tiene al menos dos componentes no triviales. Como $G$ es libre de $H'$, entonces cada componente de $G$ es libre de $K_3$. Es decir que cada componente de $G$ es bipartita. Luego, $G$ es bipartita. Así, $G \in (1,1)$-$M_2$, por lo que $G \in (1,\infty)$-$M_2$.
-
+Recíprocamente. Como $(\alpha', \beta')\in \mu(G)$, entonces $(\alpha', \beta')\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(\alpha', \beta')$. Como $(\alpha, \beta)$ domina a $(\alpha', \beta')$, entonces $G[A]$ es una gráfica multipartita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multipartita completa formada por a lo más $\beta$ conjuntos independientes. Así, $G\in (\alpha, \beta)\text{-}M_2$.
 \end{proof}
+
+
