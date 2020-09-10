@@ -1,8 +1,24 @@
-El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a dicha
-clase a través de su conjunto de obstrucciones mínimas.   Recordemos que
+El primer paso en nuestro estudio de la clase $M_2$ es caracterizar a la
+misma a través de su conjunto de obstrucciones mínimas, lo cual se realiza 
+en el Teorema \ref{teo_obsts_m2}, cuya demostración requiere del Teorema
+\ref{teo_paw} y del Lema \ref{lema_bipartitas}. Recordemos que
 la gr\'afica conocida como \textbf{\emph{Paw}} es la gr\'afica obtenida de
 $K_3$ al agregar un v\'ertice nuevo y hacerlo adyacente a exactamente un
 v\'ertice de $K_3$, o bien $K_1 \oplus (K_1 + K_2)$.
+
+\begin{theorem}[\cite{Olariu}]
+	Sea $G$ una gráfica perfecta, $G$ es libre de $Paw$ si y sólo si cada componente de $G$ es libre de $K_3$ o multipartita completa.
+\end{theorem}
+
+Aplicando este teorema, podemos concluir lo siguiente. Dado que las cográficas son gráficas perfectas y toda cográfica libre de $K_3$ es bipartita, si una cográfica $G$ es libre de $Paw$, entonces $G$ es bipartita o multipartita completa.
+
+\begin{lemma}
+Sea $G$ una cográfica conexa. Si $G$ es bipartita, entonces $G$ es bipartita completa.
+\end{lemma}
+
+\begin{proof}
+Sea $r$ la raíz del coárbol de $G$. Si $G$ es trivial, es claro que $G$ es bipartita completa. En el caso contrario, $r$ tiene etiqueta 1. Como $G$ es bipartita, entonces es libre de $K_3$. Luego, $r$ tiene exactamente dos hijos, ninguno de los cuales puede contener un $K_2$. Así cada uno de los hijos de $r$ representa a un conjunto independiente. Luego, $G$ es la unión completa de dos conjuntos independientes. Es decir, $G$ es una gráfica bipartita completa.
+\end{proof}
 
 \begin{theorem} \label{teo_obsts_m2}
 
