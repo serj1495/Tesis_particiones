@@ -26,9 +26,8 @@ una ejecución ilustrativa del algoritmo.
 \KwIn{$r$ la raíz del coárbol}
 \KwOut{$r'$ la raíz del coárbol binario}
 
-$r' \gets $ nuevo nodo de árbol binario\;
-
 \If{$r$ es un nodo interno}{
+	$r' \gets $ nuevo nodo de árbol binario\;
     $r'.etiqueta = r.etiqueta$\;
     $s \gets r'$\;
     $i \gets 0$\;
@@ -41,6 +40,9 @@ $r' \gets $ nuevo nodo de árbol binario\;
     }
     $s.izquierda \gets \text{CrearArbolBinario}(r.hijos[i])$\;
     $s.derecha \gets \text{CrearArbolBinario}(r.hijos[i+1])$\;
+}
+\Else{
+	$r' \gets r$\;
 }
 \Return $r'$\;
 
