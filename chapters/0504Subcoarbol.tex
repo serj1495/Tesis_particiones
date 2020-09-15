@@ -114,7 +114,7 @@ Notemos que cada nodo de $B_H$ se construye tomando como base a un nodo de $B_G$
 % Aquí hay un abuso del lenguaje que puede confundir al lector, cuando
 % usas $x$ para referirte al nodo y al coárbol con raíz $x$.
 
-Sea $x$ un nodo de $B_H$, notemos lo siguiente. Si $x$ es un vértice, entonces $x = x'$, y si $x$ es un nodo interno, entonces la etiqueta de $x$ es la misma que la etiqueta de $x'$. Además, el hijo derecho de $x$ es ancestro de los mismos vértices de $H$ que el hijo derecho de $x'$. Análogamente para el hijo izquierdo. De esto se sigue que para cualesquiera dos vértices de $H$, su ancestro común más profundo en $B_H$ tiene la misma etiqueta que su ancestro común más profundo en $B_G$.
+Sea $x$ un nodo de $B_H$, notemos lo siguiente. Si $x$ es una hoja de $B_H$, entonces $x$ es un vértice de $H$, por lo que $x = x'$, y si $x$ es un nodo interno, entonces la etiqueta de $x$ es la misma que la etiqueta de $x'$. Además, el hijo derecho de $x$ es ancestro de los mismos vértices de $H$ que el hijo derecho de $x'$. Análogamente para el hijo izquierdo. De esto se sigue que para cualesquiera dos vértices de $H$, su ancestro común más profundo en $B_H$ tiene la misma etiqueta que su ancestro común más profundo en $B_G$.
 
 Veamos que $B_H$ es un coárbol binario de $H$. Notemos que las hojas de $B_H$ son todos los vértices de $H$. Dado que $H$ es una subgráfica inducida de $G$, cualesquiera dos vértices de $H$ son adyacentes si y sólo si su ancestro común más profundo en $B_G$ tiene etiqueta 1. Luego, dos vértices de $H$ son adyacentes si y sólo si su ancestro común más profundo en $B_H$ tiene etiqueta 1. Así, $B_H$ es un subcoárbol binario de $H$.
 
