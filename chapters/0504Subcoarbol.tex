@@ -1,22 +1,20 @@
-A continuación presentamos los conceptos de subcoárbol y subcoárbol binario
-que serán utilizados para determinar si una cográfica $H$ es subgráfica
+A continuación presentamos el concepto de subcoárbol binario
+que será utilizado para determinar si una cográfica $H$ es subgráfica
 inducida de una cográfica $G$ en el Algoritmo \ref{alg_subgraph}.
 
-Sean $T$ y $U$ dos coárboles y $u_1$, $u_2$ y $u_3$ nodos de $U$, decimos
-que $U$ es un \emph{\textbf{subcoárbol}} de $T$ si existe una función
-inyectiva $f:V(U)\rightarrow V(T)$ tal que, si $u_1$ es una hoja, entonces
-$f(u_1)$ tambi\'en es una hoja; si no, entonces $u_1$ y $f(u_1)$ tienen la
-misma etiqueta y, si $u_3$ es el ancestro común más profundo de $u_1$ y
-$u_2$, entonces $f(u_3)$ es el ancestro común más profundo de $f(u_1)$ y
-$f(u_2)$. Llamamos a $f$ la \textbf{\emph{función de coasignación}} de $U$ a
-$T$.
+Sean $T$ y $U$ dos coárboles binarios y $u_1$, $u_2$ y $u_3$ nodos de $U$, decimos
+que $U$ es un \emph{\textbf{subcoárbol binario}} de $T$ si existe una función
+inyectiva $f:V(U)\rightarrow V(T)$ tal que, si $u_1$ es una hoja, entonces $f(u_1)$
+es una hoja también; si no, entonces $u_1.etiqueta = f(u_1).etiqueta$ y, si $u_3$ es
+el ancestro común más profundo de $u_1$ y $u_2$, entonces $f(u_3)$ es el ancestro
+común más profundo de $f(u_1)$ y $f(u_2)$. Llamamos a $f$ la \textbf{\emph{función de
+coasignación}} de $U$ a $T$.
 
-El concepto de subcoárbol es diferente del de subárbol dado que, si $T$ y $U$
-son coárboles con $U$ subcoárbol de $T$, entonces tenemos que los nodos de $U$
-se pueden encontrar dispersos entre los nodos de $T$ a diferencia de lo que se
+El concepto de subcoárbol binario es diferente del de subárbol dado que, si $T$ y $U$
+son coárboles con $U$ subcoárbol binario de $T$, entonces tenemos que los nodos de
+$U$ se pueden encontrar dispersos entre los nodos de $T$ a diferencia de lo que se
 tendría si $U$ fuera subárbol de $T$. Esto se puede apreciar en la Figura
-\ref{fig_subcoarbol01}. N\'otese que esta definición funciona también para
-coárboles binarios.
+\ref{fig_subcoarbol01}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -71,71 +69,61 @@ coárboles binarios.
 \end{tikzpicture}
 \end{center}
 \setlength{\abovecaptionskip}{-10pt}
-\caption{El coárbol (b) es subcoárbol del coárbol (a). Las etiquetas en los nodos de ambos coárboles indican la asignación de los nodos de (b) a los nodos de (a).}\label{fig_subcoarbol01}
+\caption{El coárbol (b) es subcoárbol binario del coárbol (a). Las etiquetas en los nodos de ambos coárboles binarios indican la asignación de los nodos de (b) a los nodos de (a).}\label{fig_subcoarbol01}
 \end{figure}
 
-\begin{lemma}\label{lema_subcoa_01}
-    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ sus coárboles correspondientes, entonces $H$ es una subgráfica inducida de $G$ si y sólo si $T_H$ es subcoárbol de $T_G$.
+\begin{lemma}
+Sean $G$ y $H$ cográficas, $T_G$ un coárbol binario de $G$ y $T_H$ un coárbol binario de $H$. Si $T_H$ es subcoárbol binario de $T_G$, entonces $H$ es una subgráfica inducida de $G$.
 \end{lemma}
 
 \begin{proof}
-
-  Supongamos primero que $H$ es una subgráfica inducida de $G$. Sabemos que
-  $V(H) \subset V(G)$ y que dos vértices son adyacentes en $H$ si y sólo si
-  también son adyacentes en $G$. Sean $v$ y $w$ vértices diferentes de $H$,
-  $n_H$ el ancestro común más profundo de $v$ y $w$ en $T_H$, $n_G$ el
-  ancestro común más profundo de $v$ y $w$ en $T_G$ y $f$ un subconjunto de
-  $V(T_H) \times V(T_G)$ tal que $(v,v) \in f$ y $(n_H, n_G)\in f$, veamos
-  que $f$ es una función de coasignación de $T_H$ a $T_G$. Empecemos por
-  mostrar que $f$ es una función. Dado que todo nodo de $T_H$ es una hoja o,
-  en su defecto, es el ancestro común más profundo de dos hojas, cada uno de
-  \'estos será el primer elemento de al menos una pareja elemento de $f$. Como
-  $n_G$ y $n_H$ son únicos para cualesquiera $v$ y $w$, entonces si una pareja
-  $(g,h)$ es elemento de $f$, entonces ésta es la única pareja que tiene a
-  $g$ como primer elemento y a $h$ como segundo elemento. Así,
-  $f \colon V(T_H)\rightarrow V(T_G)$ es una función.
-
-  Sean $x,y,z \in V(T_H)$. Si $x$ es una hoja de $T_H$, es claro que $f(x) =
-  x$ es una hoja de $T_G$. Si no, entonces $x$ es el ancestro común más
-  profundo de algún par de hojas de $T_H$ y tiene etiqueta 1 si y sólo si
-  éstas son adyacentes en $H$, lo que ocurre si y sólo si son adyacentes en
-  $G$, que a su vez ocurre si y sólo si su ancestro común más profundo en
-  $T_G$ tiene etiqueta etiqueta 1. Así $x$ y $f(x)$ tienen necesariamente la
-  misma etiqueta. Finalmente mostremos que si $x$ es el ancestro común más
-  profundo de $y$ y $z$, entonces $f(x)$ es el ancestro común más profundo de
-  $f(y)$ y $f(z)$. Si $y$ y $z$ son hojas, esto se cumple trivialmente por la
-  definición de $f$. Si $y$ es un nodo interno y $z$ es una hoja, entonces
-  existen dos hojas $y'$ y $y''$ de $T_H$ tales que $y$ es su ancestro común
-  más profundo. Tenemos que $f(y)$ es el ancestro común más profundo de
-  $f(y')$ y $f(y'')$. A su vez, dado que $x$ es el ancestro común más profundo
-  de $y'$ y $z$, entonces $f(x)$ es el ancestro común mas profundo de $f(y')$
-  y $f(z)$. De igual manera $f(x)$ es el ancestro común mas profundo de
-  $f(y'')$ y $f(z)$ Luego, $f(y)$ se encuentra en el camino desde $f(y')$
-  hasta $f(x)$ y por lo tanto $f(x)$ es el nodo común más profundo de $f(y)$ y
-  $f(z)$. Análogamente si $z$ es un nodo interno y $y$ es una hoja. Si tanto
-  $y$ como $z$ son nodos internos, el argumento es prácticamente el mismo,
-  pero utilizando dos hojas $y'$ y $y''$ cuyo ancestro común más profundo es
-  $y$ y otras dos hojas $z'$ y $z''$ cuyo ancestro común más profundo es $z$.
-  Así, $f$ es una función de coasignación de $T_H$ a $T_G$ y $T_H$ es
-  subcoárbol de $T_G$.
-
-  Rec\'iprocamente, si $T_H$ es subcoárbol de $T_G$, entonces existe
-  una función de coasignación, $f$, de $T_H$ a $T_G$. Luego, sean $h_1$ y
-  $h_2$ hojas de $T_H$ y $h_3$ el ancestro común más profundo de $h_1$ y
-  $h_2$, tenemos que $f(h_1)$ y $f(h_2)$ son hojas de $T_G$ y que las
-  etiquetas de $h_3$ y $f(h_3)$ coinciden. Así, $h_1$ y $h_2$ son adyacentes
-  en $H$ si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes en $G$. Luego,
-  $G[f[V(H)]]$ es una subgráfica de $G$ que es isomorfa a $H$. Así, $H$
-  es subgráfica de $G$.
-
+Sean $h_1$ y $h_2$ hojas diferentes de $T_H$ y $h_3$ el ancestro común más profundo
+de $h_1$ y $h_2$. Como $T_H$ es subcoárbol binario de $T_G$, entonces existe una
+función de coasignación, $f$, de $T_H$ a $T_G$. Luego, tenemos que $f(h_1)$ y
+$f(h_2)$ son hojas de $T_G$ y que las etiquetas de $h_3$ y $f(h_3)$ coinciden. Así,
+$h_1$ y $h_2$ son adyacentes en $H$ si y sólo si $f(h_1)$ y $f(h_2)$ son adyacentes
+en $G$. Luego, $G[f[V(H)]]$ es una subgráfica indicida de $G$ que es isomorfa a $H$.
+Así, $H$ es una subgráfica inducida de $G$.
 \end{proof}
 
-Notemos que esta demostración funciona únicamente para los coárboles y no para los coárboles binarios. En la Figura \ref{fig_coar_bin01} se observan dos coárboles binarios que representan a la misma cográfica. Sin embargo ninguno de los dos es subcoárbol del otro.
 
 \begin{lemma}
-    Sean $G$ y $H$ cográficas y $T_G$ y $T_H$ coárboles binarios de $G$ y $H$ respectivamente. Si $T_H$ es subcoárbol de $T_G$, entonces $H$ es subgráfica de $G$.
+Sean $G$ y $H$ cográficas y $B_G$ un coárbol binario de $G$. Si $H$ es una subgráfica inducida de $G$, entonces existe un coárbol binario $B_H$ de $H$ tal que $B_H$ es subcoárbol binario de $B_G$.
 \end{lemma}
 
 \begin{proof}
-    La demostración es igual a la segunda parte de la demostración del Lema \ref{lema_subcoa_01}.
+Como $H$ es una subgráfica inducida de $G$, $V(H)$ es un subconjunto de las hojas de $B_G$. Consideremos el siguiente proceso recursivo para crear el árbol $B_H$.
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\KwIn{$V(H)$}
+\KwOut{$r$, la raíz de $B_H$}
+    \If{$V(H)$ tiene un solo elemento}{
+        $r\gets v$, el único elemento de $V(H)$\;
+    }
+    \Else{
+        $v\gets$ el nodo más profundo de $B_G$ que es ancestro de cada elemento de $V(H)$\;
+        $r\gets$ nuevo nodo de coárbol binario con la misma etiqueta que $v$\;
+        Asignar al hijo izquierdo de $r$ el resultado de procesar recursivamente los elementos de $V(H)$ que estén en la rama izquierda de $v$\;
+        Asignar al hijo derecho de $r$ el resultado de procesar recursivamente los elementos de $V(H)$ que estén en la rama derecha de $v$\;
+    }
+    \Return $r$,
+\end{algorithm}
+
+Notemos que cada nodo de $B_H$ se construye tomando como base a un nodo de $B_G$. Esto ocurre en la línea 2 si dicho nodo es una hoja o en la línea 4 si es un nodo interno. Sea $x$ un nodo de $B_H$, denotamos por $x'$ al nodo de $B_G$ que se toma como base para construir a $x$.
+% Aquí hay un abuso del lenguaje que puede confundir al lector, cuando
+% usas $x$ para referirte al nodo y al coárbol con raíz $x$.
+
+Sea $x$ un nodo de $B_H$, notemos lo siguiente. Si $x$ es una hoja de $B_H$, entonces $x$ es un vértice de $H$, por lo que $x = x'$, y si $x$ es un nodo interno, entonces la etiqueta de $x$ es la misma que la etiqueta de $x'$. Además, el hijo derecho de $x$ es ancestro de los mismos vértices de $H$ que el hijo derecho de $x'$. Análogamente para el hijo izquierdo. De esto se sigue que para cualesquiera dos vértices de $H$, su ancestro común más profundo en $B_H$ tiene la misma etiqueta que su ancestro común más profundo en $B_G$.
+
+Veamos que $B_H$ es un coárbol binario de $H$. Notemos que las hojas de $B_H$ son todos los vértices de $H$. Dado que $H$ es una subgráfica inducida de $G$, cualesquiera dos vértices de $H$ son adyacentes si y sólo si su ancestro común más profundo en $B_G$ tiene etiqueta 1. Luego, dos vértices de $H$ son adyacentes si y sólo si su ancestro común más profundo en $B_H$ tiene etiqueta 1. Así, $B_H$ es un subcoárbol binario de $H$.
+
+Sea $f$ un subconjunto de $V(B_H) \times V(B_G)$ tal que $(x,x')\in f$ para cualquier nodo $x$ de $V(B_H)$, veamos que $f$ es una función de coasignación de $B_H$ a $B_G$. Como cada pareja en $f$ tiene como primer elemento a un nodo único de $B_H$ y como segundo elemento un nodo único de $B_G$, $f$ es una función inyectiva. Sean $x_1$, $x_2$ y $x_3$ nodos de $B_H$. Es claro que si $x$ es una hoja, entonces $f(x)=x'$ es una hoja. Y si $x$ es un nodo interno, entonces $f(x)=x'$ tiene la misma etiqueta que $x$. Si $x_3$ es el ancestro común más profundo de $x_1$ y $x_2$, notemos lo siguiente:
+\begin{itemize}
+    \item el conjunto de vértices de $H$ que son descendientes de $x_1$ es igual al conjunto de vértices de $H$ que son descendientes de $f(x_1)$.
+    \item el conjunto de vértices de $H$ que son descendientes de $x_2$ es igual al conjunto de vértices de $H$ que son descendientes de $f(x_2)$.
+    \item el hijo derecho de $x_3$ es ancestro de los mismos vértices de $H$ que el hijo derecho de $f(x_3)$.
+\end{itemize}
+Supongamos sin pérdida de generalidad que $x_1$ es descendiente del hijo izquierdo de $x_3$ y que $x_2$ es descendiente de su hijo derecho. Luego,  $f(x_1)$ es descendiente del hijo izquierdo de $f(x_3)$ y $f(x_2)$ es descendiente de su hijo derecho. Así, $f(x_3)$ es el ancestro común más profundo de $f(x_1)$ y $f(x_2)$. Luego, $f$ es una función de coasignación de $B_H$ a $B_G$.
+
 \end{proof}
