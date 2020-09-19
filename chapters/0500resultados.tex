@@ -27,7 +27,7 @@ gráficas multipartitas completas dado un entero $i \geq 2$.
     En esta sección se presenta un conjunto de conceptos y algoritmos
     \'utiles para cogr\'aficas en general. El resultado
     principal de la sección es un algoritmo de tiempo lineal capaz de
-    determinar si una cográfica representada por su coárbol pertenece a una
+    determinar si una cográfica, representada por su coárbol, pertenece a una
     clase hereditaria fija de cográficas caracterizada por su conjunto de
     obstrucciones mínimas.
 
@@ -55,7 +55,7 @@ Dado un entero positivo $i$, la \textbf{\emph{clase $M_i$}} es la clase de
 las cogr\'aficas tales que su conjunto de v\'ertices acepta una partición
 $(A_1, A_2, \dots, A_i)$, donde $A_j$ induce una gráfica multipartita
 completa para cada $1 \le j \le i$.  Decimos que $(A_1, A_2, \dots, A_i)$
-es una $M_i$-partición de $G$.
+es una $M_i$-partición.
 
 Dado que las gráficas multipartitas completas conforman una clase
 hereditaria de gráficas, la clase $M_i$ tambi\'en es una clase hereditaria
@@ -114,8 +114,8 @@ una obstrucción mínima de la clase como subgráfica inducida de $G$.
 
 \section{Las clases $(\alpha, \beta)$-$M_2$}
 
-    Al igual que con las cográficas polares, podemos obtener subclases de $M_2$ al limitar el tamaño de sus partes. En la presente sección estudiamos un conjunto de subclases de $M_2$ a las que llamamos clases $(\alpha, \beta)$-$M_2$. El estudio de estas clases consolida un ejemplo de cómo los conjuntos de obstrucciones mínimas de un conjunto de clases $C_1,C_2, \dots$ tales que $C_i \subset C_{i+1}$ para todo entero $i \geq 1$ se relacionan de manera que podemos encontrar fórmulas y algoritmos para generar dichos conjuntos de obstrucciones mínimas. El resultado principal de esta sección es un algoritmo de fuerza bruta para encontrar algunas obstrucciones mínimas de cualquier clase $(\alpha, \beta)$-$M_2$. Éste es utilizado para generar los conjuntos de obstrucciones mínimas de varias clases. 
-    
+    Al igual que con las cográficas polares, podemos obtener subclases de $M_2$ al limitar el tamaño de sus partes. En la presente sección estudiamos un conjunto de subclases de $M_2$ a las que llamamos clases $(\alpha, \beta)$-$M_2$. El estudio de estas clases consolida un ejemplo de cómo los conjuntos de obstrucciones mínimas de un conjunto de clases $C_1,C_2, \dots$ tales que $C_i \subset C_{i+1}$ para todo entero $i \geq 1$ se relacionan de manera que podemos encontrar fórmulas y algoritmos para generar dichos conjuntos de obstrucciones mínimas. El resultado principal de esta sección es un algoritmo de fuerza bruta para encontrar algunas obstrucciones mínimas de cualquier clase $(\alpha, \beta)$-$M_2$. Este algoritmo es utilizado para generar los conjuntos de obstrucciones mínimas de varias clases.
+
     \subsection{Definición y clases conocidas}
         \input{chapters/0509DefAlfaBetaM2}
 
@@ -127,7 +127,7 @@ una obstrucción mínima de la clase como subgráfica inducida de $G$.
 
     \subsection{Algoritmo para generar obstrucciones mínimas}
         \input{chapters/0512AlgosAlfaBetaM2}
-    
+
     \subsection{Resultados del algoritmo}
         \input{chapters/0513ObstruccionesAlfaBetaM2}
 
