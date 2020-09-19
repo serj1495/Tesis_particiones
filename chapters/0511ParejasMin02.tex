@@ -90,23 +90,31 @@ Sea $(A,B)$ una $M_2$-partición de $G$. Como $G$ no es bipartita, entonces $A$ 
 \end{proof}
 
 \begin{lemma}\label{lema_parejas_05}
-Sea $G\in M_2$ una gráfica inconexa bipartita con al menos dos componentes conexas no triviales, entonces $\mu(G)=\{(1,1)\}$.
+Si $G \in M_2$ es una gráfica inconexa bipartita con al menos dos componentes conexas no triviales, entonces $\mu(G)=\{(1,1)\}$.
 \end{lemma}
 
 \begin{proof}
-Como $G$ es bipartita, entonces $G$ acepta una $M_2$-partición de tamaño $(1,1)$. Como $G$ tiene un $\overline{P_3}$, entonces $G$ no es una gráfica multipartita completa. Luego, $G$ no acepta ninguna $M_2$-partición de tamaño $(0,\beta)$ para cualquier entero $\beta \geq 1$. Así, cualquier $M_2$-partición de $G$ será de tamaño $(\alpha,\beta')$ para algunos $\alpha \geq 1$ y $\beta \geq 1$. Luego, $\mu(G)=\{(1,1)\}$.
+Como $G$ es bipartita, entonces $G$ acepta una $M_2$-partición de tamaño
+$(1,1)$. Como $G$ tiene un $\overline{P_3}$, entonces $G$ no es una gráfica
+multipartita completa. Luego, $G$ no acepta $M_2$-particiones de tamaño
+$(0,\beta)$ para cualquier entero $\beta \ge 1$. Así, cualquier
+$M_2$-partición de $G$ será de tamaño $(\alpha,\beta')$ para algunos
+$\alpha \ge 1$ y $\beta \ge 1$. Luego, $\mu(G)=\{(1,1)\}$.
 \end{proof}
 
 \begin{lemma}\label{lema_parejas_06}
-Sea $G$ una gráfica isomorfa a $K_1$, entonces $\mu(G)=\{0,1\}$.
+Si $G$ es una gráfica isomorfa a $K_1$, entonces $\mu(G)=\{0,1\}$.
 \end{lemma}
 
 \begin{proof}
-Es claro que la única $M_2$-partición posible de $G$ es de tamaño $(0,1)$. Luego, $\mu(G)=\{0,1\}$.
+Es claro que la única $M_2$-partición posible de $G$ es de tamaño $(0,1)$. Luego, $\mu(G)=\{(0,1)\}$.
 \end{proof}
 
 \begin{lemma}\label{lema_parejas_07}
-Sean $G_1,G_2\in M_2$, $G=G_1 \oplus G_2$ y $S'(G)$ el conjunto de todas las parejas $(\alpha, \beta)$ tales que para algunos $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$ cumplen alguna de las siguientes condiciones
+Sean $G_1, G_2 \in M_2$, $G=G_1 \oplus G_2$ y $S'(G)$ el conjunto de todas
+las parejas $(\alpha, \beta)$ tales que para algunos $(\alpha_1,\beta_1)
+\in \mu(G_1)$ y $(\alpha_2, \beta_2) \in \mu(G_2)$ alguna de las siguientes
+condiciones se cumple
 \begin{itemize}
     \item $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$ o
     \item $\alpha = \emph{min}(\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \emph{max}(\alpha_1+\beta_2, \alpha_2+\beta_1)$.
@@ -117,9 +125,9 @@ Una pareja de enteros $P$ está en $\mu(G)$ si y sólo si $P\in S'(G)$ y $P$ no 
 \begin{proof}
 Notemos que $(A,B)$ es una $M_2$-partición de $G$ si y sólo si existen $M_2$-particiones $(A_1,B_1)$ y $(A_2,B_2)$ de $G_1$ y $G_2$ respectivamente tales que $(A,B)=(A_1\cup A_2, B_1 \cup B_2)$.
 
-Veamos que $S'(G)\subset S(G)$. Sea $(x,y)$ un elemento de $S'(G)$. Sabemos que existen $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$ tales que se cumple alguna de las condiciones mencionadas en el lema. Como $(\alpha_1,\beta_1)\in \mu(G_1)$, entonces existe una $M_2$-partición $(A_1,B_1)$ de $G_1$ de tamaño $(\alpha_1, \beta_1)$. Análogamente, existe una $M_2$-partición $(A_2,B_2)$ de $G_2$ de tamaño $(\alpha_2, \beta_2)$. Luego, $(A_1\cup A_2, B_1 \cup B_2)$ es una $M_2$ partición de $G$ de tamaño $(x,y)$ o $(A_1\cup B_2, B_1 \cup A_2)$ es una $M_2$ partición de $G$ de tamaño $(x,y)$. En cualquiera de los casos, $(x,y)\in S(G)$. Así, $S'(G)\subset S(G)$.
+Veamos que $S'(G)\subset S(G)$. Sea $(x,y)$ un elemento de $S'(G)$. Sabemos que existen $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$ tales que se cumple alguna de las condiciones mencionadas en el lema. Como $(\alpha_1,\beta_1)\in \mu(G_1)$, entonces existe una $M_2$-partición $(A_1,B_1)$ de $G_1$ de tamaño $(\alpha_1, \beta_1)$. Análogamente, existe una $M_2$-partición $(A_2,B_2)$ de $G_2$ de tamaño $(\alpha_2, \beta_2)$. Luego, $(A_1\cup A_2, B_1 \cup B_2)$ es una $M_2$-partición de $G$ de tamaño $(x,y)$ o $(A_1\cup B_2, B_1 \cup A_2)$ es una $M_2$ partición de $G$ de tamaño $(x,y)$. En cualquiera de los casos, $(x,y)\in S(G)$. Así, $S'(G)\subset S(G)$.
 
-Ahora mostremos la doble contención. Sea $(x,y)$ un elemento de $S'(G)$ tal que $(x,y)$ no domina a ningún otro elemento de $S'(G)$. Como $S'(G)\subset S(G)$, entonces $(x,y)\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Mostremos que para cualquier $M_2$-partición $(A',B')$ de $G$ de tamaño $(\alpha',\beta')\in S(G)$, se cumple que $(x,y)$ no domina a $(\alpha',\beta')$. Si $(\alpha',\beta')\in S'(G)$, entonces $(x,y)$ no domina a $(\alpha',\beta')$. En el caso contrario, para cualesquiera $M_2$-particiones $P_1=(A_1,B_1)$ y $P_2=(A_2,B_2)$ de $G_1$ y $G_1$ respectivamente de tamaños $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$ respectivamente, se cumplen las siguientes condiciones:
+Para la contención restante, sea $(x,y)$ un elemento de $S'(G)$ tal que $(x,y)$ no domina a ningún otro elemento de $S'(G)$. Como $S'(G)\subset S(G)$, entonces $(x,y)\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Mostremos que para cualquier $M_2$-partición $(A',B')$ de $G$ de tamaño $(\alpha',\beta')\in S(G)$, se cumple que $(x,y)$ no domina a $(\alpha',\beta')$. Si $(\alpha',\beta')\in S'(G)$, entonces $(x,y)$ no domina a $(\alpha',\beta')$. En el caso contrario, para cualesquiera $M_2$-particiones $P_1=(A_1,B_1)$ y $P_2=(A_2,B_2)$ de $G_1$ y $G_2$ de tamaños $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$, respectivamente, se cumplen las siguientes condiciones:
 \begin{itemize}
     \item $\alpha' \neq \alpha_1+\alpha_2$ o $\beta' \neq \beta_1 + \beta_2$ y
     \item $\alpha' \neq \emph{min}(\alpha_1+\beta_2, \alpha_2+\beta_1)$ o  $\beta' \neq \emph{max}(\alpha_1+\beta_2, \alpha_2+\beta_1)$.
