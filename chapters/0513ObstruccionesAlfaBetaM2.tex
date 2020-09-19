@@ -1,0 +1,103 @@
+En esta subsección mostramos las obstrucciones mínimas de algunas clases $(\alpha, \beta)$-$M_2$ encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta}. Las obstrucciones se buscaron en coárboles de hasta 15 hojas.
+
+\subsubsection{Clases $(1,\beta)$-$M_2$}
+
+Las Figuras \ref{obsts_1_1_M2},\ref{obsts_1_2_M2},\ref{obsts_1_3_M2},\ref{obsts_1_4_M2} y \ref{obsts_1_5_M2} muestran los conjuntos de obstrucciones mínimas encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta} para las clases $(1,1)$-$M_2$, $(1,2)$-$M_2$, $(1,3)$-$M_2$, $(1,4)$-$M_2$ y $(1,5)$-$M_2$ respectivamente.
+
+\input{obstruccionesAB/obsts_1_1}
+\input{obstruccionesAB/obsts_1_2}
+\input{obstruccionesAB/obsts_1_3}
+\input{obstruccionesAB/obsts_1_4}
+\input{obstruccionesAB/obsts_1_5}
+
+Podemos observar que el algoritmo encuentra que $K_3$ es una obstrucción mínima de la clase $(1,1)$-$M_2$, lo cuál sabemos que es correcto, dado que ésta es la clase de las cográficas bipartitas. 
+
+Sea $\beta$ un entero mayor o igual a uno. Si $2<\beta\le 5$, notemos que el algoritmo encuentra tres obstrucciones mínimas para la clase $(1,\beta)$-$M_2$. Dos de éstas son las obstrucciones mínimas de la clase $(1,\infty)$-$M_2$. Por otra parte, si $0\le\beta\le 5$, se cumple que $K_{\beta+2}$ es una obstrucción  mínima de la clase $(1,\beta)$-$M_2$. Esto nos lleva a pensar en la clase $(1,\infty)$-$M_2$ como el límite cuando $\beta$ tiende a infinito de las clases $(1,\beta)$-$M_2$. Es decir que esperamos que, si una gráfica $G$ es una obstrucción mínima de cada una de las clases $(\alpha,\beta)$-$M_2$ con $\alpha$ fijo y $\beta>n$ para un entero $n$, entonces $G$ sea una obstrucción mínima de la clase $(\alpha,\infty)$-$M_2$.
+
+\subsubsection{Clases $(2,\beta)$-$M_2$}
+
+Las Figuras \ref{obsts_2_2_M2},\ref{obsts_2_3_M2} y \ref{obsts_2_4_M2} muestran los conjuntos de obstrucciones mínimas encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta} para las clases $(2,2)$-$M_2$, $(2,3)$-$M_2$ y $(2,4)$-$M_2$ respectivamente. Además de éstas, enlistamos las obstrucciones mínimas de las clases $(2,5)$-$M_2$, $(2,6)$-$M_2$ y $(2,7)$-$M_2$.
+
+\input{obstruccionesAB/obsts_2_2}
+
+Las obstrucciones mínimas de la clase $(2,2)$-$M_2$, ilustradas en la Figura \ref{obsts_2_2_M2} se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,2),1}=K_5$.
+    \item $o_{(2,2),2}=K_1+K_4$.
+    \item $o_{(2,2),3}=K_2+K_3$.
+\end{itemize}
+
+\input{obstruccionesAB/obsts_2_3}
+
+Las obstrucciones mínimas de la clase $(2,3)$-$M_2$, ilustradas en la Figura \ref{obsts_2_3_M2}, se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,3),1}=2K_3$.
+    \item $o_{(2,3),2}=K_6$.
+    \item $o_{(2,3),3}=K_1+K_5$.
+    \item $o_{(2,3),4}=K_1\oplus(K_2+K_3)$.
+    \item $o_{(2,3),5}=K_2+K_4$.
+\end{itemize}
+
+\input{obstruccionesAB/obsts_2_4}
+
+Las obstrucciones mínimas de la clase $(2,4)$-$M_2$, ilustradas en la Figura \ref{obsts_2_4_M2}, se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,4),1}=2K_3$.
+    \item $o_{(2,4),2}=\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3}$.
+    \item $o_{(2,4),3}=K_7$.
+    \item $o_{(2,4),4}=K_2\oplus(K_2+K_3)$.
+    \item $o_{(2,4),5}=K_1+K_6$.
+    \item $o_{(2,4),6}=K_1\oplus(K_2+K_4)$.
+    \item $o_{(2,4),7}=K_2+K_5$.
+\end{itemize}
+
+
+Las obstrucciones mínimas de la clase $(2,5)$-$M_2$ encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta} se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,5),1}=2K_3$.
+    \item $o_{(2,5),2}=\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3}$.
+    \item $o_{(2,5),3}=\overline{P_3}\oplus(K_2+K_3)=(K_1+K_2)\oplus(K_2+K_3)$.
+    \item $o_{(2,5),4}=K_8$.
+    \item $o_{(2,5),5}=K_3\oplus(K_2+K_3)$.
+    \item $o_{(2,5),6}=K_2\oplus(K_2+K_4)$.
+    \item $o_{(2,5),7}=K_1+K_7$.
+    \item $o_{(2,5),8}=K_1\oplus(K_2+K_5)$.
+    \item $o_{(2,5),9}=K_2+K_6$.
+\end{itemize}
+
+Las obstrucciones mínimas de la clase $(2,6)$-$M_2$ encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta} se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,6),1}=2K_3$.
+    \item $o_{(2,6),2}=\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3}$.
+    \item $o_{(2,6),3}=\overline{P_3}\oplus(K_2+K_3)=(K_1+K_2)\oplus(K_2+K_3)$.
+    \item $o_{(2,6),4}=K_9$.
+    \item $o_{(2,6),5}=K_4\oplus(K_2+K_3)$.
+    \item $o_{(2,6),6}=K_3\oplus(K_2+K_4)$.
+    \item $o_{(2,6),7}=K_2\oplus(K_2+K_5)$.
+    \item $o_{(2,6),8}=K_1+K_8$.
+    \item $o_{(2,6),9}=K_1\oplus(K_2+K_6)$.
+    \item $o_{(2,6),10}=K_2+K_7$.
+\end{itemize}
+
+Las obstrucciones mínimas de la clase $(2,7)$-$M_2$ encontradas con el Algoritmo \ref{alg_obstrucciones_alfabeta} se pueden expresar de la siguiente manera:
+\begin{itemize}
+    \item $o_{(2,7),1}=2K_3$.
+    \item $o_{(2,7),2}=\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3}$.
+    \item $o_{(2,7),3}=\overline{P_3}\oplus(K_2+K_3)=(K_1+K_2)\oplus(K_2+K_3)$.
+    \item $o_{(2,7),4}=K_{10}$.
+    \item $o_{(2,7),5}=K_5\oplus(K_2+K_3)$.
+    \item $o_{(2,7),6}=K_4\oplus(K_2+K_4)$.
+    \item $o_{(2,7),7}=K_3\oplus(K_2+K_5)$.
+    \item $o_{(2,7),8}=K_2\oplus(K_2+K_6)$.
+    \item $o_{(2,7),9}=K_1+K_9$.
+    \item $o_{(2,7),10}=K_1\oplus(K_2+K_7)$.
+    \item $o_{(2,7),11}=K_2+K_8$.
+\end{itemize}
+
+Como podemos ver, la gráfica $2K_3$ es una obstrucción mínima de las clases $(2,\beta)$-$M_2$ para $3\le\beta\le7$, la gráfica $\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3}$ es una obstrucción mínima de las clases $(2,\beta)$-$M_2$ para $4\le\beta\le7$ y la gráfica $\overline{P_3}\oplus(K_2+K_3)$ es una obstrucción mínima de las clases $(2,\beta)$-$M_2$ para $5\le\beta\le7$. Esto nos lleva a pensar que estas tres gráficas pueden ser obstrucciones mínimas de la clase $(2,\infty)$-$M_2$. Además, podemos identificar algunas posibles familias de obstrucciones para cualquier clase $(2,\beta)$-$M_2$.  
+
+%Éstas familias son bastante fáciles de identificar. También es fácil demostrar que son familias de obstrucciones mínimas. Tal vez podamos hacerlo al final si nos queda tiempo.
+
+\subsubsection{Obstrucciones de algunas otras clases  $(\alpha,\beta)$-$M_2$}
+
+%Tengo las obstrucciones mínimas de las clases (3,3), (3,4), (3,5) y (4,4). Se pueden generar más. Tal vez podemos incluirlas en los apéndices.
