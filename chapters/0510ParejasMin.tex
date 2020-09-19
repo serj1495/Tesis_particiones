@@ -7,13 +7,19 @@ Sea $G$ una gráfica en $M_2$, denotamos por $S(G)$ al conjunto de todas las par
 Sea $G$ una gráfica en $M_2$, el \textbf{\emph{conjunto de parejas mínimas}} de $G$, denotado por $\mu(G)$, es el conjunto de todas las parejas $(\alpha, \beta)\in S(G)$ tales que, para cualquier otro $(\alpha', \beta')\in S(G)$, $(\alpha, \beta)$ no domina a $(\alpha', \beta')$.
 
 \begin{lemma}\label{lema_parejas_principal}
-Sean $G$ una gráfica en $M_2$ y $(\alpha, \beta)$ una pareja de enteros mayores a cero tales que $\alpha \le \beta$. $G$ pertenece a la clase $(\alpha, \beta)$-$M_2$ si y sólo si existe una pareja de enteros $(\alpha', \beta')\in \mu(G)$ tal que $(\alpha, \beta)$ domina a $(\alpha', \beta')$.
+Si $G$ es una gráfica en $M_2$ y $(\alpha, \beta)$ una pareja de enteros mayores a cero tales que $\alpha \le \beta$, entonces $G$ pertenece a la clase $(\alpha, \beta)$-$M_2$ si y sólo si existe una pareja de enteros $(\alpha', \beta')\in \mu(G)$ tal que $(\alpha, \beta)$ domina a $(\alpha', \beta')$.
 \end{lemma}
 
 \begin{proof}
-Supongamos primero que $G\in (\alpha, \beta)\text{-}M_2$. Sabemos que $G$ acepta una $M_2$-partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita completa formada por $\alpha'$ conjuntos independientes con $\alpha' \le \alpha$ y $G[B]$ es una gráfica multipartita completa formada por $\beta'$ conjuntos independientes con $\beta' \le \beta$. Como $(A,B)$ es una $M_2$-partición de $G$, entonces $(\alpha', \beta')\in S(G)$. Supongamos sin pérdida de generalidad (dado que la dominación es una relación transitiva) que $(\alpha', \beta')\in \mu(G)$. Luego, como $\alpha' \le \alpha$ y $\alpha' \le \alpha$, entonces $(\alpha, \beta)$ domina a $(\alpha', \beta') \in \mu(G)$.
+Supongamos primero que $G\in (\alpha, \beta)\text{-}M_2$. Sabemos que $G$
+acepta una $M_2$-partición $(A,B)$ tal que $G[A]$ es una gráfica multipartita
+completa formada por $\alpha'$ conjuntos independientes con $\alpha' \le
+\alpha$ y $G[B]$ es una gráfica multipartita completa formada por $\beta'$
+conjuntos independientes con $\beta' \le \beta$. Como $(A,B)$ es una
+$M_2$-partición de $G$, entonces $(\alpha', \beta')\in S(G)$. Supongamos sin
+pérdida de generalidad (dado que la dominación es una relación transitiva)
+que $(\alpha', \beta')\in \mu(G)$. Luego, como $\alpha' \le \alpha$ y $\beta'
+\le \beta$, entonces $(\alpha, \beta)$ domina a $(\alpha', \beta') \in \mu(G)$.
 
 Recíprocamente. Como $(\alpha', \beta')\in \mu(G)$, entonces $(\alpha', \beta')\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(\alpha', \beta')$. Como $(\alpha, \beta)$ domina a $(\alpha', \beta')$, entonces $G[A]$ es una gráfica multipartita completa formada por a lo más $\alpha$ conjuntos independientes y $G[B]$ es una gráfica multipartita completa formada por a lo más $\beta$ conjuntos independientes. Así, $G\in (\alpha, \beta)\text{-}M_2$.
 \end{proof}
-
-
