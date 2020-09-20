@@ -1,8 +1,8 @@
-En esta subsección presentamos cuatro algoritmos. Los primeros dos (Algoritmos \ref{alg_func_B} y \ref{alg_parejas_min}) se utilizan para calcular el conjunto de parejas mínimas de una gráfica. El Algoritmo \ref{alg_decision_alfabeta} resuelve el problema de decisión de si una gráfica pertenece a una clase $(\alpha,\beta)$-$M_2$. El Algoritmo \ref{alg_obstrucciones_alfabeta} es capaz de generar las obstrucciones mínimas de una clase $(\alpha,\beta)$-$M_2$ con a lo más un número $n$ de vértices. Éste es utilizado en la siguiente sección para generar algunas obstrucciones mínimas para algunas clases $(\alpha,\beta)$-$M_2$.
+En esta subsección presentamos cuatro algoritmos. Los primeros dos (Algoritmos \ref{alg_func_B} y \ref{alg_parejas_min}) se utilizan para calcular el conjunto de parejas mínimas de una gráfica. El Algoritmo \ref{alg_decision_alfabeta} resuelve el problema de decisión de si una gráfica pertenece a una clase $(\alpha,\beta)$-$M_2$. El Algoritmo \ref{alg_obstrucciones_alfabeta} es capaz de generar las obstrucciones mínimas de una clase $(\alpha,\beta)$-$M_2$ con a lo más un número $n$ de vértices, por lo que es utilizado en la siguiente sección para generar obstrucciones mínimas para algunas clases $(\alpha,\beta)$-$M_2$.
 
 \subsubsection{Algoritmos para el cálculo del conjunto de parejas mínimas}
 
-El Algoritmo \ref{alg_func_B} evalúa la función $B(x)$ descrita en el Lema \ref{lema_parejas_03} para un nodo $x$ de un coárbol que representa a una gráfica $G$. Es decir que ésta encuentra el menor entero $n$ tal que $G[x]$ acepta una partición en un conjunto independiente y una gráfica multipartita completa formada por  $n$ conjuntos independientes. Dado que este algoritmo es una implementación directa del Lema \ref{lema_parejas_03}, la demostración de este lema funciona también para el algoritmo. 
+El Algoritmo \ref{alg_func_B} evalúa la función $B(x)$ descrita en el Lema \ref{lema_parejas_03} para un nodo $x$ de un coárbol que representa a una gráfica $G$. Es decir que éste encuentra el menor entero $n$ tal que $G[x]$ acepta una partición en un conjunto independiente y una gráfica multipartita completa formada por  $n$ conjuntos independientes. Dado que este algoritmo es una implementación directa del Lema \ref{lema_parejas_03}, la demostración de este lema funciona también para el algoritmo.
 
 \begin{algorithm}[ht!]
 \caption{Función\_B}
@@ -27,7 +27,7 @@ El Algoritmo \ref{alg_func_B} evalúa la función $B(x)$ descrita en el Lema \re
 
 \end{algorithm}
 
-El algoritmo \ref{alg_parejas_min} recibe como entrada una gráfica $G$ representada a través de la raíz de su coárbol y devuelve su conjunto de parejas mínimas $\mu(G)$. Éste funciona aplicando los Lemas \ref{lema_parejas_01}, \ref{lema_parejas_03}, \ref{lema_parejas_04}, \ref{lema_parejas_05}, \ref{lema_parejas_06} y \ref{lema_parejas_07}. 
+El algoritmo \ref{alg_parejas_min} recibe como entrada una gráfica $G$, representada a través de la raíz de su coárbol y devuelve su conjunto de parejas mínimas $\mu(G)$. Éste funciona aplicando los Lemas \ref{lema_parejas_01}, \ref{lema_parejas_03}, \ref{lema_parejas_04}, \ref{lema_parejas_05}, \ref{lema_parejas_06} y \ref{lema_parejas_07}.
 
 \begin{algorithm}[ht!]
 \caption{Conjunto\_De\_Parejas\_Mínimas}
@@ -78,7 +78,7 @@ $\mu(G)\gets\varnothing$ \;
 
 Notemos que los casos considerados son exhaustivos. Las condiciones de las líneas 2 y 4 cubren todos los casos en los que la gráfica $G$ es conexa, mientras que las condiciones de las líneas 16, 18, 20 y 24 cubren todos los casos en los que la gráfica $G$ es inconexa.
 
-En la línea 3 del algoritmo se aplica el Lema \ref{lema_parejas_06}. En la línea 17 se aplica el Lema \ref{lema_parejas_01}. En la línea 19 se aplica el Lema \ref{lema_parejas_03}. En la línea 23 se aplica el Lema \ref{lema_parejas_04} y en la línea 25 se aplica el Lema \ref{lema_parejas_05}. 
+En la línea 3 del algoritmo se aplica el Lema \ref{lema_parejas_06}. En la línea 17 se aplica el Lema \ref{lema_parejas_01}. En la línea 19 se aplica el Lema \ref{lema_parejas_03}. En la línea 23 se aplica el Lema \ref{lema_parejas_04} y en la línea 25 se aplica el Lema \ref{lema_parejas_05}.
 
 El único caso en el que no se aplica directamente un lema de la subsección anterior es en el caso en el que $G$ es una gráfica conexa no trivial. Éste corresponde al bloque de líneas 5 a 13 del algoritmo. En este bloque se calcula el conjunto de parejas mínimas de $G$ de forma incremental aplicando el Lema \ref{lema_parejas_07}. Sea $G=G_1\oplus G_2 \oplus \dots \oplus G_n$ para un entero $n>1$, primero se calcula $\mu(G_1)$, posteriormente $\mu(G_1\oplus G_2)$ y así sucesivamente hasta encontrar $\mu(G)$. En la línea 5 se inicializa $\mu(G)$ con los elementos de $G_1$. En el bloque de las líneas 6 a 13 se procesan el resto de las $G_i$ con $1<i\le n$. En cada iteración $i$ se calcula $\mu(G_i)$ y se guarda en $T$ (línea 7). Luego, en las líneas 10 y 11 se aplica el Lema \ref{lema_parejas_07} para calcular $S'(G_1 \oplus \dots \oplus G_i)$. Finalmente, en la línea 13 se actualiza $\mu(G)$ con los elementos de $S'(G_1 \oplus \dots \oplus G_i)$ que no dominan a ningún elemento del mismo conjunto. Así, al final de cada iteración, $\mu(G)$ tiene asignado el valor de $\mu(G_1 \oplus \dots \oplus G_i)$, y al final de la última iteración, $\mu(G)=\mu(G_1 \oplus \dots \oplus G_n)$.
 
@@ -104,7 +104,7 @@ $\mu(G) \gets \text{Conjunto\_De\_Parejas\_Mínimas}(g)$\;
 
 \Return $falso$\;
 
-\end{algorithm} 
+\end{algorithm}
 
 \subsubsection{Algoritmo para generar las obstrucciones mínimas de una clase $(\alpha,\beta)$-$M_2$}
 
@@ -124,10 +124,10 @@ El Algoritmo \ref{alg_obstrucciones_alfabeta} recibe como entrada tres enteros $
             \If{Toda subgráfica inducida de $G$ está en $(\alpha,\beta)$-$M_2$}{
                 Agregar $T$ a $S$\;
             }
-        }    
+        }
     }
 }
 
 \Return $S$\;
 
-\end{algorithm} 
+\end{algorithm}

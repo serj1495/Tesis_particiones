@@ -117,7 +117,7 @@ las parejas $(\alpha, \beta)$ tales que para algunos $(\alpha_1,\beta_1)
 condiciones se cumple
 \begin{itemize}
     \item $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$ o
-    \item $\alpha = \emph{min}(\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \emph{max}(\alpha_1+\beta_2, \alpha_2+\beta_1)$.
+    \item $\alpha = \min (\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \max (\alpha_1+\beta_2, \alpha_2+\beta_1)$.
 \end{itemize}
 Una pareja de enteros $P$ está en $\mu(G)$ si y sólo si $P\in S'(G)$ y $P$ no domina a ningún otro elemento de $S'(G)$.
 \end{lemma}
@@ -130,14 +130,14 @@ Veamos que $S'(G)\subset S(G)$. Sea $(x,y)$ un elemento de $S'(G)$. Sabemos que 
 Para la contención restante, sea $(x,y)$ un elemento de $S'(G)$ tal que $(x,y)$ no domina a ningún otro elemento de $S'(G)$. Como $S'(G)\subset S(G)$, entonces $(x,y)\in S(G)$. Luego, existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Mostremos que para cualquier $M_2$-partición $(A',B')$ de $G$ de tamaño $(\alpha',\beta')\in S(G)$, se cumple que $(x,y)$ no domina a $(\alpha',\beta')$. Si $(\alpha',\beta')\in S'(G)$, entonces $(x,y)$ no domina a $(\alpha',\beta')$. En el caso contrario, para cualesquiera $M_2$-particiones $P_1=(A_1,B_1)$ y $P_2=(A_2,B_2)$ de $G_1$ y $G_2$ de tamaños $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$, respectivamente, se cumplen las siguientes condiciones:
 \begin{itemize}
     \item $\alpha' \neq \alpha_1+\alpha_2$ o $\beta' \neq \beta_1 + \beta_2$ y
-    \item $\alpha' \neq \emph{min}(\alpha_1+\beta_2, \alpha_2+\beta_1)$ o  $\beta' \neq \emph{max}(\alpha_1+\beta_2, \alpha_2+\beta_1)$.
+    \item $\alpha' \neq \min (\alpha_1+\beta_2, \alpha_2+\beta_1)$ o  $\beta' \neq \max (\alpha_1+\beta_2, \alpha_2+\beta_1)$.
 \end{itemize}
 Luego, ni $A'$ ni $B'$ son el resultado de la unión de una parte de $P_1$ y una parte de $P_2$. Sea $(A'',B'')$ una $M_2$-partición de $G$ tal que $A''=A_1\cup A_2$ y $B''=B_1\cup B_2$ y $(\alpha'', \beta'')$ el tamaño de $(A'',B'')$, notemos que $(\alpha'', \beta'')\in S'(G)$ y que necesariamente $(\alpha', \beta')$ domina a $(\alpha'', \beta'')$. Luego, como $(\alpha'', \beta'')\in S'(G)$, entonces $(x,y)$ no domina a $(\alpha'', \beta'')$. Así, como la dominación es una relación transitiva, $(x,y)$ no domina a $(\alpha', \beta')$.
 
-Recíprocamente. Sea $(x,y)\in\mu(G)$, entonces existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Luego, existen $M_2$-particiones $(A_1,B_1)$ de tamaño $(\alpha_1, \beta_1)$ y $(A_2,B_2)$ de tamaño $(\alpha_2, \beta_2)$ de $G_1$ y $G_2$ respectivamente tales que $(A,B)=(A_1\cup A_2, B_1 \cup B_2)$. Como todos los vértices de $A_1$ son adyacentes a todos los vértices de $A_2$ y todos los vértices de $B_1$ son adyacentes a todos los vértices de $B_2$, se cumple que $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$, o bien, se cumple que $\alpha = \emph{min}(\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \emph{max}(\alpha_1+\beta_2, \alpha_2+\beta_1)$.
+Recíprocamente. Sea $(x,y)\in\mu(G)$, entonces existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Luego, existen $M_2$-particiones $(A_1,B_1)$ de tamaño $(\alpha_1, \beta_1)$ y $(A_2,B_2)$ de tamaño $(\alpha_2, \beta_2)$ de $G_1$ y $G_2$ respectivamente tales que $(A,B)=(A_1\cup A_2, B_1 \cup B_2)$. Como todos los vértices de $A_1$ son adyacentes a todos los vértices de $A_2$ y todos los vértices de $B_1$ son adyacentes a todos los vértices de $B_2$, se cumple que $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$, o bien, se cumple que $\alpha = \min (\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \max (\alpha_1+\beta_2, \alpha_2+\beta_1)$.
 
 Veamos que $(\alpha_1, \beta_1)\in\mu(G_1)$. Procedamos por contradicción. Supongamos que $(\alpha_1, \beta_1)\notin\mu(G_1)$. Como $(A_1,B_1)$ existe, entonces $(\alpha_1, \beta_1)\in S(G_1)$. Luego debe de existir otra pareja $(\alpha_1', \beta_1')\in\S(G_1)$ tal que $(\alpha_1, \beta_1)$ domina a $(\alpha_1', \beta_1')$. De esto se sigue que existe una $M_2$-partición $(A_1',B_1')$ de $G_1$ de tamaño $(\alpha_1', \beta_1')$. Como $(A_1'\cup A_2, B_1'\cup B_2)$ es una $M_2$-partición de $G$ cuyo tamaño es dominado por $(x,y)$, entonces $(x,y)\notin\mu(G)$. Lo cual es una contradicción. Así, $(\alpha_1, \beta_1)\in\mu(G_1)$. Análogamente, $(\alpha_2, \beta_2)\in\mu(G_2)$. Así, $(x,y)\in S'(G)$.
 
-Como $S'(G)\subset S(G)$ y $(x,y)\in\mu(G)$, entonces $(x,y)$ no domina a ningún elemento de $S(G)$, y por lo tanto tampoco domina a ningún elemento de $S'(G)$.
+Como $S'(G)\subset S(G)$ y $(x,y)\in\mu(G)$, entonces $(x,y)$ no domina a elemento alguno de $S(G)$, y por lo tanto tampoco domina elemento alguno de $S'(G)$.
 
 \end{proof}
