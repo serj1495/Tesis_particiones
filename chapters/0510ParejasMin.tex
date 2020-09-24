@@ -1,10 +1,11 @@
 En esta subsección, presentamos el concepto de conjunto de parejas mínimas, que nos ayudará a determinar si una cográfica $G$ pertenece a una clase $(\alpha, \beta)$-$M_2$ sin tener que revisar todas las posibles $M_2$-particiones de $G$.
 
-Sean $P_1=(\alpha_1, \beta_1)$ y $P_2=(\alpha_2, \beta_2)$ parejas de enteros tales que $0 < \alpha_1 \le \beta_1$ y $0 < \alpha_2 \le \beta_2$. Decimos que $P_1$ \emph{\textbf{domina}} a $P_2$ si $\alpha_1 \geq \alpha_2$ y $\beta_1 \geq \beta_2$. Notemos que ésta es una relación transitiva.
+Sean $P_1=(\alpha_1, \beta_1)$ y $P_2=(\alpha_2, \beta_2)$ parejas de enteros tales que $0 < \alpha_1 \le \beta_1$ y $0 < \alpha_2 \le \beta_2$. Decimos que $P_1$ \emph{\textbf{domina}} a $P_2$ si $\alpha_1 \geq \alpha_2$ y $\beta_1 \geq \beta_2$. Es f\'acil observar que ésta es una relación reflexiva, transitiva y antisim\'etrica, por lo que es una relaci\'on de orden.
 
 Sea $G$ una gráfica en $M_2$, denotamos por $S(G)$ al conjunto de todas las parejas ordenadas de enteros $(\alpha, \beta)$ tales que $G$ acepta una $M_2$-partición de tamaño $(\alpha, \beta)$.
 
-Sea $G$ una gráfica en $M_2$, el \textbf{\emph{conjunto de parejas mínimas}} de $G$, denotado por $\mu(G)$, es el conjunto de todas las parejas $(\alpha, \beta)\in S(G)$ tales que, para cualquier otro $(\alpha', \beta')\in S(G)$, $(\alpha, \beta)$ no domina a $(\alpha', \beta')$.
+Sea $G$ una gráfica en $M_2$, el \textbf{\emph{conjunto de parejas mínimas}} de $G$, denotado por $\mu(G)$, es el conjunto de todas las parejas $(\alpha, \beta)\in S(G)$ tales que, para cualquier otro $(\alpha', \beta')\in S(G)$, $(\alpha, \beta)$ no domina a $(\alpha', \beta')$.   Al ser $(S(G), \le)$ un
+orden parcial, toda pareja en $S(G)$ domina a alguna pareja en $\mu (G)$.
 
 \begin{lemma}\label{lema_parejas_principal}
 Si $G$ es una gráfica en $M_2$ y $(\alpha, \beta)$ una pareja de enteros mayores a cero tales que $\alpha \le \beta$, entonces $G$ pertenece a la clase $(\alpha, \beta)$-$M_2$ si y sólo si existe una pareja de enteros $(\alpha', \beta')\in \mu(G)$ tal que $(\alpha, \beta)$ domina a $(\alpha', \beta')$.
