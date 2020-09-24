@@ -1,0 +1,133 @@
+En esta subsección presentamos cuatro algoritmos. Los primeros dos (Algoritmos \ref{alg_func_B} y \ref{alg_parejas_min}) se utilizan para calcular el conjunto de parejas mínimas de una gráfica. El Algoritmo \ref{alg_decision_alfabeta} resuelve el problema de decisión de si una gráfica pertenece a una clase $(\alpha,\beta)$-$M_2$. El Algoritmo \ref{alg_obstrucciones_alfabeta} es capaz de generar las obstrucciones mínimas de una clase $(\alpha,\beta)$-$M_2$ con a lo más un número $n$ de vértices, por lo que es utilizado en la siguiente sección para generar obstrucciones mínimas para algunas clases $(\alpha,\beta)$-$M_2$.
+
+\subsubsection{Algoritmos para el cálculo del conjunto de parejas mínimas}
+
+El Algoritmo \ref{alg_func_B} evalúa la función $B(x)$ descrita en el Lema \ref{lema_parejas_03} para un nodo $x$ de un coárbol que representa a una gráfica $G$. Es decir que éste encuentra el menor entero $n$ tal que $G[x]$ acepta una partición en un conjunto independiente y una gráfica multipartita completa formada por  $n$ conjuntos independientes. Dado que este algoritmo es una implementación directa del Lema \ref{lema_parejas_03}, la demostración de este lema funciona también para el algoritmo.
+
+\begin{algorithm}[ht!]
+\caption{Función\_B}
+\label{alg_func_B}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$x$, el nodo de un coárbol con etiqueta 0 y al menos un hijo que no es una hoja. $x$ es la raíz del coárbol de una cográfica en $M_2$.}
+\KwOut{El valor de $B(x)$, de acuerdo con la definición del Lema \ref{lema_parejas_03}.}
+
+\If{$X$ tiene más de un hijo que no es una hoja}{
+    \Return 1\;
+}
+\Else{
+    $y\gets $ el hijo de $x$ que no es una hoja.\;
+    \If{$y$ es la raíz del coárbol de una cográfica multipartita completa}{
+        \Return $y.hijos.tama\tilde{n}o - 1$\;
+    }
+    \Else{
+        $x' \gets $ el único hijo de $y$ que tiene al menos un hijo que no es una hoja\;
+        \Return $y.hijos.tama\tilde{n}o - 1 + \text{Función\_B}(x')$\;
+    }
+}
+
+\end{algorithm}
+
+El algoritmo \ref{alg_parejas_min} recibe como entrada una gráfica $G$, representada a través de la raíz de su coárbol y devuelve su conjunto de parejas mínimas $\mu(G)$. Éste funciona aplicando los Lemas \ref{lema_parejas_01}, \ref{lema_parejas_03}, \ref{lema_parejas_04}, \ref{lema_parejas_05}, \ref{lema_parejas_06} y \ref{lema_parejas_07}.
+
+\begin{algorithm}[ht!]
+\caption{Conjunto\_De\_Parejas\_Mínimas}
+\label{alg_parejas_min}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz del coárbol de una cográfica $G$.}
+\KwOut{$\mu(G)$}
+
+$\mu(G)\gets\varnothing$ \;
+
+\If{$g$ es una hoja}{
+    Agregar $(0,1)$ a $\mu(G)$\;
+}
+\ElseIf{$g$ tiene etiqueta 1}{
+    $\mu(G)\gets\text{Conjunto\_De\_Parejas\_Mínimas}(g.hijos[0])$\;
+    \ForEach{$h$ \emph{\textbf{en}} $g.hijos$ con excepción de $g.hijos[0]$}{
+        $T\gets\text{Conjunto\_De\_Parejas\_Mínimas}(h)$\;
+        $S'\gets \varnothing$\;
+        \ForEach{$(\alpha_1,\beta_1)\in \mu(G)$ \emph{\textbf{y cada}} $(\alpha_1,\beta_1)\in T$}{
+            Agregar $(\alpha_1+\alpha_2,\beta_1+\beta_2)$ a $S'$\;
+            Agregar $(\text{min}(\alpha_1+\beta_2,\alpha_2+\beta_1), \text{max}(\alpha_1+\beta_2,\alpha_2+\beta_1))$ a $S'$\;
+        }
+        $\mu(G)\gets\varnothing$ \;
+        Agregar a $\mu(G)$ todos los elementos de $S'$ que no dominan a ningún otro elemento de $S'$\;
+    }
+}
+\Else{
+    $n\gets $ el número de hijos de $g$ que no son hojas\;
+    \If{$n = 0$}{
+        Agregar $(0,1)$ a $\mu(G)$\;
+    }
+    \ElseIf{$n=1$}{
+        Agregar $(0,\text{Función\_B}(g))$ a $\mu(G)$\;
+    }
+    \ElseIf{$n=2$ y $G$ no es bipartita}{
+        $\alpha \gets g.hijos[0].hijos.tama\tilde{n}o$\;
+        $\beta \gets g.hijos[1].hijos.tama\tilde{n}o$\;
+        Agregar $(\text{min}(\alpha,\beta),\text{max}(\alpha,\beta))$ a $\mu(G)$\;
+    }
+    \Else{
+        Agregar $(1,1)$ a $\mu(G)$\;
+    }
+}
+
+\Return $\mu(G)$\;
+
+\end{algorithm}
+
+Notemos que los casos considerados son exhaustivos. Las condiciones de las líneas 2 y 4 cubren todos los casos en los que la gráfica $G$ es conexa, mientras que las condiciones de las líneas 16, 18, 20 y 24 cubren todos los casos en los que la gráfica $G$ es inconexa.
+
+En la línea 3 del algoritmo se aplica el Lema \ref{lema_parejas_06}. En la línea 17 se aplica el Lema \ref{lema_parejas_01}. En la línea 19 se aplica el Lema \ref{lema_parejas_03}. En la línea 23 se aplica el Lema \ref{lema_parejas_04} y en la línea 25 se aplica el Lema \ref{lema_parejas_05}.
+
+El único caso en el que no se aplica directamente un lema de la subsección anterior es en el caso en el que $G$ es una gráfica conexa no trivial. Éste corresponde al bloque de líneas 5 a 13 del algoritmo. En este bloque se calcula el conjunto de parejas mínimas de $G$ de forma incremental aplicando el Lema \ref{lema_parejas_07}. Sea $G=G_1\oplus G_2 \oplus \dots \oplus G_n$ para un entero $n>1$, primero se calcula $\mu(G_1)$, posteriormente $\mu(G_1\oplus G_2)$ y así sucesivamente hasta encontrar $\mu(G)$. En la línea 5 se inicializa $\mu(G)$ con los elementos de $G_1$. En el bloque de las líneas 6 a 13 se procesan el resto de las $G_i$ con $1<i\le n$. En cada iteración $i$ se calcula $\mu(G_i)$ y se guarda en $T$ (línea 7). Luego, en las líneas 10 y 11 se aplica el Lema \ref{lema_parejas_07} para calcular $S'(G_1 \oplus \dots \oplus G_i)$. Finalmente, en la línea 13 se actualiza $\mu(G)$ con los elementos de $S'(G_1 \oplus \dots \oplus G_i)$ que no dominan a ningún elemento del mismo conjunto. Así, al final de cada iteración, $\mu(G)$ tiene asignado el valor de $\mu(G_1 \oplus \dots \oplus G_i)$, y al final de la última iteración, $\mu(G)=\mu(G_1 \oplus \dots \oplus G_n)$.
+
+
+\subsubsection{Algoritmo para el problema de decisión}
+
+El Algoritmo \ref{alg_decision_alfabeta} es una implementación del Lema \ref{lema_parejas_principal}. Éste recibe como entrada la raíz del coárbol de una gráfica $G$, elemento de $M_2$, y dos enteros $\alpha$ y $\beta$ tales que $\alpha \le \beta$. Luego, calcula $\mu(G)$ y determina si $G\in(\alpha,\beta)$-$M_2$.
+
+\begin{algorithm}[ht!]
+\caption{Pertenece\_a\_Alfa\_Beta\_M2}
+\label{alg_decision_alfabeta}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$g$, la raíz del coárbol de una gráfica $G\in M_2$; $\alpha$, un entero mayor o igual a uno; $\beta$, un entero mayor o igual a $\alpha$}
+\KwOut{$verdadero$ si $G\in(\alpha,\beta)$-$M_2$. $falso$ en el caso contrario}
+
+$\mu(G) \gets \text{Conjunto\_De\_Parejas\_Mínimas}(g)$\;
+
+\ForEach{$(\alpha',\beta')$ \emph{\textbf{en}} $\mu(G)$}{
+    \If{$(\alpha',\beta')$ domina a $(\alpha,\beta)$}{
+        \Return $verdadero$\;
+    }
+}
+
+\Return $falso$\;
+
+\end{algorithm}
+
+\subsubsection{Algoritmo para generar las obstrucciones mínimas de una clase $(\alpha,\beta)$-$M_2$}
+
+El Algoritmo \ref{alg_obstrucciones_alfabeta} recibe como entrada tres enteros $\alpha$, $\beta$ y $n$ mayores a uno tales que $\alpha \le \beta$, y devuelve $S$, un conjunto con los coárboles de las obstrucciones mínimas de la clase $(\alpha,\beta)$-$M_2$ con a lo más $n$ vértices. Para ello, el algoritmo genera todos los coárboles con $i$ hojas para cada $1\le i \le n$ \cite{Jones}. Éste determina si cada uno de estos coárboles representa una gráfica en $(\alpha,\beta)$-$M_2$. Si la gráfica no pertenece a la clase, esto significa que es una obstrucción de la misma, por lo que evalúa cada una de sus subgráficas inducidas para determinar si es una obstrucción mínima.
+
+\begin{algorithm}[ht!]
+\caption{Generar\_obstrucciones}
+\label{alg_obstrucciones_alfabeta}
+\DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$\alpha$, $\beta$ y $n$, enteros mayores a uno}
+\KwOut{$S$, un conjunto cuyos elementos son coárboles de gráficas de a lo más $n$ vértices que son obstrucciones mínimas de la clase $(\alpha,\beta)$-$M_2$}
+
+\ForEach{$1\le i \le n$}{
+    $\tau\gets$ todos los coárboles con $i$ hojas\;
+    \ForEach{coárbol $T$ en $\tau$ con raíz $r$ que representa a una gráfica $G$}{
+        \If{$\emph{Pertenece\_a\_Alfa\_Beta\_M2}(r,\alpha,\beta) = falso$}{
+            \If{Toda subgráfica inducida de $G$ está en $(\alpha,\beta)$-$M_2$}{
+                Agregar $T$ a $S$\;
+            }
+        }
+    }
+}
+
+\Return $S$\;
+
+\end{algorithm}

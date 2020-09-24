@@ -1,0 +1,136 @@
+A continuación presentamos una serie de lemas para encontrar el conjunto de parejas mínimas de una gráfica.
+
+\begin{lemma}\label{lema_parejas_01}
+Si $G$ es una gr\'afica vac\'ia, entonces $G$ es un elemento de $M_2$ y
+$\mu(G) = \{(0,1)\}$.
+\end{lemma}
+
+\begin{proof}
+Sea $(A,B)$ una $M_2$-partición de $G$. Si ni $A$ ni $B$ son vacíos, entonces $(A,B)$ es de tamaño $(1,1)$. Si uno de los dos es vacío, entonces $(A,B)$ es de tamaño $(0,1)$. Luego, $S(G)=\{(0,1),(1,1)\}$. Como $(1,1)$ domina a $(0,1)$ y $(0,1)$ no domina a ningún elemento de $S(G)$, entonces $\mu(G)=\{(0,1)\}$.
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_02}
+Si $G \in M_2$ es una gráfica inconexa con al menos una componente trivial y exactamente una componente no trivial que es una gráfica multipartita completa formada por $n$ conjuntos independientes, entonces $\mu(G)=\{(1,n-1)\}$.
+\end{lemma}
+
+\begin{proof}
+Notemos que, como $G$ contiene vértices aislados, toda $M_2$-partición que $G$ acepta es una partición en un conjunto independiente y una gráfica multipartita completa. Sea $(A,B)$ una $M_2$-partición de $G$ y $G[A]$ un conjunto independiente, abordemos los siguientes dos casos que son exhaustivos.
+
+\emph{Caso 1}: $n = 2$.
+
+Notemos que la componente no trivial de $G$ es bipartita y por lo tanto $G$ también lo es. Si tanto $G[A]$ como $G[B]$ son conjuntos independientes, entonces $(A,B)$ es de tamaño $(1,1)$. En el caso contrario $B$ contiene al menos un par de vértices que son adyacentes. Luego, $A$ contiene a todos los vértices aislados de $G$ y $B$ contiene sólo vértices de la componente no trivial de $G$. Como ésta es bipartita, entonces $(A,B)$ es de tamaño $(1,2)$. Así, $S(G)=\{(1,1),(1,2)\}$. Luego, $\mu(G)=\{(1,1)\} = \{(1,n-1)\}$.
+
+\emph{Caso 2}: $n > 2$.
+
+Como $G$ no es bipartita, entonces $B$ debe contener al menos un par de vértices adyacentes. Luego, $A$ debe de contener a todos los vértices aislados de $G$, y $B$ sólo puede contener vértices de la componente no trivial de $G$. Sea $(B_1, B_2, \dots, B_n)$ una partición de la componente no trivial de $G$ tal que $G[B_i]$ es un conjunto independiente para todo $0\le i \le n$. Si $A$ contiene todos los vértices de $B_j$ para algún $0\le j \le n$, entonces $(A,B)$ es de tamaño $(1,n-1)$. En el caso contrario, $(A,B)$ es de tamaño $(1,n)$. Así, $S(G)=\{(1,n-1),(1,n)\}$. Luego, $\mu(G)=\{(1,n-1)\}$.
+
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_03}
+Sea $G \in M_2$ una gráfica inconexa con al menos una componente trivial y
+exactamente una componente no trivial que no es una gráfica multipartita
+completa.   Si $T$ es el coárbol de $G$ y $r$ la raíz de $T$, entonces
+$\mu(G) = \{(1,B(r))\}$, en donde $B(x)$ se define de la siguiente manera
+para cualquier nodo $x$ de $T$ tal que $x$ tiene etiqueta 0 y al menos un
+hijo que no es una hoja.
+\begin{enumerate}
+    \item Si $x$ es el nodo más profundo con etiqueta 0 que tiene al menos un hijo que no es una hoja.
+    \begin{enumerate}
+        \item Si $x$ tiene al menos dos hijos que no son hojas, entonces $B(x) = 1$.
+        \item Si $x$ tiene un solo hijo, $y$, que no es una hoja, tal que $G[y]$ es una gráfica multipartita completa formada por $n$ conjuntos independientes, entonces $B(x) = n-1$.
+    \end{enumerate}
+    \item En el caso contrario. Sea $y$ el único hijo de $x$ que no es una hoja, $n$ el número de hijos de $y$ y $x'$ el único hijo de $y$ tal que $G[x']$ no es una gráfica multipartita completa, entonces $B(x) = n-1 + B(x')$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+Podemos verificar que estos casos son exhaustivos a través del \emph{Caso 2} de la demostración del Teorema \ref{teo_obsts_m2}.
+
+Sea $(A,B)$ una $M_2$-partición de $G$, notemos que $(A,B)$ es de tamaño $(1,\beta)$ para algún entero $\beta \geq 2$. Luego $(1,\beta)\in \mu(G)$ si y sólo si $\beta$ es mínimo. Es decir que $\mu(G)$ tendrá un solo elemento, y éste será el tamaño de una $M_2$-partición de $G$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes.
+
+Sea $x$ un nodo de $T$. Mostremos que si $x$ tiene etiqueta 0 y al menos un hijo que no es una hoja, entonces una $M_2$-partición de $G[x]$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes será de tamaño $(1,B(x))$. Sea $z$ el nodo más profundo de $T$ con etiqueta 0 y al menos un hijo que no es una hoja, y $d$ la distancia desde $x$ hasta $z$, probemos por inducción sobre $d$.
+
+\emph{Caso base}: $d = 0$, es decir que $x = z$.
+
+Por el \emph{Caso 2} de la demostración del Teorema \ref{teo_obsts_m2}, sabemos que $x$ tiene al menos dos hijos que no son hojas o $x$ tiene un solo hijo $y$ que no es una hoja, y tal que $G[y]$ es una gráfica multipartita completa formada por $n$ conjuntos independientes.
+
+Si $x$ tiene al menos dos hijos que no son hojas, cada uno de estos hijos es la raíz del coárbol de una gráfica bipartita. Luego, $G[x]$ es bipartita. Así, $G[x]$ acepta una $M_2$-partición $(A,B)$ de tamaño $(1,1)$. Como $G[x]$ no es un conjunto independiente, entonces $(A,B)$ es una $M_2$-partición de $G[x]$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes. Finalmente, notemos que $(A,B)$ es de tamaño $(1,B(x))$ dado que se cumple la primera condición \emph{1.a)} del lema.
+
+Si $x$ tiene un solo hijo $y$ que no es una hoja, y tal que $G[y]$ es una gráfica multipartita completa formada por $n$ conjuntos independientes, entonces se sigue del Lema \ref{lema_parejas_02} que $\mu(G[x]) = (1,n-1)$. Es claro que no existe una $M_2$-partición de $G[x]$ en un conjunto independiente y una gráfica multipartita completa con menos de $n-1$ partes. Así, dado que se cumple la condición \emph{1.b)} del lema, una $M_2$-partición de $G[x]$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes será de tamaño $(1,n-1)=(1,B(x))$.
+
+\emph{Paso inductivo}: $d > 0$.
+
+Sea $x'$ un nodo de $T$ con etiqueta 0 y al menos un hijo que no es una hoja. Supongamos como hipótesis inductiva que, si la distancia desde $x'$ hasta $z$ es menor a $d$, entonces una $M_2$-partición de $G[x']$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes es de tamaño $(1,B(x'))$.
+
+Por el \emph{Caso 2} de la demostración del Teorema \ref{teo_obsts_m2}, sabemos que $x$ tiene un sólo hijo $y$ que no es una hoja, mientras que el resto son hojas. Asimismo, sabemos que $y$ tiene un solo hijo $x'$ tal que $G[x']$ no es una gráfica multipartita completa. Es decir que $x'$, que tiene etiqueta 0, tiene al menos un hijo que no es una hoja. Por hip\'otesis inductiva, una $M_2$-partición de $G[x']$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes es de tamaño $(1,B(x'))$.
+
+Sean $(A',B')$ una partición de $G[x']$ de tamaño $(1,B(x'))$ tal que $G[A']$ es un conjunto independiente y $(A,B)$ una partición de $G[x]$ tal que $G[A]$ es un conjunto independiente y $G[B]$ una gráfica multipartita completa. Como $G$ no es bipartita, entonces $A$ debe contener a todos los vértices de $G$ que son hijos de $x$ (es decir, todos los hijos de $x$ que son hojas), mientras que $B$ sólo puede contener vértices de $G[y]$. Para que $G[B]$ sea una una gráfica multipartita completa, ésta debe de ser la unión completa de un conjunto de gráficas multipartitas completas. Como todos los hijos de $y$ representan gráficas multipartitas completas menos $x'$, entonces $A$ debe de contener un subconjunto $S$ de los vértices de $G[x']$ tal que $G[x']-S$ sea una gráfica multipartita completa.
+
+Sea $\beta'$ un entero tal que $G[x']-S$ es una gráfica multipartita completa
+formada por $\beta'$ conjuntos independientes y $n$ el número de hijos de $y$,
+calculemos el tamaño $(\alpha,\beta)$ de $(A,B)$ en función de $\beta'$ y $n$.
+Sabemos que $\alpha=1$ y que $\beta$ es el número de conjuntos independientes que
+forman a la gráfica multipartita completa $G[x']-S$. Como $G[x']-S$ es la unión
+completa de $n$ gráficas multipartitas completas, entonces $\beta$ es la suma del
+número de conjuntos independientes que conforman a cada una de estas gráficas
+multipartitas completas. Todos los hijos de $y$ que no son $x'$ son hojas o
+representan gráficas multipartitas completas inconexas. Es decir, conjuntos independientes. En cualquier caso, cada uno de los $n-1$ hijos de $y$ representa un conjunto independiente. Como $G[x']-S$ es la unión completa de $\beta'$ conjuntos independientes, entonces $\beta = n-1+\beta'$.
+
+Finalmente, encontremos el menor $\beta'$ posible. Si $S=A'$, entonces $\beta'=B(x')$. Como $B(x')$ es mínimo por hip\'otesis inductiva, entonces el mínimo valor que puede tomar $\beta'$ es $B(x')$. Luego, el valor mínimo de $\beta$ es $n-1+B(x')$. Así, una $M_2$-partición de $G[x]$ en un conjunto independiente y una gráfica multipartita completa con el menor número posible de partes es de tamaño $(1,n-1+B(x'))$. Como $x$ cumple la condición 2 del lema, este tamaño es igual a $(1,B(x))$.
+
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_04}
+Sea $G\in M_2$ una gráfica inconexa no bipartita con dos componentes conexas no triviales. Si las componentes de $G$ son una la unión ajena de $\alpha$ conjuntos independientes y la otra la unión ajena de $\beta$ conjuntos independientes con $\alpha \le \beta$, entonces $\mu(G)=\{(\alpha,\beta)\}$.
+\end{lemma}
+
+\begin{proof}
+Sea $(A,B)$ una $M_2$-partición de $G$. Como $G$ no es bipartita, entonces $A$ debe de contener todos los vértices de una de las componentes de $G$ y $B$ debe contener todos los vértices de la otra componente. Como ésta es la única posible $M_2$-partición de $G$ y es de tamaño $(\alpha, \beta)$, entonces $\mu(G)=\{(\alpha,\beta)\}$.
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_05}
+Si $G \in M_2$ es una gráfica inconexa bipartita con al menos dos componentes conexas no triviales, entonces $\mu(G)=\{(1,1)\}$.
+\end{lemma}
+
+\begin{proof}
+Como $G$ es bipartita, entonces $G$ acepta una $M_2$-partición de tamaño
+$(1,1)$. Como $G$ tiene un $\overline{P_3}$, entonces $G$ no es una gráfica
+multipartita completa. Luego, $G$ no acepta $M_2$-particiones de tamaño
+$(0,\beta)$ para cualquier entero $\beta \ge 1$. Así, cualquier
+$M_2$-partición de $G$ será de tamaño $(\alpha,\beta')$ para algunos
+$\alpha \ge 1$ y $\beta \ge 1$. Luego, $\mu(G)=\{(1,1)\}$.
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_06}
+Si $G$ es una gráfica isomorfa a $K_1$, entonces $\mu(G)=\{0,1\}$.
+\end{lemma}
+
+\begin{proof}
+Es claro que la única $M_2$-partición posible de $G$ es de tamaño $(0,1)$. Luego, $\mu(G)=\{(0,1)\}$.
+\end{proof}
+
+\begin{lemma}\label{lema_parejas_07}
+Sean $G_1, G_2 \in M_2$, $G=G_1 \oplus G_2$ y $S'(G)$ el conjunto de todas
+las parejas $(\alpha, \beta)$ tales que para algunos $(\alpha_1,\beta_1)
+\in \mu(G_1)$ y $(\alpha_2, \beta_2) \in \mu(G_2)$ alguna de las siguientes
+condiciones se cumple
+\begin{itemize}
+    \item $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$ o
+    \item $\alpha = \min (\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \max (\alpha_1+\beta_2, \alpha_2+\beta_1)$.
+\end{itemize}
+Una pareja de enteros $P$ está en $\mu(G)$ si y sólo si $P\in S'(G)$ y $P$ no domina a ningún otro elemento de $S'(G)$.
+\end{lemma}
+
+\begin{proof}
+Notemos que $(A,B)$ es una $M_2$-partición de $G$ si y sólo si existen $M_2$-particiones $(A_1,B_1)$ y $(A_2,B_2)$ de $G_1$ y $G_2$ respectivamente tales que $(A,B)=(A_1\cup A_2, B_1 \cup B_2)$.
+
+Veamos que $S'(G)\subset S(G)$. Sea $(x,y)$ un elemento de $S'(G)$. Sabemos que existen $(\alpha_1,\beta_1)\in \mu(G_1)$ y $(\alpha_2,\beta_2)\in \mu(G_2)$ tales que se cumple alguna de las condiciones mencionadas en el lema. Como $(\alpha_1,\beta_1)\in \mu(G_1)$, entonces existe una $M_2$-partición $(A_1,B_1)$ de $G_1$ de tamaño $(\alpha_1, \beta_1)$. Análogamente, existe una $M_2$-partición $(A_2,B_2)$ de $G_2$ de tamaño $(\alpha_2, \beta_2)$. Luego, $(A_1\cup A_2, B_1 \cup B_2)$ es una $M_2$-partición de $G$ de tamaño $(x,y)$ o $(A_1\cup B_2, B_1 \cup A_2)$ es una $M_2$ partición de $G$ de tamaño $(x,y)$. En cualquiera de los casos, $(x,y)\in S(G)$. Así, $S'(G)\subset S(G)$.
+
+Para la contención restante, sea $(x,y)\in\mu(G)$, entonces existe una $M_2$-partición $(A,B)$ de $G$ de tamaño $(x,y)$. Luego, existen $M_2$-particiones $(A_1,B_1)$ de tamaño $(\alpha_1, \beta_1)$ y $(A_2,B_2)$ de tamaño $(\alpha_2, \beta_2)$ de $G_1$ y $G_2$ respectivamente tales que $(A,B)=(A_1\cup A_2, B_1 \cup B_2)$. Como todos los vértices de $A_1$ son adyacentes a todos los vértices de $A_2$ y todos los vértices de $B_1$ son adyacentes a todos los vértices de $B_2$, se cumple que $\alpha = \alpha_1+\alpha_2$ y $\beta = \beta_1 + \beta_2$, o bien, se cumple que $\alpha = \min (\alpha_1+\beta_2, \alpha_2+\beta_1)$ y $\beta = \max (\alpha_1+\beta_2, \alpha_2+\beta_1)$.
+
+Veamos que $(\alpha_1, \beta_1)\in\mu(G_1)$. Procedamos por contradicción. Supongamos que $(\alpha_1, \beta_1)\notin\mu(G_1)$. Como $(A_1,B_1)$ existe, entonces $(\alpha_1, \beta_1)\in S(G_1)$. Luego debe de existir otra pareja $(\alpha_1', \beta_1')\in S(G_1)$ tal que $(\alpha_1, \beta_1)$ domina a $(\alpha_1', \beta_1')$. De esto se sigue que existe una $M_2$-partición $(A_1',B_1')$ de $G_1$ de tamaño $(\alpha_1', \beta_1')$. Como $(A_1'\cup A_2, B_1'\cup B_2)$ es una $M_2$-partición de $G$ cuyo tamaño es dominado por $(x,y)$, entonces $(x,y)\notin\mu(G)$. Lo cual es una contradicción. Así, $(\alpha_1, \beta_1)\in\mu(G_1)$. Análogamente, $(\alpha_2, \beta_2)\in\mu(G_2)$. Así, $(x,y)\in S'(G)$, y por lo tanto $\mu(G)\subseteq S'(G)$. Luego, como $S'(G)\subset S(G)$ y $(x,y)\in\mu(G)$, entonces $(x,y)$ no domina a elemento alguno de $S(G)$, y por lo tanto tampoco domina elemento alguno de $S'(G)$.
+
+Recíprocamente, sea $(x,y)\notin \mu(G)$, mostremos que $(x,y)$ no está en $S'(G)$ o $(x,y)$ domina a algún elemento de $S'(G)$. Sabemos por la definición de $\mu(G)$ que $(x,y)$ no está en $S(G)$ o $(x,y)$ domina a algún elemento de $S(G)$. Si $(x,y)$ no está en $S(G)$, dado que $S'(G)$ es subconjunto de $S(G)$, entonces $(x,y)$ no está en $S'(G)$. En el caso contrario, si $(x,y)\in S(G)$, como $(x,y)\notin \mu(G)$, entonces $(x,y)$ domina a algún elemento de $S(G)$ diferente de sí mismo. Luego, $(x,y)$ domina a algún elemento de $\mu(G)$. Recordemos que $\mu(G)\subseteq S'(G)$. Así, $(x,y)$ domina a algún elemento de $S'(G)$.
+
+\end{proof}

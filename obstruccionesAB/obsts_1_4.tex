@@ -1,0 +1,52 @@
+\begin{figure}[ht!]
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+
+\node [style=vertex] (1) at (0,0.5) {};
+\node [style=vertex] (2) at (1,0.5) {};
+\node [style=vertex] (3) at (0,1) {};
+\node [style=vertex] (4) at (1,1) {};
+\node [style=vertex] (5) at (0.5,1.75) {};
+
+\foreach \i/\j in {1/2,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+\node at (0.5,0) {\parbox{0.3\linewidth}{\subcaption*{$o_{(1,4),1}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+
+\node [style=vertex] (1) at (0.5,0.5) {};
+\node [style=vertex] (2) at (1.5,0.5) {};
+\node [style=vertex] (3) at (0.5,1.5) {};
+\node [style=vertex] (4) at (1.5,1.5) {};
+\node [style=vertex] (5) at (0,2) {};
+\node [style=vertex] (6) at (2,2) {};
+
+\foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/1,5/3,5/6,6/2,6/4} \draw [style=edge] (\i) to (\j);
+\node at (1,0) {\parbox{0.3\linewidth}{\subcaption*{$o_{(1,4),2}$}}};
+\end{scope}
+
+\begin{scope}[xshift=6cm,scale=1]
+
+\node [style=vertex] (1) at (0.5,0.5) {};
+\node [style=vertex] (2) at (1.5,0.5) {};
+\node [style=vertex] (3) at (0,1.25) {};
+\node [style=vertex] (4) at (2,1.25) {};
+\node [style=vertex] (5) at (0.5,2) {};
+\node [style=vertex] (6) at (1.5,2) {};
+
+\foreach \i/\j in {1/2,1/3,1/4,1/5,1/6,2/3,2/4,2/5,2/6,3/4,3/5,3/6,4/5,4/6,5/6} \draw [style=edge] (\i) to (\j);
+\node at (1,0) {\parbox{0.3\linewidth}{\subcaption*{$o_{(1,4),3}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Algunas obstrucciones mínimas de la clase $(1,4)$-$M_2$.}
+\label{obsts_1_4_M2}
+\end{figure}
