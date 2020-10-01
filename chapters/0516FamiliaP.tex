@@ -1,0 +1,26 @@
+En esta subsección presentamos a la familia $P$ de obstrucciones mínimas para cualquier clase $M_i$.
+
+Sean $G$ una cográfica y $n$ un entero mayor a uno, decimos que $G$ es una \emph{\textbf{$P_n$-obstrucción}} si, para algunas obstrucciones mínimas $H_1, H_2$ de la clase $M_{n-1}$, $G=K_1+(H_1\oplus H_2)$.
+
+Sea $n$ un entero mayor a uno, la \emph{\textbf{familia $P_n$ de obstrucciones}}, denotada simplemente por $P_n$, eses el conjunto de todas las $P_n$-obstrucciones.
+
+\begin{theorem}
+Sea $G$ una cográfica y $n$ un entero mayor a uno. Si $G$ es una $P_n$-obstrucción, entonces $G$ es una obstrucción mínima de la clase $M_n$.
+\end{theorem}
+
+
+
+\begin{proof}
+Como $G$ es una $P_n$-obstrucción, entonces existen dos obstrucciones mínimas $H_1$ y $H_2$ de la clase $M_{n-1}$ tales que $G=K_1+(H_1\oplus H_2)$.
+
+Veamos primero que $G$ no está en la clase $M_n$. Sea $P=(A_1, A_2, \dots, A_n)$ una partición de los vértices de $G$, veamos que $P$ no es una $M_n$-partición. Supongamos sin pérdida de generalidad que el $K_1$ de $G$ está en $A_1$. Si $A_1$ contiene un par de vértices adyacentes entre sí, entonces $G[A_1]$ no es una gráfica multipartita completa y $P$ no es una $M_n$-partición. En el caso contrario, $A_1$ debe de ser un conjunto independiente. Como $A_1$ es un conjunto independiente y cada vértice de $H_1$ es adyacente a cualquier vértice de $H_2$, entonces $A_1$ no puede contener vértices tanto de $H_1$ como de $H_2$. Supongamos sin pérdida de generalidad que ningún vértice de $H_1$ está en $A_1$. Luego, los vértices de $H_1$ se deben de repartir en las $n-1$ partes de $P$ distintas de $A_1$. Como $H_1$ es una obstrucción mínima de la clase $M_{n-1}$, cualquier partición de sus vértices en $n-1$ partes no es una $M_{n-1}$-partición. De esto se sigue que $P$ no es una $M_n$-partición. Así, $G$ no está en la clase $M_n$.
+
+Sea $x$ un vértice de $G$, veamos que $G-x$ sí está en la clase $M_n$. Si $x$ es el vértice que conforma al $K_1$ de $G$, entonces existe una partición $P=(A_1, A_2, \dots, A_n)$ tal que $A_1$ contiene un vértice $y_1$ de $H_1$ y un vértice $y_2$ de $H_2$. Como $H_1$ y $H_2$ son obstrucciones mínimas de la clase $M_{n-1}$, entonces $H_1-\{y_1\}$ y $H_2-\{y_2\}$ están en la clase $M_{n-1}$. Luego, $((H_1-\{y_1\})\oplus(H_2-\{y_2\}))$ está en $M_{n-1}$, por lo que sus vértices se pueden repartir entre las partes de $P$ diferentes de $A_1$ de forma que cada parte induzca una gráfica multipartita completa. Notemos que $G[A_1]=K_2$ también es una gráfica multipartita completa. Así $G-x$ está en $M_n$. 
+
+Si $x$ no es el vértice que conforma al $K_1$ de $G$, supongamos sin pérdida de generalidad que $x$ es un vértice de $H_1$. Luego, existe una partición $Q=(B_1, B_2, \dots, B_n)$ tal que $B_1$ contiene al vértice aislado de $G$ y a un vértice de $H_2$. Por el argumento anterior, sabemos que $G-B_1$ está en la clase $M_{n-1}$. Por este motivo, y porque $G[B_1]=2K_1$ es una gráfica multipartita completa, se sigue que $G-x$ está en $M_n$. Así, $G$ es una obstrucción mínima de la clase $M_n$.
+
+\end{proof}
+
+\subsubsection{$P$-obstrucciones conocidas}
+
+A lo largo de este documento podemos identificar algunas $P$-obstrucciones. En la Figura \ref{obsts_M2}, la gráfica $J$ es una $P$-obstrucción. En la lista de obstrucciones mínimas de la clase $M_3$, la gráfica $P_{3,i}$ es una $P$-obstrucción para todo $1\le i \le 6$.
