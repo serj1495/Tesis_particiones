@@ -63,6 +63,10 @@
 \usepackage{booktabs}
 \usepackage{hyphenat}
 
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 %\hyphenation{geo-mé-tri-cas}
 \graphicspath{ {images/} }
 
@@ -129,8 +133,20 @@
 \chapter{Conclusiones y trabajo futuro}
 \input{chapters/0600conclusiones.tex}
 
-\chapter*{Apéndices}
-%\appendix
+\appendix
+
+\chapter{Obstrucciones mínimas de algunas clases $(\alpha,\beta)$-$M_2$}
+\label{apéndiceListaAlfaBeta}
+\input{chapters/0701ApendiceAlfaBeta.tex}
+
+\chapter{}
+\label{apéndiceTablaAlfaBeta}
+\input{chapters/0702ApendiceResumenAlfaBeta.tex}
+
+\chapter{Familias $O_n$ de obstrucciones}
+\label{apéndiceFamiliaO}
+\input{chapters/0703ApendiceFamiliaO.tex}
+
 
 \bibliographystyle{unsrt}
 \bibliography{biblio.bib}

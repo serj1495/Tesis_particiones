@@ -1,0 +1,795 @@
+En este apéndice se muestran las familias $O_n$ de obstrucciones para algunos enteros $n$ mayores a tres. 
+
+\section{Familia $O_4$}
+
+\begin{figure}[ht!]
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.75) {};
+\node [style=vertex] (11) at (1.25,3.75) {};
+\node [style=vertex] (12) at (0.75,4.5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5) {};
+\node [style=vertex] (14) at (1.25,5) {};
+%K1
+\node [style=vertex] (15) at (0.75,5.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,1}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.75) {};
+\node [style=vertex] (11) at (1.25,3.75) {};
+\node [style=vertex] (12) at (0.75,4.5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {12/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,2}$}}};
+\end{scope}
+
+\begin{scope}[xshift=5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,3.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {9/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,3}$}}};
+\end{scope}
+
+\begin{scope}[xshift=7.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,3.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {6/15,9/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,4}$}}};
+\end{scope}
+
+\begin{scope}[xshift=10cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,3.75) {};
+\node [style=vertex] (14) at (1.25,3.75) {};
+%K1
+\node [style=vertex] (15) at (0.75,5.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {9/13,9/14} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,5}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Familia $O_4$ de obstrucciones. Parte 1.}
+\end{figure}  
+
+%***********************************************************************************************************************
+
+\begin{figure}[ht!]
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3) {};
+\node [style=vertex] (7) at (1.25,3) {};
+\node [style=vertex] (8) at (0.75,3.3) {};
+\node [style=vertex] (9) at (0.75,3.75) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,2.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,6}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3) {};
+\node [style=vertex] (7) at (1.25,3) {};
+\node [style=vertex] (8) at (0.75,3.3) {};
+\node [style=vertex] (9) at (0.75,3.75) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,2.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {3/15,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,7}$}}};
+\end{scope}
+
+\begin{scope}[xshift=5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3) {};
+\node [style=vertex] (7) at (1.25,3) {};
+\node [style=vertex] (8) at (0.75,3.3) {};
+\node [style=vertex] (9) at (0.75,3.75) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,5.5) {};
+\node [style=vertex] (14) at (1.25,5.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,2.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {3/15,4/15,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,8}$}}};
+\end{scope}
+
+\begin{scope}[xshift=7.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3) {};
+\node [style=vertex] (7) at (1.25,3) {};
+\node [style=vertex] (8) at (0.75,3.3) {};
+\node [style=vertex] (9) at (0.75,3.75) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,2.5) {};
+\node [style=vertex] (14) at (1.25,2.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,5.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/13,5/14} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,9}$}}};
+\end{scope}
+
+\begin{scope}[xshift=10cm,scale=1]
+%K5 invertido
+\node [style=vertex] (1) at (0.75,0.5) {};
+\node [style=vertex] (2) at (0,1.125) {};
+\node [style=vertex] (3) at (1.5,1.125) {};
+\node [style=vertex] (4) at (0.25,2) {};
+\node [style=vertex] (5) at (1.25,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3) {};
+\node [style=vertex] (7) at (1.25,3) {};
+\node [style=vertex] (8) at (0.75,3.3) {};
+\node [style=vertex] (9) at (0.75,3.75) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.25) {};
+\node [style=vertex] (11) at (1.25,4.25) {};
+\node [style=vertex] (12) at (0.75,5) {};
+%K2
+\node [style=vertex] (13) at (0.25,2.5) {};
+\node [style=vertex] (14) at (1.25,2.5) {};
+%K1
+\node [style=vertex] (15) at (0.75,5.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {4/13,4/14,5/13,5/14} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,10}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.75) {};
+\node [style=vertex] (7) at (1.25,3.75) {};
+\node [style=vertex] (8) at (0.75,4.05) {};
+\node [style=vertex] (9) at (0.75,4.5) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.25) {};
+\node [style=vertex] (11) at (1.25,3.25) {};
+\node [style=vertex] (12) at (0.75,2.75) {};
+%K2
+\node [style=vertex] (13) at (0.25,5) {};
+\node [style=vertex] (14) at (1.25,5) {};
+%K1
+\node [style=vertex] (15) at (0.75,5.5) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/10,5/11,5/12} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,11}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,4) {};
+\node [style=vertex] (14) at (1.25,4) {};
+%K1
+\node [style=vertex] (15) at (0.25,4) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {9/13,9/14,9/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,12}$}}};
+\end{scope}
+
+\begin{scope}[xshift=5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,2.5) {};
+\node [style=vertex] (7) at (1.25,2.5) {};
+\node [style=vertex] (8) at (0.75,2.8) {};
+\node [style=vertex] (9) at (0.75,3.25) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,4) {};
+\node [style=vertex] (14) at (1.25,4) {};
+%K1
+\node [style=vertex] (15) at (0.25,4) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {6/15,9/13,9/14,9/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,13}$}}};
+\end{scope}
+
+\begin{scope}[xshift=7.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,2.75) {};
+\node [style=vertex] (14) at (1.25,2.75) {};
+%K1
+\node [style=vertex] (15) at (0.25,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {5/13,5/14,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,14}$}}};
+\end{scope}
+
+\begin{scope}[xshift=10cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,2.75) {};
+\node [style=vertex] (14) at (1.25,2.75) {};
+%K1
+\node [style=vertex] (15) at (0.25,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {3/15,5/13,5/14,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,15}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (1,2.75) {};
+\node [style=vertex] (14) at (1.5,2.75) {};
+%K1
+\node [style=vertex] (15) at (0.5,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {3/15,4/13,4/14,4/15,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,16}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.75,0.5) {};
+\node [style=vertex] (2) at (0,1.125) {};
+\node [style=vertex] (3) at (1.5,1.125) {};
+\node [style=vertex] (4) at (0.25,2) {};
+\node [style=vertex] (5) at (1.25,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,2.75) {};
+\node [style=vertex] (14) at (1.25,2.75) {};
+%K1
+\node [style=vertex] (15) at (0.25,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {4/13,4/14,4/15,5/14,5/14,5/13} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,17}$}}};
+\end{scope}
+
+\begin{scope}[xshift=5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.75,0.5) {};
+\node [style=vertex] (2) at (0,1.125) {};
+\node [style=vertex] (3) at (1.5,1.125) {};
+\node [style=vertex] (4) at (0.25,2) {};
+\node [style=vertex] (5) at (1.25,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,2.75) {};
+\node [style=vertex] (14) at (1.25,2.75) {};
+%K1
+\node [style=vertex] (15) at (0.25,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {4/13,4/14,4/15,5/14,5/14,5/13,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,18}$}}};
+\end{scope}
+
+\begin{scope}[xshift=7.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.75,0.5) {};
+\node [style=vertex] (2) at (0,1.125) {};
+\node [style=vertex] (3) at (1.5,1.125) {};
+\node [style=vertex] (4) at (0.25,2) {};
+\node [style=vertex] (5) at (1.25,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.25) {};
+\node [style=vertex] (7) at (1.25,3.25) {};
+\node [style=vertex] (8) at (0.75,3.55) {};
+\node [style=vertex] (9) at (0.75,4) {};
+%K3
+\node [style=vertex] (10) at (0.25,4.5) {};
+\node [style=vertex] (11) at (1.25,4.5) {};
+\node [style=vertex] (12) at (0.75,5.25) {};
+%K2
+\node [style=vertex] (13) at (0.75,2.75) {};
+\node [style=vertex] (14) at (1.25,2.75) {};
+%K1
+\node [style=vertex] (15) at (0,2.75) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicional
+\foreach \i/\j in {4/13,4/14,4/15,5/14,5/14,5/13,5/15,2/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,19}$}}};
+\end{scope}
+
+\begin{scope}[xshift=10cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.75) {};
+\node [style=vertex] (7) at (1.25,3.75) {};
+\node [style=vertex] (8) at (0.75,4.05) {};
+\node [style=vertex] (9) at (0.75,4.5) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.25) {};
+\node [style=vertex] (11) at (1.25,3.25) {};
+\node [style=vertex] (12) at (0.75,2.75) {};
+%K2
+\node [style=vertex] (13) at (0.25,5) {};
+\node [style=vertex] (14) at (1.25,5) {};
+%K1
+\node [style=vertex] (15) at (0,2) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/10,5/11,5/12,5/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,20}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Familia $O_4$ de obstrucciones. Parte 2.}
+\end{figure}  
+
+%%**********************************************************************************************************************
+
+\begin{figure}[ht!]
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=00cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.75) {};
+\node [style=vertex] (7) at (1.25,3.75) {};
+\node [style=vertex] (8) at (0.75,4.05) {};
+\node [style=vertex] (9) at (0.75,4.5) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.25) {};
+\node [style=vertex] (11) at (1.25,3.25) {};
+\node [style=vertex] (12) at (0.75,2.75) {};
+%K2
+\node [style=vertex] (13) at (0.25,5) {};
+\node [style=vertex] (14) at (1.25,5) {};
+%K1
+\node [style=vertex] (15) at (0,2) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/10,5/11,5/12,5/15,3/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,21}$}}};
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,scale=1]
+%K5
+\node [style=vertex] (1) at (0.25,0.5) {};
+\node [style=vertex] (2) at (1.25,0.5) {};
+\node [style=vertex] (3) at (0,1.375) {};
+\node [style=vertex] (4) at (1.5,1.375) {};
+\node [style=vertex] (5) at (0.75,2) {};
+%K4
+\node [style=vertex] (6) at (0.25,3.75) {};
+\node [style=vertex] (7) at (1.25,3.75) {};
+\node [style=vertex] (8) at (0.75,4.05) {};
+\node [style=vertex] (9) at (0.75,4.5) {};
+%K3
+\node [style=vertex] (10) at (0.25,3.25) {};
+\node [style=vertex] (11) at (1.25,3.25) {};
+\node [style=vertex] (12) at (0.75,2.75) {};
+%K2
+\node [style=vertex] (13) at (0.25,5) {};
+\node [style=vertex] (14) at (1.25,5) {};
+%K1
+\node [style=vertex] (15) at (0,2) {};
+
+%K1,K2,K3,K4
+\foreach \i/\j in {6/7,6/8,6/9,7/8,7/9,8/9,10/11,10/12,11/12,13/14} \draw [style=edge] (\i) to (\j);
+%K5
+\foreach \i/\j in {1/2,1/3,1/4,1/5,2/3,2/4,2/5,3/4,3/5,4/5} \draw [style=edge] (\i) to (\j);
+
+%Adicionales
+\foreach \i/\j in {5/10,5/11,5/12,5/15,3/15,2/15} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{4,22}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+%\begin{subfigure}{\textwidth}
+%\begin{center}
+%\begin{tikzpicture}
+
+%\end{tikzpicture}
+%\end{center}
+%\end{subfigure}
+
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Familia $O_4$ de obstrucciones. Parte 3.}
+\end{figure}  
