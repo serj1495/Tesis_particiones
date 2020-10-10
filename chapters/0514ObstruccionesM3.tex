@@ -1,12 +1,40 @@
+En esta subsección caracterizamos a la clase $M_3$ a través de su conjunto de obstrucciones mínimas considerando 10 casos diferentes y exhaustivos. Las obstrucciones mínimas de la clase $M_3$ se presentan agrupadas en 5 familias, cada una de las cuales contiene gráficas con elementos en común, que son utilizados en casos diferentes de la demostración del Teorema \ref{teo_obsts_m3}. Las familias $O_3$ y $P_3$ son descritas en las siguientes subsecciones, ya que se pueden generalizar para cualquier clase $M_i$. Las gráficas de las familias $O_3$ y $Q_3$ se muestran en las Figuras \ref{obsts_M3_O} y \ref{obsts_M3_Q} respectivamente.
+
+
 \begin{theorem} \label{teo_obsts_m3}
 
-    Para una cográfica $G$, las siguientes afirmaciones son equivalentes.
-    \begin{enumerate}[(a)]
-        \item $G \in M_3$.
-        \item $G$ no contiene a ninguna de las gráficas de las Figuras \ref{obsts_O_M3} como subgráfica inducida.
-    \end{enumerate}
+    Sean $G$ una cográfica, $H$, $I$ y $J$ las gráficas de la Figura \ref{obsts_M2} y $H'$ y $J'$ las gráficas de la Figura \ref{obsts_1infM2}, $G$ es un elemento de la clase $M_3$ si y sólo si es libre de cada una de las siguientes gráficas:
+    \begin{itemize}
+        \item $O_{3,1}=K_1+K_2+K_3+K_4$.
+        \item $O_{3,2}=K_2+(K_1\oplus(K_1+K_2))+K_4$.
+        \item $O_{3,3}=K_2+K_3+(K_1\oplus(K_1+K_3))$.
+        \item $O_{3,4}=K_2+K_3+(K_2\oplus(K_1+K_2))$.
+        \item $O_{3,5}=K_1+K_3+(K_1\oplus(K_2+K_3))$.
+        \item $O_{3,6}=K_3+(K_1\oplus(K_1+K_2+K_3))$.
+        \item $O_{3,7}=K_3+(K_1\oplus(K_2+(K_1\oplus(K_1+K_2))))$.
+        \item $O_{3,8}=(K_1\oplus(K_1+K_2))+(K_1\oplus(K_2+K_3))$.
+        \item $P_{3,1}=K_1+(H\oplus H)$.
+        \item $P_{3,2}=K_1+(H\oplus I)$.
+        \item $P_{3,3}=K_1+(H\oplus J)$.
+        \item $P_{3,4}=K_1+(I\oplus I)$.
+        \item $P_{3,5}=K_1+(I\oplus J)$.
+        \item $P_{3,6}=K_1+(J\oplus J)$.
+        \item $Q_{3,1}=K_1+K_3+(\overline{P_3}\oplus\overline{P_3})$.
+        \item $Q_{3,2}=(K_1\oplus(K_1+K_2))+(\overline{P_3}\oplus\overline{P_3})$.
+        \item $R_{3,1}=K_1+K_2+(\overline{P_3}\oplus H') = K_1+K_2+(\overline{P_3}\oplus\overline{P_3}\oplus\overline{P_3})$.
+        \item $R_{3,2}=K_1+K_2+(\overline{P_3}\oplus J')$.
+        \item $S_{3,3}=K_2+(\overline{P_3}\oplus H)$.
+        \item $S_{3,4}=K_2+(\overline{P_3}\oplus I)$.
+        \item $S_{3,5}=K_2+(\overline{P_3}\oplus J)$.
+    \end{itemize}
 
 \end{theorem}
+
+\begin{proof}
+Supongamos primero que $G$ tiene a alguna de las gráficas listadas como subgráfica inducida y veamos que $G$ no es un elemento de $M_3$. Para ello basta con mostrar que ninguna de las gráficas listadas está en $M_3$.
+
+Sea $i$ un entero tal que $1\le i \le 8$. Veamos que $O_{3,i}$ no está en la clase $M_3$. La Figura \ref{obsts_M3_O} muestra la representación gráfica de $O_{3,i}$. Notemos que algunos de sus vértices se encuentran coloreados indicando que $O_{3,i}$ tiene a $H$ (color amarillo) o a $I$ (color anaranjado) como subgráficas inducidas. Notemos también que los vértices no coloreados inducen una gráfica que contiene una copia de $K_3$, cada uno de cuyos vértices no es adyacente a vértice coloreado alguno. Sea $(A,B,C)$ una partición de los vértices de $O_{3,i}$, veamos que $(A,B,C)$ no es una $M_3$-partición. Procedamos por contradicción. Supongamos que $(A,B,C)$ es una $M_3$-partición de $O_{3,i}$. Como $O_{3,i}$ tiene a $K_4$ como subgráfica inducida, entonces no es 3-coloreable. Luego, los vértices del $K_3$ no coloreado de $O_{3,i}$ no pueden estar cada uno en una parte diferente de $(A,B,C)$. Es decir que al menos dos de ellos deben de estar en la misma parte. Supongamos sin pérdida de generalidad que $A$ contiene dos vértices del $K_3$ no coloreado. Luego, ninguno de los vértices coloreados de $O_{3,i}$ puede estar en $A$, o $A$ contendría los vértices de un $\overline{P_3}$ y por lo tanto no induciría una gráfica multipartita completa. Como los vértices coloreados inducen una obstrucción mínima de la clase $M_2$, éstos no se pueden repartir en las dos partes
+restantes de manera que cada una induzca una gráfica multipartita completa. Así, $(A,B,C)$ no es una $M_3$-partición de $O_{3,i}$, y por lo tanto $O_{3,i}\notin M_3$.
 
 \begin{figure}[ht!]
 \begin{subfigure}{\textwidth}
@@ -19,14 +47,14 @@
 \node [style=vertex] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
-\node [style=vertex] (5) at (0,2.25) {};
-\node [style=vertex] (6) at (1,2.25) {};
-\node [style=vertex] (7) at (0.5,3) {};
+\node [style=vertex, fill=yellow] (5) at (0,2.25) {};
+\node [style=vertex, fill=yellow] (6) at (1,2.25) {};
+\node [style=vertex, fill=yellow] (7) at (0.5,3) {};
 %K2
-\node [style=vertex] (8) at (0,3.5) {};
-\node [style=vertex] (9) at (1,3.5) {};
+\node [style=vertex, fill=yellow] (8) at (0,3.5) {};
+\node [style=vertex, fill=yellow] (9) at (1,3.5) {};
 %K1
-\node [style=vertex] (10) at (0.5,4) {};
+\node [style=vertex, fill=yellow] (10) at (0.5,4) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \node at (0.5,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{3,1}$}}};
@@ -39,14 +67,14 @@
 \node [style=vertex] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
-\node [style=vertex] (5) at (0,2.25) {};
-\node [style=vertex] (6) at (1,2.25) {};
-\node [style=vertex] (7) at (0.5,3) {};
+\node [style=vertex, fill=orange] (5) at (0,2.25) {};
+\node [style=vertex, fill=orange] (6) at (1,2.25) {};
+\node [style=vertex, fill=orange] (7) at (0.5,3) {};
 %K2
-\node [style=vertex] (8) at (0,4) {};
-\node [style=vertex] (9) at (1,4) {};
+\node [style=vertex, fill=orange] (8) at (0,4) {};
+\node [style=vertex, fill=orange] (9) at (1,4) {};
 %K1
-\node [style=vertex] (10) at (0.5,3.5) {};
+\node [style=vertex, fill=orange] (10) at (0.5,3.5) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {7/10} \draw [style=edge] (\i) to (\j);
@@ -56,18 +84,18 @@
 \begin{scope}[xshift=5cm,scale=1]
 %K4
 \node [style=vertex] (1) at (0,1) {};
-\node [style=vertex] (2) at (1,1) {};
-\node [style=vertex] (3) at (0.5,1.3) {};
-\node [style=vertex] (4) at (0.5,1.75) {};
+\node [style=vertex, fill=orange] (2) at (1,1) {};
+\node [style=vertex, fill=orange] (3) at (0.5,1.3) {};
+\node [style=vertex, fill=orange] (4) at (0.5,1.75) {};
 %K3
 \node [style=vertex] (5) at (0,2.75) {};
 \node [style=vertex] (6) at (1,2.75) {};
 \node [style=vertex] (7) at (0.5,3.5) {};
 %K2
-\node [style=vertex] (8) at (0,4) {};
-\node [style=vertex] (9) at (1,4) {};
+\node [style=vertex, fill=orange] (8) at (0,4) {};
+\node [style=vertex, fill=orange] (9) at (1,4) {};
 %K1
-\node [style=vertex] (10) at (0.5,2.25) {};
+\node [style=vertex, fill=orange] (10) at (0.5,2.25) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/10} \draw [style=edge] (\i) to (\j);
@@ -76,19 +104,19 @@
 
 \begin{scope}[xshift=7.5cm,scale=1]
 %K4
-\node [style=vertex] (1) at (0,1) {};
-\node [style=vertex] (2) at (1,1) {};
-\node [style=vertex] (3) at (0.5,1.3) {};
+\node [style=vertex, fill=orange] (1) at (0,1) {};
+\node [style=vertex, fill=orange] (2) at (1,1) {};
+\node [style=vertex, fill=orange] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
 \node [style=vertex] (5) at (0,2.75) {};
 \node [style=vertex] (6) at (1,2.75) {};
 \node [style=vertex] (7) at (0.5,3.5) {};
 %K2
-\node [style=vertex] (8) at (0,4) {};
-\node [style=vertex] (9) at (1,4) {};
+\node [style=vertex, fill=orange] (8) at (0,4) {};
+\node [style=vertex, fill=orange] (9) at (1,4) {};
 %K1
-\node [style=vertex] (10) at (0.5,2.25) {};
+\node [style=vertex, fill=orange] (10) at (0.5,2.25) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/10,1/10} \draw [style=edge] (\i) to (\j);
@@ -102,14 +130,14 @@
 \node [style=vertex] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
-\node [style=vertex] (5) at (0,2.75) {};
-\node [style=vertex] (6) at (1,2.75) {};
-\node [style=vertex] (7) at (0.5,3.5) {};
+\node [style=vertex, fill=yellow] (5) at (0,2.75) {};
+\node [style=vertex, fill=yellow] (6) at (1,2.75) {};
+\node [style=vertex, fill=yellow] (7) at (0.5,3.5) {};
 %K2
-\node [style=vertex] (8) at (0,2.25) {};
-\node [style=vertex] (9) at (1,2.25) {};
+\node [style=vertex, fill=yellow] (8) at (0,2.25) {};
+\node [style=vertex, fill=yellow] (9) at (1,2.25) {};
 %K1
-\node [style=vertex] (10) at (0.5,4) {};
+\node [style=vertex, fill=yellow] (10) at (0.5,4) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/8,4/9} \draw [style=edge] (\i) to (\j);
@@ -130,14 +158,14 @@
 \node [style=vertex] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
-\node [style=vertex] (5) at (0,3.25) {};
-\node [style=vertex] (6) at (1,3.25) {};
-\node [style=vertex] (7) at (0.5,4) {};
+\node [style=vertex, fill=yellow] (5) at (0,3.25) {};
+\node [style=vertex, fill=yellow] (6) at (1,3.25) {};
+\node [style=vertex, fill=yellow] (7) at (0.5,4) {};
 %K2
-\node [style=vertex] (8) at (0.5,2.5) {};
-\node [style=vertex] (9) at (1,2.5) {};
+\node [style=vertex, fill=yellow] (8) at (0.5,2.5) {};
+\node [style=vertex, fill=yellow] (9) at (1,2.5) {};
 %K1
-\node [style=vertex] (10) at (0,2.5) {};
+\node [style=vertex, fill=yellow] (10) at (0,2.5) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/8,4/9,4/10} \draw [style=edge] (\i) to (\j);
@@ -146,19 +174,19 @@
 
 \begin{scope}[xshift=2.5cm,scale=1]
 %K4
-\node [style=vertex] (1) at (0,1) {};
-\node [style=vertex] (2) at (1,1) {};
-\node [style=vertex] (3) at (0.5,1.3) {};
+\node [style=vertex, fill=orange] (1) at (0,1) {};
+\node [style=vertex, fill=orange] (2) at (1,1) {};
+\node [style=vertex, fill=orange] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
 \node [style=vertex] (5) at (0,3.25) {};
 \node [style=vertex] (6) at (1,3.25) {};
 \node [style=vertex] (7) at (0.5,4) {};
 %K2
-\node [style=vertex] (8) at (0.5,2.5) {};
-\node [style=vertex] (9) at (1,2.5) {};
+\node [style=vertex, fill=orange] (8) at (0.5,2.5) {};
+\node [style=vertex, fill=orange] (9) at (1,2.5) {};
 %K1
-\node [style=vertex] (10) at (0,2.5) {};
+\node [style=vertex, fill=orange] (10) at (0,2.5) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/8,4/9,4/10,1/10} \draw [style=edge] (\i) to (\j);
@@ -172,29 +200,164 @@
 \node [style=vertex] (3) at (0.5,1.3) {};
 \node [style=vertex] (4) at (0.5,1.75) {};
 %K3
-\node [style=vertex] (5) at (0,2.75) {};
-\node [style=vertex] (6) at (1,2.75) {};
-\node [style=vertex] (7) at (0.5,3.5) {};
+\node [style=vertex, fill=orange] (5) at (0,2.75) {};
+\node [style=vertex, fill=orange] (6) at (1,2.75) {};
+\node [style=vertex, fill=orange] (7) at (0.5,3.5) {};
 %K2
-\node [style=vertex] (8) at (0,2.25) {};
-\node [style=vertex] (9) at (1,2.25) {};
+\node [style=vertex, fill=orange] (8) at (0,2.25) {};
+\node [style=vertex, fill=orange] (9) at (1,2.25) {};
 %K1
-\node [style=vertex] (10) at (0.5,4) {};
+\node [style=vertex, fill=orange] (10) at (0.5,4) {};
 
 \foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/6,5/7,6/7,8/9} \draw [style=edge] (\i) to (\j);
 \foreach \i/\j in {4/8,4/9,7/10} \draw [style=edge] (\i) to (\j);
-\node at (0.5,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{3,5}$}}};
+\node at (0.5,0) {\parbox{0.3\linewidth}{\subcaption*{$O_{3,8}$}}};
 \end{scope}
 
 \end{tikzpicture}
 \end{center}
 \end{subfigure}
 
-\setlength{\abovecaptionskip}{-15pt}
-\caption{Obstrucciones mínimas para la clase $M_2$.}
-\label{obsts_O_M3}
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Familia $O_3$ de obstrucciones mínimas de la clase $M_3$.}
+\label{obsts_M3_O}
 \end{figure}
 
-\begin{proof}
+Sea $i$ un entero tal que $1\le i \le 6$. Veamos que $P_{3,i}$ no está en la clase $M_3$. Sea $(A,B,C)$ una partición de los vértices de $P_{3,i}$, veamos que $(A,B,C)$ no es una $M_3$-partición de $P_{3,i}$. Procedamos por contradicción. Supongamos que $(A,B,C)$ es una $M_3$-partición de $P_{3,i}$. Supongamos sin pérdida de generalidad que $A$ contiene al vértice aislado de $O_{3,i}$. Luego, $A$ debe de ser un conjunto independiente. Notemos que los vértices restantes de $P_{3,i}$ inducen la unión completa de dos obstrucciones mínimas $X$ y $Y$ de la clase $M_2$. Como $X\cup Y$ induce una gráfica que no está en $M_2$, alguno de sus vértices debe de estar en $A$. Supongamos sin pérdida de generalidad que uno de los vértices de $X$ está en $A$. Luego, ninguno de los vértices de $Y$ puede estar en $A$ también. Como $Y$ es una obstrucción mínima de $M_2$, sus vértices no se pueden repartir entre $B$ y $C$ de manera que ambas induzcan gráficas multipartitas completas. Luego, $P_{3,i}\notin M_3$.
+Sea $i$ un entero tal que $1\le i \le 2$. Veamos que $Q_{3,i}$ no está en la clase $M_3$. La Figura \ref{obsts_M3_Q} muestra la representación gráfica de $Q_{3,i}$. Notemos que algunos de sus vértices se encuentran coloreados con rojo indicando que $Q_{3,i}$ tiene a $J$ como subgráfica inducida. Notemos también que los vértices no coloreados inducen ya sea a la gráfica $K_3+K_1$ o a la gráfica $Paw$. El argumento para probar que $Q_{3,i}$ no está en $M_3$ es análogo al utilizado para la familia $O_3$.
+
+\begin{figure}[ht!]
+
+\begin{subfigure}{\textwidth}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{scope}[xshift=0cm,scale=1]
+
+\node [style=vertex,fill=red] (1) at (0.5,1) {};
+\node [style=vertex,fill=red] (2) at (1.5,1) {};
+\node [style=vertex,fill=red] (3) at (0.5,2) {};
+\node [style=vertex,fill=red] (4) at (1.5,2) {};
+\node [style=vertex,fill=red] (5) at (0,2.5) {};
+\node [style=vertex,fill=red] (6) at (2,2.5) {};
+\node [style=vertex] (7) at (0.5,3) {};
+\node [style=vertex] (8) at (1.5,3) {};
+\node [style=vertex] (9) at (1,3.75) {};
+\node [style=vertex,fill=red] (10) at (1,4.25) {};
+
+\foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/1,5/3,5/6,6/2,6/4,7/8,7/9,8/9} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$Q_{3,1}$}}};
+\end{scope}
+
+\begin{scope}[xshift=3cm,scale=1]
+
+\node [style=vertex,fill=red] (1) at (0.5,1) {};
+\node [style=vertex,fill=red] (2) at (1.5,1) {};
+\node [style=vertex,fill=red] (3) at (0.5,2) {};
+\node [style=vertex,fill=red] (4) at (1.5,2) {};
+\node [style=vertex,fill=red] (5) at (0,2.5) {};
+\node [style=vertex,fill=red] (6) at (2,2.5) {};
+\node [style=vertex] (7) at (0.5,3) {};
+\node [style=vertex] (8) at (1.5,3) {};
+\node [style=vertex] (9) at (1,3.75) {};
+\node [style=vertex,fill=red] (10) at (1,4.25) {};
+
+\foreach \i/\j in {1/2,1/3,1/4,2/3,2/4,3/4,5/1,5/3,5/6,6/2,6/4,7/8,7/9,8/9,9/10} \draw [style=edge] (\i) to (\j);
+
+\node at (0.75,0) {\parbox{0.3\linewidth}{\subcaption*{$Q_{3,2}$}}};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{subfigure}
+
+%\setlength{\abovecaptionskip}{-15pt}
+\caption{Familia $Q_3$ de obstrucciones mínimas de la clase $M_3$.}
+\label{obsts_M3_Q}
+\end{figure}
+
+Sea $i$ un entero tal que $1\le i \le 2$. Veamos que $R_{3,i}$ no está en la clase $M_3$. Sea $(A,B,C)$ una partición de los vértices de $R_{3,i}$, veamos que $(A,B,C)$ no es una $M_3$-partición de $R_{3,i}$. Procedamos por contradicción. Supongamos que $(A,B,C)$ es una $M_3$-partición de $R_{3,i}$. Si los dos vértices del $K_2$ están en la misma parte, el resto de los vértices deben de poder repartirse en las partes restantes. Como estos vértices inducen una gráfica que contiene una de las obstrucciones mínimas de la clase $M_2$, esto no es posible. Así, ambos vértices del $K_2$ deben de estar en partes diferentes. Es decir que $R_{3,i}$ debe de aceptar una partición en dos conjuntos independientes y una gráfica multipartita completa. Supongamos sin pérdida de generalidad que $A$ contiene un vértice del $K_2$ y $B$ el otro. Notemos que $R_{3,i}$ no es 3-coloreable, por lo que el vértice del $K_1$ debe estar ya sea en $A$ o en $B$. Es claro que uno de los vértices del $\overline{P_3}$ de $R_{3,i}$ debe de estar ya sea en $A$ o en $B$ para que $C$ pueda inducir una gráfica multipartita completa. Supongamos sin pérdida de generalidad que $A$ contiene un vértice del  $\overline{P_3}$ de $R_{3,i}$. Luego, el resto de los vértices deben de poder repartirse en $B$ y $C$. Como $B$ debe de ser un conjunto independiente y el resto de los vértices contiene una de las obstrucciones mínimas de la clase $(1,\infty)$-$M_2$, esto no es posible. Así, $R_{3,i}\notin M_3$.
+
+Sea $i$ un entero tal que $1 \le i \le 3$.   Es posible usar un argumento an\'alogo al anterior para ver que $S_{3,i}$ no está en la clase $M_3$.
+
+Recíprocamente, supongamos que $G$ es libre de cada una de las gráficas listadas y probemos que $G\in M_3$.  Para ello consideramos diez casos que son exhaustivos.
+
+\emph{\textbf{Caso 1}}: $G$ es la unión ajena de gráficas bipartitas completas.
+
+Es claro que $G$ es bipartita. Luego, $G\in M_3$.
+
+\emph{\textbf{Caso 2}}: $G$ tiene al menos 4 componentes y al menos 3 no son bipartitas.
+
+Como $G$ es libre de $O_{3,1}=K_1+K_2+K_3+K_4$, todas las componentes de $G$ deben de ser 3-coloreables. Luego, $G$ es 3-coloreable y $G\in M_3$.
+
+\emph{\textbf{Caso 3}}: $G$ tiene exactamente 3 componentes y ninguna es bipartita.
+
+Si todas las componentes de $G$ son 3-coloreables, $G$ también lo es y por lo tanto $G\in M_3$. En el caso contrario, al menos una de sus componentes tiene un $K_4$. Como $G$ es libre de $O_{3,1}=K_1+K_2+K_3+K_4$, todas las demás componentes deben de ser libres de $K_1+K_2=\overline{P_3}$. Como $G$ es libre de $O_{3,3}$ y $O_{3,4}$, la componente con el $K_4$ también debe de ser multipartita completa. Así, $G$ es la unión ajena de 3 gráficas multipartitas completas, y por lo tanto $G\in M_3$.
+
+\emph{\textbf{Caso 4}}: $G$ tiene exactamente 2 componentes no bipartitas y al menos una bipartita no trivial.
+
+Si todas las componentes de $G$ son 3-coloreables, $G$ también lo es, y por lo tanto $G\in M_3$. En el caso contrario, una de las componentes no bipartitas de $G$ contiene un $K_4$. Como $G$ tiene una componente con un $K_4$, una con un $K_3$ y una con un $K_2$, y es libre de $O_{3,1}=K_1+K_2+K_3+K_4$, entonces $G$ no tiene más que estas tres componentes. Como la componente bipartita de $G$ es conexa, ésta es multipartita completa. Como $G$ es libre de $O_{3,2}$, entonces la componente con el $K_3$ debe de ser multipartita completa. Como $G$ es libre de $O_{3,3}$ y $O_{3,4}$, entonces la componente con el $K_4$ es multipartita completa. Así, $G$ es la unión ajena de 3 gráficas multipartitas completas, y por lo tanto $G\in M_3$.
+
+\emph{\textbf{Caso 5}}: $G$ tiene al menos 3 componentes. Exactamente 2 de ellas no son bipartitas y el resto son triviales.
+
+Como $G$ es libre de $O_{3,5}$, cada una de las componentes no bipartitas es libre de $K_2+K_3$. Como $G$ es libre de $Q_{3,1}$, estas mismas componentes son libres de $(\overline{P_3}\oplus\overline{P_3})$. Así, estas componentes están en la clase $(1,\infty)$-$M_2$. Como las demás componentes de $G$ forman un conjunto independiente, $G$ acepta una partición en dos gráficas multipartitas completas y un conjunto independiente. Luego, $G\in M_3$.
+
+\emph{\textbf{Caso 6}}: $G$ tiene sólo 2 componentes y ninguna es bipartita.
+
+Dado que $G$ es libre de $O_{3,6}$, ninguna de las componentes de $G$ puede contener un $K_1\oplus (K_1+K_2+K_3)$. Luego, como son conexas, éstas deben de ser libres de $K_1+K_2+K_3$. Dado que $G$ es libre de $O_{3,7}$, ninguna de las componentes de $G$ puede contener un $K_1\oplus (K_2+Paw)$. Luego, como son conexas, éstas deben de ser libres de $K_2+Paw$. Dado que $G$ es libre de $Q_{3,1}$, ninguna de las componentes de $G$ puede contener un $K_1 + (\overline{P_3}\oplus\overline{P_3})$. Así, ambas componentes de $G$ son elementos de $M_2$. Si las dos componentes de $G$ están en la clase $(1,\infty)$-$M_2$, entonces $G$ acepta una partición en dos gráficas multipartitas completas y un conjunto independiente. Luego, $G\in M_3$. En el caso contrario, una de las componentes debe de tener ya sea a $H'$ o a $J'$.
+
+Si una de las componentes de $G$ contiene a $J'$, dado que $G$ es libre de $Q_{3,2}$, la otra componente debe de ser libre de $Paw$. Es decir que debe ser una gráfica multipartita completa o una gráfica bipartita. En cualquiera de los casos es una gráfica multipartita completa. Luego, como una componente de $G$ es una gráfica multipartita completa y la otra es un elemento de $M_2$, se sigue que $G\in M_3$.
+
+Si una de las componentes de $G$ contiene a $H'=K_2+K_3$, dado que es conexa, debe contener a $K_1\oplus(K_2+K_3)$. Luego, dado que $G$ es libre de $O_{3,8}$, la otra componente debe de ser libre de $Paw$. Es decir que debe ser una gráfica multipartita completa o una gráfica bipartita. En cualquiera de los casos es una gráfica multipartita completa. Luego, como una componente de $G$ es una gráfica multipartita completa y la otra es un elemento de $M_2$, se sigue que $G\in M_3$.
+
+\emph{\textbf{Caso 7}}: $G$ tiene al menos 3 componentes. Exactamente una no es bipartita y al menos una de las demás componentes no es trivial.
+
+Si la componente de $G$ que no es bipartita es multipartita completa, entonces $G$ acepta una partición en dos conjuntos independientes y una gráfica multipartita. Luego, $G\in M_3$. En el caso contrario. Sea $G'$ la componente de $G$ que no es bipartita, $w$ la raíz de su coárbol, $x$ un nodo en el coárbol de $G'$ con etiqueta 1 tal que contiene un $Paw$, $z$ el descendiente de $w$ más profundo que contiene un $Paw$ y $D$ la distancia desde $w$ hasta $x$, mostremos por inducción sobre la distancia $d$ desde $w$ hasta $x$ que $G[x]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa.
+
+\emph{Caso base}: $d=D$. O bien, $x=z$.
+Dado que $G$ es libre de $R_{3,1}$, ningún nodo del coárbol de $G'$ con etiqueta 1 puede tener 3 hijos que representen gráficas que no sean multipartitas completas. Si $x$, que tiene etiqueta 1, tiene 2 hijos $x_1$ y $x_2$ que representan gráficas que no son multipartitas completas, dado que $G$ es libre de $R_{3,1}$ y $R_{3,2}$, ninguno de estos puede contener ni a $H'$ ni a $J'$, por lo que cada uno representa una gráfica de la clase $(1,\infty)$-$M_2$. Es decir que $G[x_1]$ acepta una $M_2$-partición $(A_1,B_1)$ tal que $G[A_1]$ es un conjunto independiente y $G[B_1]$ es una gráfica multipartita completa. De manera análoga, $G[x_2]$ acepta una $M_2$-partición $(A_2,B_2)$ tal que $G[A_2]$ es un conjunto independiente y $G[B_2]$ es una gráfica multipartita completa. Luego, $(G[x]-A_1)-A_2$ es la unión completa de múltiples gráficas multipartitas completas. Es decir, es una gráfica multipartita completa. Luego, $(A_1,A_2,(V(G[x])-A_1)-A_2)$ es una $M_3$-partición de $G[x]$ en dos conjuntos independientes y una gráfica multipartita completa. Notemos que los argumentos utilizados hasta ahora en el caso base funcionan para cualquier nodo del árbol de $G$ con etiqueta 1 que contengan un $Paw$
+
+Si $x$ tiene un solo hijo $y$ que representa una gráfica que no es multipartita completa, por el caso base del \emph{Caso 2} de la demostración del Teorema \ref{teo_obsts_m2}, podemos concluir que todos los hijos de $y$ representan gráficas multipartitas completas. Dado que $G$ es libre de $O_{3,1}$, si $y$ tiene al menos dos hijos que representan gráficas no bipartitas, dichos hijos deben de representar gráficas 3 coloreables. Luego, $G[y]$ es 3-coloreable. Así $G[x]$ es la unión completa de una gráfica 3-coloreable y varias gráficas multipartitas completas. Luego, $G[x]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Por otra parte, si $y$ tiene un solo hijo que representa una gráfica que no es bipartita, recordemos que dicho hijo representa necesariamente una gráfica multipartita completa. Luego, $G[y]$ es la unión de una gráfica multipartita completa y varias gráficas bipartitas. Es decir que acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Luego, como todos los demás hijos de $x$ representan gráficas multipartitas completas, $G[x]$ acepta una partición en dos conuntos independientes y una gráfica multipartita completa.
+
+Finalmente, si todos los hijos de $y$ representan gráficas bipartitas, $G[y]$ es bipartita. Luego, $G[x]$ es la unión completa de una gráfica bipartita y varias gráficas multipartitas completas. Así, $G[x]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa.
+
+\emph{Paso inductivo}: $d\geq 2$.
+
+Notemos que $d$ siempre es par. Supongamos como hipótesis inductiva que si $x'$ es un descendiente de $w$ con etiqueta 1 tal que contiene un $Paw$ y su distancia hasta $w$ es menor a $d$, entonces $G[x']$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa.
+
+Sabemos que $w$ no puede tener tres hijos que representen gráficas que no sean multipartitas completas, y que si tiene 2 de estos, acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Si $x$ tiene un solo hijo $y$, que representa una gráfica que no es multipartita completa, veamos que $G[y]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Si $y$ tiene al menos 2 hijos que representan gráficas no bipartitas, por el argumento utilizado en el caso base, sabemos que $G[y]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Por otra parte, si $y$ tiene un solo hijo $x'$ que no representa una gráfica bipartita, veamos que éste acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Sabemos que todos los hijos de $y$ diferentes de $x'$ representan gráficas bipartitas conexas. Es decir, representan gráficas multipartitas completas. Como $x$ no es el nodo más profundo con un $Paw$ y todos sus hijos con excepción de $y$ representan gráficas multipartitas completas, entonces $x'$ debe de contener un $Paw$. Luego, como $x'$ cumple con las condiciones de la hipótesis inductiva, $G[x]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Como todos los hijos de $y$ diferentes de $x'$ representan gráficas bipartitas, $G[y]$ también acepta una partición de este tipo. Finalmente, como todos los hijos de $x$ diferentes de $y$ representan gráficas multipartitas completas, $G[x]$ acepta una partición en dos conuntos independientes y una gráfica multipartita completa.
+
+\emph{\textbf{Caso 8}}: $G$ tiene sólo dos componentes. Una de ellas es bipartita no trivial y la otra no es bipartita.
+
+Sea $x$ la raíz del coárbol de $G$ y $y$ el hijo de $x$ que representa a una gráfica no bipartita. Si todos los hijos de $y$ representan gráficas en $M_2$, entonces $G[y]$ es la unión completa de varias gráficas en $M_2$. Así, $G[y]\in M_2$ y por lo tanto $G\in M_3$, dado que el otro hijo de $x$ representa una gráfica bipartita conexa. Es decir, una gráfica bipartita completa. Si $y$ tiene un hijo $x'$ (con etiqueta 0) tal que $G[x']$ no es una gráfica en $M_2$, veamos que $G[y]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Dado que $G$ es libre de $S_{3,1}$, $S_{3,2}$ y $S_{3,1}$, todos los hijos de $y$ diferentes de $x'$ representan gráficas multipartitas completas. Si todos los hijos de $x'$ representan gráficas 3-coloreables, entonces $G[x']$ es 3-coloreable, y por lo tanto $G[y]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Abordemos el caso en el que un hijo de $x'$ tiene un hijo $y'$ que contiene un $K_4$. Veamos que todos los demás hijos de $x'$ deben de representar gráficas bipartitas. Procedamos por contradicción. Supongamos que un hijo de $x'$ diferente de $y'$ tiene un $K_3$. Como $G$ es libre de $O_{3,1}$, $x'$ no puede tener más hijos. Como $G$ es libre de  $O_{3,2}$,$O_{3,3}$ y $O_{3,4}$, los dos hijos de $x'$ deben de representar gráficas multipartitas completas. Luego, $G[x']\in M_2$. Lo cual es una contradicción. Así, todos los hijos de $x'$ menos $y'$ representan gráficas bipartitas. Notemos que $x$ con etiqueta 0 tiene un hijo diferente de $y$ con un $K_2$ y que $x'$, que es descendiente de $x$ y tiene etiqueta 0, tiene al menos un hijo diferente de $y'$. Luego, podemos aplicar el caso 7 de esta demostación a $x'$, por lo que $G[x']$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Luego, como todos los hijos de $y$ diferentes de $x'$ representan gráficas multipartitas completas, entonces $G[y]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. De eso se sigue que $G$ acepta una partición de este tipo. Así, $G\in M_3$.
+
+\emph{\textbf{Caso 9}}: $G$ tiene una componente que no es bipartita completa y al menos una componente trivial.
+
+Notemos que la única posible $M_3$-partición de $G$ es en un conjunto independiente y dos gráficas multipartitas completas. Sea $w$ la raíz del coárbol de $G$ y y $x$ el hijo de $w$ que no es una hoja. Si $G[x]\in M_2$, entonces es claro que $G\in M_3$. En el caso contrario, dado que $G[x]$ es una gráfica conexa, $G[x]$ debe tener a alguna de las siguientes gráficas como subgráfica inducida: $\mathcal{H}=K_1\oplus H$,$\mathcal{I}=K_1\oplus I$,$\mathcal{J}=K_1\oplus J$. Sea $y$ el descendiente de $x$ más profundo que contiene a $\mathcal{H}$, a $\mathcal{I}$ o a $\mathcal{J}$, $d$ la distancia desde $x$ hasta $y$, $y'$ un nodo del coárbol de $G$ con etiqueta 1 que contiene a $\mathcal{H}$, a $\mathcal{I}$ o a $\mathcal{J}$ y $d'$ la distancia desde $y'$ hasta $y$, mostremos por inducción sobre $d'$ que $G[y']$ acepta una partición en un conjunto independiente y una gráfica multipartita completa.
+
+\emph{Caso base}: $d'=0$. O bien, $y'=y$.
+Como $G$ es libre de $P_{3,i}$ para todo entero $1\le i \le 6$, a lo más un hijo de $y'$ representa una gráfica que no está en $M_2$. Si todos los hijos de $y'$ representan gráficas en $M_2$, entonces $G[y']\in M_2$. Si $y'$ tiene un hijo $z$ que representa una gráfica que no está en $M_2$, todos los hijos de $z$ representan gráficas en $M_2$ dado que $y'$ es el nodo más profundo que contiene a $\mathcal{H}$, a $\mathcal{I}$ o a $\mathcal{J}$. Si todos los hijos de $z$ representan gráficas 3-coloreables, $G[z]$ es 3-coloreable y por lo tanto $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+Si no todos los hijos de $z$ representan gráficas 3-coloreables, uno de ellos contiene un $K_4$. Si además de esto, otro hijo de $z$ contiene un $K_3$, dado que $G$ es libre de $O_{3,1}$, todos los demás hijos de $z$ son hojas. Como $G$ es libre de $Q_{3,1}$, los dos hijos de $z$ que no son hojas no contienen a $(\overline{P_3}\oplus\overline{P_3}=J')$. Como $G$ es libre de $O_{3,5}$ los hijos de $z$ representan gráficas conexas, los dos hijos de $z$ que no son hojas no contienen a $K_2+K_3=H'$. Así, los dos hijos de $z$ que no son hojas representan gráficas en $(1,\infty)$-$M_2$. Como $z$ tiene etiqueta 0 y todos sus demás hijos son hojas, $G[z]$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas. Como $y'$ tiene etiqueta 1 y todos sus hijos diferentes de $z$ representan gráficas en $M_2$, $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completa.
+
+Si además del hijo de $z$ con un $K_4$, $z$ no tiene ningún otro hijo con un $K_3$, pero sí tiene un hijo que contiene un $K_2$, dado que $w$ tiene etiqueta 0, es ancestro de $z$ que también tiene etiqueta 0 y tiene al menos un hijo diferente de $x$, se puede aplicar el argumento del \emph{Caso 8} de esta misma demostración a $z$. Luego, $G[z]$ acepta una partición en dos conjuntos independientes y una gráfica multipartita completa. Luego, como todos los hijos de $y'$ diferentes de $z$ representan gráficas en $M_2$, $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+Si además del hijo de $z$ con un $K_4$, todos los demás hijos de $z$ son hojas, como todos los hijos de $z$ representan gráficas en $M_2$, se sigue directamente que $G[z]$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas. Luego, $G[y']$ también acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+\emph{Paso inductivo}: $d'\geq2$
+
+Sea $x'$ un nodo con etiqueta 1 descendiente de $x$ tal que contiene a $\mathcal{H}$, a $\mathcal{I}$ o a $\mathcal{J}$. Supongamos como hipótesis inductiva que $G[x']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+Por los argumentos presentados en el caso base, sabemos que a lo más un hijo de $y'$ puede representar una gráfica que no esté en la clase $M_2$, y que si todos los hijos de $y'$ representan gráficas en $M_2$, entonces $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas. Si $y'$ tiene un hijo $z$ que no representa una gráfica en $M_2$, sabemos por los argumentos del caso base que si todos los hijos de $z$ representan gráficas 3-coloreables o si uno de los hijos de $z$ contiene un $K_4$ y otro un $K_2$, entonces $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+El último caso que no hemos abordado es en el que $z$ tiene un sólo hijo $x'$ que contiene un $K_4$ mientras que el resto de los hijos de $z$ son hojas. Aplicando la hipótesis inductiva, podemos ver que $G[x']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas. Como todos los hijos de $z$ diferentes de $x'$ son hojas, entonces $G[z]$ acepta una partición en un conjunto independiente y dos graficas multipartitas completas. Finalmente, como todos los hijos de $y'$ diferentes de $z$ representan gráficas en $M_2$, entonces $G[y']$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas.
+
+Como $x$ es un nodo con etiqueta 1 y contiene a $\mathcal{H}$, a $\mathcal{I}$ o a $\mathcal{J}$, entonces $G[x]$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas y todos los hijos de $w$ diferentes de $x$ son hojas, se sigue que $G$ acepta una partición en un conjunto independiente y dos gráficas multipartitas completas. Así, $G\in M_3$.
+
+
+\emph{\textbf{Caso 10}}: $G$ es conexa.
+
+Si $G$ es isomorfa a $K_1$, es claro que $G\in M_3$. En el caso contrario, $G$ es la unión completa de varias gráficas inconexas libres de cada una de las gráficas listadas. Es decir que $G$ es la unión completa de varias gráficas en $M_3$. Como la clase es cerrada bajo la unión completa, $G\in M_3$.
 
 \end{proof}
